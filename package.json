@@ -1,0 +1,43 @@
+{
+  "name": "hast",
+  "private": true,
+  "version": "0.0.0",
+  "description": "HTML processor powered by plugins",
+  "license": "MIT",
+  "keywords": [
+    "process",
+    "parse",
+    "transform",
+    "compile",
+    "stringify",
+    "html",
+    "abstract",
+    "syntax",
+    "tree",
+    "json",
+    "ast"
+  ],
+  "dependencies": {
+    "bail": "^1.0.0",
+    "ent": "^2.2.0",
+    "escape-html": "^1.0.3",
+    "htmlparser2": "^3.8.3",
+    "param-case": "^1.1.1",
+    "trim": "0.0.1",
+    "unified": "^1.0.0",
+    "virtual-dom": "^2.1.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/wooorm/hast.git"
+  },
+  "author": "Titus Wormer <tituswormer@gmail.com>",
+  "files": [
+    "lib/",
+    "index.js"
+  ],
+  "devDependencies": {
+    "eslint": "^1.4.1"
+  },
+  "scripts": {}
+}

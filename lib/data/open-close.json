@@ -1,0 +1,104 @@
+{
+  "TR": {
+    "TR": true,
+    "TH": true,
+    "TD": true
+  },
+  "TH": {
+    "TH": true
+  },
+  "TD": {
+    "THEAD": true,
+    "TH": true,
+    "TD": true
+  },
+  "BODY": {
+    "HEAD": true,
+    "LINK": true,
+    "SCRIPT": true
+  },
+  "LI": {
+    "LI": true
+  },
+  "P": {
+    "P": true
+  },
+  "H1": {
+    "P": true
+  },
+  "H2": {
+    "P": true
+  },
+  "H3": {
+    "P": true
+  },
+  "H4": {
+    "P": true
+  },
+  "H5": {
+    "P": true
+  },
+  "H6": {
+    "P": true
+  },
+  "SELECT": {
+    "INPUT": true,
+    "OPTION": true,
+    "OPTGROUP": true,
+    "SELECT": true,
+    "BUTTON": true,
+    "DATALIST": true,
+    "TEXTAREA": true
+  },
+  "INPUT": {
+    "INPUT": true,
+    "OPTION": true,
+    "OPTGROUP": true,
+    "SELECT": true,
+    "BUTTON": true,
+    "DATALIST": true,
+    "TEXTAREA": true
+  },
+  "OUTPUT": {
+    "INPUT": true,
+    "OPTION": true,
+    "OPTGROUP": true,
+    "SELECT": true,
+    "BUTTON": true,
+    "DATALIST": true,
+    "TEXTAREA": true
+  },
+  "BUTTON": {
+    "INPUT": true,
+    "OPTION": true,
+    "OPTGROUP": true,
+    "SELECT": true,
+    "BUTTON": true,
+    "DATALIST": true,
+    "TEXTAREA": true
+  },
+  "DATALIST": {
+    "INPUT": true,
+    "OPTION": true,
+    "OPTGROUP": true,
+    "SELECT": true,
+    "BUTTON": true,
+    "DATALIST": true,
+    "TEXTAREA": true
+  },
+  "TEXTAREA": {
+    "INPUT": true,
+    "OPTION": true,
+    "OPTGROUP": true,
+    "SELECT": true,
+    "BUTTON": true,
+    "DATALIST": true,
+    "TEXTAREA": true
+  },
+  "OPTION": {
+    "OPTION": true
+  },
+  "OPTGROUP": {
+    "OPTGROUP": true
+  }
+}
