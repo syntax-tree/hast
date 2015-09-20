@@ -24,7 +24,6 @@ var Compiler = require('./lib/compile');
 
 module.exports = unified({
     'name': 'hast',
-    'type': 'tree',
     'Parser': Parser,
     'Compiler': Compiler
 });
