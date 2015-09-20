@@ -23,7 +23,7 @@ var Compiler = require('./lib/compile');
  */
 
 module.exports = unified({
-    'name': 'vdom',
+    'name': 'hast',
     'type': 'tree',
     'Parser': Parser,
     'Compiler': Compiler
