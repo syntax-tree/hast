@@ -24,7 +24,7 @@
     "escape-html": "^1.0.3",
     "htmlparser2": "^3.8.3",
     "param-case": "^1.1.1",
-    "property-information": "^1.0.0",
+    "property-information": "^2.0.0",
     "trim": "0.0.1",
     "unified": "^2.0.0"
   },
