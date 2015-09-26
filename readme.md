@@ -1,6 +1,4 @@
-# hast
-
-<!--lint disable no-html-->
+# ![hast](https://cdn.rawgit.com/wooorm/hast/master/logo.svg)
 
 **hast** is an HTML processor powered by plugins. Lots of bla. Bla and Bla.
 100% coverbla. (`npm install wooorm/hast --bla`)
