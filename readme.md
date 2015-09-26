@@ -15,19 +15,6 @@ comes HTML.
 nodes and files (so there are already [tools](https://github.com/wooorm/unist#unist-node-utilties)
 for working with the syntax tree).
 
-The things not yet figured out is how to handle properties on elements: for
-example, I’d like `node.properties.style` to be an `object?` with camelCase
-properties, to make it easy to manipulate styles.
-
-Something similar is `node.properties.className` (or `node.properties.class`?),
-which should be `Array.<string>?`.
-
-And what about `aria` properties? Could those be an object too? `node.properties.aria.label` would make things a lot easier.
-
-The current version’s `properties` adheres to
-[VProperties](https://github.com/Matt-Esch/virtual-dom/blob/903d884/docs.jsig#L37),
-which is slightly developer-unfriendly.
-
 ```idl
 interface Node {
     type: string;
@@ -36,6 +23,8 @@ interface Node {
 
 interface Data { }
 
+interface Properties { }
+
 interface Parent <: Node {
     children: [];
 }
@@ -43,7 +32,7 @@ interface Parent <: Node {
 interface Element <: Parent {
     type: "element";
     tagName: string;
-    properties: VProperties;
+    properties: Properties;
     children: [];
 }
 
@@ -61,8 +50,8 @@ interface Comment <: Node {
     value: string;
 }
 
-interface CData <: Node {
-    type: "cdata";
+interface CharacterData <: Node {
+    type: "characterData";
     value: string;
 }
 

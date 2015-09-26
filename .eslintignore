@@ -1,0 +1,5 @@
+build/
+components/
+coverage/
+build.js
+example.js

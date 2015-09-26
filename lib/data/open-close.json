@@ -1,104 +1,104 @@
 {
-  "TR": {
-    "TR": true,
-    "TH": true,
-    "TD": true
+  "tr": {
+    "tr": true,
+    "th": true,
+    "td": true
   },
-  "TH": {
-    "TH": true
+  "th": {
+    "th": true
   },
-  "TD": {
-    "THEAD": true,
-    "TH": true,
-    "TD": true
+  "td": {
+    "thead": true,
+    "th": true,
+    "td": true
   },
-  "BODY": {
-    "HEAD": true,
-    "LINK": true,
-    "SCRIPT": true
+  "body": {
+    "head": true,
+    "link": true,
+    "script": true
   },
-  "LI": {
-    "LI": true
+  "li": {
+    "li": true
   },
-  "P": {
-    "P": true
+  "p": {
+    "p": true
   },
-  "H1": {
-    "P": true
+  "h1": {
+    "p": true
   },
-  "H2": {
-    "P": true
+  "h2": {
+    "p": true
   },
-  "H3": {
-    "P": true
+  "h3": {
+    "p": true
   },
-  "H4": {
-    "P": true
+  "h4": {
+    "p": true
   },
-  "H5": {
-    "P": true
+  "h5": {
+    "p": true
   },
-  "H6": {
-    "P": true
+  "h6": {
+    "p": true
   },
-  "SELECT": {
-    "INPUT": true,
-    "OPTION": true,
-    "OPTGROUP": true,
-    "SELECT": true,
-    "BUTTON": true,
-    "DATALIST": true,
-    "TEXTAREA": true
+  "select": {
+    "input": true,
+    "option": true,
+    "optgroup": true,
+    "select": true,
+    "button": true,
+    "datalist": true,
+    "textarea": true
   },
-  "INPUT": {
-    "INPUT": true,
-    "OPTION": true,
-    "OPTGROUP": true,
-    "SELECT": true,
-    "BUTTON": true,
-    "DATALIST": true,
-    "TEXTAREA": true
+  "input": {
+    "input": true,
+    "option": true,
+    "optgroup": true,
+    "select": true,
+    "button": true,
+    "datalist": true,
+    "textarea": true
   },
-  "OUTPUT": {
-    "INPUT": true,
-    "OPTION": true,
-    "OPTGROUP": true,
-    "SELECT": true,
-    "BUTTON": true,
-    "DATALIST": true,
-    "TEXTAREA": true
+  "output": {
+    "input": true,
+    "option": true,
+    "optgroup": true,
+    "select": true,
+    "button": true,
+    "datalist": true,
+    "textarea": true
   },
-  "BUTTON": {
-    "INPUT": true,
-    "OPTION": true,
-    "OPTGROUP": true,
-    "SELECT": true,
-    "BUTTON": true,
-    "DATALIST": true,
-    "TEXTAREA": true
+  "button": {
+    "input": true,
+    "option": true,
+    "optgroup": true,
+    "select": true,
+    "button": true,
+    "datalist": true,
+    "textarea": true
   },
-  "DATALIST": {
-    "INPUT": true,
-    "OPTION": true,
-    "OPTGROUP": true,
-    "SELECT": true,
-    "BUTTON": true,
-    "DATALIST": true,
-    "TEXTAREA": true
+  "datalist": {
+    "input": true,
+    "option": true,
+    "optgroup": true,
+    "select": true,
+    "button": true,
+    "datalist": true,
+    "textarea": true
   },
-  "TEXTAREA": {
-    "INPUT": true,
-    "OPTION": true,
-    "OPTGROUP": true,
-    "SELECT": true,
-    "BUTTON": true,
-    "DATALIST": true,
-    "TEXTAREA": true
+  "textarea": {
+    "input": true,
+    "option": true,
+    "optgroup": true,
+    "select": true,
+    "button": true,
+    "datalist": true,
+    "textarea": true
   },
-  "OPTION": {
-    "OPTION": true
+  "option": {
+    "option": true
   },
-  "OPTGROUP": {
-    "OPTGROUP": true
+  "optgroup": {
+    "optgroup": true
   }
 }

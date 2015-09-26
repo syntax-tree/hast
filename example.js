@@ -2,15 +2,17 @@
 /* eslint-disable no-console */
 var util = require('util');
 var fs = require('fs');
+var visit = require('unist-util-visit');
 var hast = require('.');
-var visit = require('./util/visit');
 
 var doc = fs.readFileSync('example.html', 'utf8');
 
 function strong() {
     return function (tree) {
-        visit(tree, 'B', function (node) {
-            node.tagName = 'STRONG';
+        visit(tree, 'element', function (node) {
+            if (node.tagName === 'b') {
+                node.tagName = 'strong';
+            }
         });
     };
 }

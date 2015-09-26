@@ -19,6 +19,7 @@
   ],
   "dependencies": {
     "bail": "^1.0.0",
+    "camelcase": "^1.2.1",
     "ent": "^2.2.0",
     "escape-html": "^1.0.3",
     "htmlparser2": "^3.8.3",
@@ -37,7 +38,27 @@
     "index.js"
   ],
   "devDependencies": {
-    "eslint": "^1.4.1"
+    "eslint": "^1.4.1",
+    "istanbul": "^0.3.21",
+    "jscs": "^2.1.1",
+    "jscs-jsdoc": "^1.2.0",
+    "mdast": "^2.0.0",
+    "mdast-comment-config": "^1.0.0",
+    "mdast-github": "^1.0.0",
+    "mdast-lint": "^1.1.1",
+    "mdast-slug": "^2.0.0",
+    "mdast-validate-links": "^1.1.1",
+    "tape": "^4.2.0",
+    "unist-util-visit": "^1.0.0"
   },
-  "scripts": {}
+  "scripts": {
+    "build-md": "mdast . --quiet  --frail",
+    "build": "npm run build-md",
+    "lint-api": "eslint .",
+    "lint-style": "jscs --reporter inline .",
+    "lint": "npm run lint-api && npm run lint-style",
+    "test-api": "node test.js",
+    "test-coverage": "istanbul cover test.js",
+    "test": "npm run build && npm run lint && npm run test-coverage"
+  }
 }
