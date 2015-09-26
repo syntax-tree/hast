@@ -58,3 +58,7 @@ interface Text <: Node {
     value: string;
 }
 ```
+
+## License
+
+[MIT](LICENSE) © [Titus Wormer](http://wooorm.com)
