@@ -25,7 +25,7 @@
     "param-case": "^1.1.1",
     "property-information": "^2.0.0",
     "trim": "0.0.1",
-    "unified": "^2.0.0"
+    "unified": "^2.1.0"
   },
   "repository": {
     "type": "git",

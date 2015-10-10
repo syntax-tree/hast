@@ -17,6 +17,8 @@
 var unified = require('unified');
 var Parser = require('./lib/parse');
 var Compiler = require('./lib/compile');
+var openClose = require('./lib/data/open-close');
+var voids = require('./lib/data/void');
 
 /*
  * Expose.
@@ -25,5 +27,9 @@ var Compiler = require('./lib/compile');
 module.exports = unified({
     'name': 'hast',
     'Parser': Parser,
-    'Compiler': Compiler
+    'Compiler': Compiler,
+    'data': {
+        'voids': voids,
+        'openClose': openClose
+    }
 });
