@@ -34,20 +34,51 @@ The reason for introducing a new “virtual” DOM is manyfold, primarily:
 
 ## List of Utilities
 
+<!-- Special -->
+
 *   [`wooorm/hastscript`](https://github.com/wooorm/hastscript)
     — Hyperscript compatible DSL for creating nodes;
+
+*   [`wooorm/hast-to-hyperscript`](https://github.com/wooorm/hast-to-hyperscript)
+    — Convert a HAST Node through to React, Virtual DOM, Hyperscript, and more;
+
+<!--
+Normal utilities.  Sorted alphabetically based on content
+after `hast-util-`
+-->
+
+*   [`wooorm/hast-util-embedded`](https://github.com/wooorm/hast-util-embedded)
+    — Check if a node is embedded content;
 
 *   [`wooorm/hast-util-has-property`](https://github.com/wooorm/hast-util-has-property)
     — Check if a node has a property;
 
+*   [`wooorm/hast-util-heading`](https://github.com/wooorm/hast-util-heading)
+    — Check if a node is heading content;
+
 *   [`wooorm/hast-util-interactive`](https://github.com/wooorm/hast-util-interactive)
     — Check if a node is interactive;
+
+*   [`wooorm/hast-util-is-element`](https://github.com/wooorm/hast-util-is-element)
+    — Check if a node is a (certain) element;
 
 *   [`wooorm/hast-util-labelable`](https://github.com/wooorm/hast-util-labelable)
     — Check if a node is labelable;
 
+*   [`wooorm/hast-util-menu-state`](https://github.com/wooorm/hast-util-menu-state)
+    — Check the state of a menu element;
+
 *   [`wooorm/hast-util-parse-selector`](https://github.com/wooorm/hast-util-parse-selector)
     — Create a node from a simple CSS selector;
+
+*   [`wooorm/hast-util-script-supporting`](https://github.com/wooorm/hast-util-script-supporting)
+    — Check if a node is script-supporting content;
+
+*   [`wooorm/hast-util-sectioning`](https://github.com/wooorm/hast-util-sectioning)
+    — Check if a node is sectioning content;
+
+*   [`wooorm/hast-util-transparent`](https://github.com/wooorm/hast-util-transparent)
+    — Check if a node is transparent content;
 
 *   [`wooorm/hast-util-whitespace`](https://github.com/wooorm/hast-util-whitespace)
     — Check if a node is inter-element whitespace;
