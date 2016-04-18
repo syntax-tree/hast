@@ -322,7 +322,7 @@ Yields:
 
 [html-element]: https://dom.spec.whatwg.org/#interface-element
 
-[unist-utility]: https://github.com/wooorm/unist#list-of-utilties
+[unist-utility]: https://github.com/wooorm/unist#list-of-utilities
 
 [unist]: https://github.com/wooorm/unist
 
