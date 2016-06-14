@@ -168,13 +168,13 @@ attribute is cased as `minLength`, and `typemustmatch` as `typeMustMatch`.
 
 Property values should reflect the data type determined by their
 property name.  For example, the following HTML `<div hidden></div>`
-contains a `hidden` (boolean) attribute, which is reflected a `hidden`
+contains a `hidden` (boolean) attribute, which is reflected as a `hidden`
 property name set to `true` (boolean) as value in HAST, and
 `<input minlength="5">`, which contains a `minlength` (valid
 non-negative integer) attribute, is reflected as a property `minLength`
 set to `5` (number) in HAST.
 
-> In JSON, the value property value `null` must be treated as if the
+> In JSON, the property value `null` must be treated as if the
 > property was not included.
 > In JavaScript, both `null` and `undefined` must be similarly
 > ignored.
@@ -193,10 +193,7 @@ values.  In HAST, these should be treated as ordered lists. For example,
 `<div class="alpha bravo"></div>` is represented as
 `["alpha", "bravo"]`.
 
-> :warning: I’m unsure whether the value of `style` properties
-> should be exposed as an `object`: it’s nice for easy access but
-> would not work well for transformations, as CSS properties cascade
-> by order, which cannot be represented by JavaScript Objects.
+> There’s no special format for `style`.
 
 ### `Directive`
 
