@@ -80,6 +80,9 @@ after `hast-util-`
 *   [`wooorm/hast-util-sectioning`](https://github.com/wooorm/hast-util-sectioning)
     — Check if a node is sectioning content;
 
+*   [`wooorm/hast-util-to-html`](https://github.com/wooorm/hast-util-to-html)
+    — Stringify nodes to HTML;
+
 *   [`wooorm/hast-util-transparent`](https://github.com/wooorm/hast-util-transparent)
     — Check if a node is transparent content;
 
