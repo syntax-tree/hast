@@ -71,6 +71,9 @@ after `hast-util-`
 *   [`wooorm/hast-util-parse-selector`](https://github.com/wooorm/hast-util-parse-selector)
     — Create a node from a simple CSS selector;
 
+*   [`wooorm/hast-util-sanitize`](https://github.com/wooorm/hast-util-sanitize)
+    — Sanitise nodes;
+
 *   [`wooorm/hast-util-script-supporting`](https://github.com/wooorm/hast-util-script-supporting)
     — Check if a node is script-supporting content;
 
