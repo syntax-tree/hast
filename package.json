@@ -1,7 +1,7 @@
 {
   "name": "hast",
   "private": true,
-  "version": "0.1.0",
+  "version": "1.0.0",
   "description": "Hypertext Abstract Syntax Tree format",
   "license": "MIT",
   "keywords": [],
