@@ -4,21 +4,13 @@
 
 ***
 
-> :information_desk_person: I’m working on **rehype**, which uses
-> this format.  A very alpha version of rehype was previously
-> published here as `hast`.  It’s still published on
-> [npm](http://npmjs.com/hast) though.  **rehype** will be published
-> soon.
->
-> Early feedback is greatly appreciated!
-
 **HAST** discloses HTML as an abstract syntax tree.  _Abstract_
 means not all information is stored in this tree and an exact replica
 of the original document cannot be re-created.  _Syntax Tree_ means syntax
 **is** present in the tree, thus an exact syntactic document can be
 re-created.
 
-The reason for introducing a new “virtual” DOM is manyfold, primarily:
+The reason for introducing a new “virtual” DOM is primarily:
 
 *   The DOM is very heavy to implement outside of the browser;
     a lean, stripped down virtual DOM can be used everywhere;
@@ -30,62 +22,49 @@ The reason for introducing a new “virtual” DOM is manyfold, primarily:
 
 *   Neither HTML nor virtual DOMs focus on positional information.
 
-**HAST** is a subset of [Unist][].
+**HAST** is a subset of [Unist][], and implemented by [rehype][].
+
+This document describes version 0.1.0 of **HAST**. [Changelog »][changelog].
 
 ## List of Utilities
 
-<!-- Special -->
+<!--lint disable list-item-spacing-->
+
+<!--
+Utilities.  The first two are special.  The rest is sorted
+alphabetically based on content after `hast-util-`
+-->
 
 *   [`wooorm/hastscript`](https://github.com/wooorm/hastscript)
     — Hyperscript compatible DSL for creating nodes;
-
 *   [`wooorm/hast-to-hyperscript`](https://github.com/wooorm/hast-to-hyperscript)
-    — Convert a HAST Node through to React, Virtual DOM, Hyperscript, and more;
-
-<!--
-Normal utilities.  Sorted alphabetically based on content
-after `hast-util-`
--->
-
+    — Convert a Node to React, Virtual DOM, Hyperscript, and more;
 *   [`wooorm/hast-util-embedded`](https://github.com/wooorm/hast-util-embedded)
     — Check if a node is embedded content;
-
 *   [`wooorm/hast-util-has-property`](https://github.com/wooorm/hast-util-has-property)
     — Check if a node has a property;
-
 *   [`wooorm/hast-util-heading`](https://github.com/wooorm/hast-util-heading)
     — Check if a node is heading content;
-
 *   [`wooorm/hast-util-interactive`](https://github.com/wooorm/hast-util-interactive)
     — Check if a node is interactive;
-
 *   [`wooorm/hast-util-is-element`](https://github.com/wooorm/hast-util-is-element)
     — Check if a node is a (certain) element;
-
 *   [`wooorm/hast-util-labelable`](https://github.com/wooorm/hast-util-labelable)
     — Check if a node is labelable;
-
 *   [`wooorm/hast-util-menu-state`](https://github.com/wooorm/hast-util-menu-state)
     — Check the state of a menu element;
-
 *   [`wooorm/hast-util-parse-selector`](https://github.com/wooorm/hast-util-parse-selector)
     — Create a node from a simple CSS selector;
-
 *   [`wooorm/hast-util-sanitize`](https://github.com/wooorm/hast-util-sanitize)
     — Sanitise nodes;
-
 *   [`wooorm/hast-util-script-supporting`](https://github.com/wooorm/hast-util-script-supporting)
     — Check if a node is script-supporting content;
-
 *   [`wooorm/hast-util-sectioning`](https://github.com/wooorm/hast-util-sectioning)
     — Check if a node is sectioning content;
-
 *   [`wooorm/hast-util-to-html`](https://github.com/wooorm/hast-util-to-html)
     — Stringify nodes to HTML;
-
 *   [`wooorm/hast-util-transparent`](https://github.com/wooorm/hast-util-transparent)
     — Check if a node is transparent content;
-
 *   [`wooorm/hast-util-whitespace`](https://github.com/wooorm/hast-util-whitespace)
     — Check if a node is inter-element whitespace;
 
@@ -189,7 +168,7 @@ The DOM is strict in reflecting those properties, and HAST is not,
 where the DOM treats `<div hidden=no></div>` as having a `true`
 (boolean) value for the `hidden` attribute, and `<img width="yes">`
 as having a `0` (number) value for the `width` attribute, these should
-be reflected as `"no"` and `"yes"`, respectively, in HAST.
+be reflected as `'no'` and `'yes'`, respectively, in HAST.
 
 > The reason for this is to allow plug-ins and utilities to inspect
 > these values.
@@ -197,7 +176,7 @@ be reflected as `"no"` and `"yes"`, respectively, in HAST.
 The DOM also specifies comma- and space-separated lists attribute
 values.  In HAST, these should be treated as ordered lists. For example,
 `<div class="alpha bravo"></div>` is represented as
-`["alpha", "bravo"]`.
+`['alpha', 'bravo']`.
 
 > There’s no special format for `style`.
 
@@ -313,15 +292,17 @@ Yields:
 
 ## Related
 
+*   [rehype][]
 *   [Unist][]
-*   [vfile][]
-*   rehype
+*   [VFile][]
+*   [NLCST][]
+*   [MDAST][]
 
 <!-- Definitions -->
 
 [logo]: https://cdn.rawgit.com/wooorm/hast/master/logo.svg
 
-[vfile]: https://github.com/wooorm/vfile
+[changelog]: https://github.com/wooorm/hast/releases
 
 [html-element]: https://dom.spec.whatwg.org/#interface-element
 
@@ -332,5 +313,13 @@ Yields:
 [parent]: https://github.com/wooorm/unist#parent
 
 [text]: https://github.com/wooorm/unist#text
+
+[rehype]: https://github.com/wooorm/rehype
+
+[nlcst]: https://github.com/wooorm/nlcst
+
+[mdast]: https://github.com/wooorm/mdast
+
+[vfile]: https://github.com/wooorm/vfile
 
 [properties]: #properties
