@@ -180,31 +180,33 @@ values.  In HAST, these should be treated as ordered lists. For example,
 
 > There’s no special format for `style`.
 
-### `Directive`
+### `Doctype`
 
-**Directive** ([**Text**][text]) represents an instruction
-(declaration or processing instruction).
+**Doctype** ([**Node**][node]) defines the type of the document.
 
 ```idl
-interface Directive <: Text {
-  type: "directive";
+interface Doctype <: Node {
+  type: "doctype";
   name: string;
+  public: string?;
+  system: string?;
 }
 ```
 
 For example, the following HTML:
 
 ```html
-<!doctype html>
+<!DOCTYPE html>
 ```
 
 Yields:
 
 ```json
 {
-  "type": "directive",
-  "name": "!doctype",
-  "value": "!doctype html"
+  "type": "doctype",
+  "name": "html",
+  "public": null,
+  "system": null
 }
 ```
 
@@ -230,31 +232,6 @@ Yields:
 {
   "type": "comment",
   "value": "Charlie"
-}
-```
-
-### `CharacterData`
-
-**CharacterData** ([**Text**][text]) represents character data.
-
-```idl
-interface CharacterData <: Text {
-  type: "characterData";
-}
-```
-
-For example, the following HTML:
-
-```html
-<![CDATA[<delta>Echo</delta>]]>
-```
-
-Yields:
-
-```json
-{
-  "type": "characterData",
-  "value": "<delta>Echo</delta>"
 }
 ```
 
@@ -309,6 +286,8 @@ Yields:
 [unist-utility]: https://github.com/wooorm/unist#list-of-utilities
 
 [unist]: https://github.com/wooorm/unist
+
+[node]: https://github.com/wooorm/unist#node
 
 [parent]: https://github.com/wooorm/unist#parent
 
