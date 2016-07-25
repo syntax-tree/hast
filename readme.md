@@ -24,7 +24,7 @@ The reason for introducing a new “virtual” DOM is primarily:
 
 **HAST** is a subset of [Unist][], and implemented by [rehype][].
 
-This document describes version 1.0.0 of **HAST**. [Changelog »][changelog].
+This document describes version 1.0.0 of **HAST**.  [Changelog »][changelog].
 
 ## Table of Contents
 
@@ -185,8 +185,8 @@ be reflected as `'no'` and `'yes'`, respectively, in HAST.
 > these values.
 
 The DOM also specifies comma- and space-separated lists attribute
-values.  In HAST, these should be treated as ordered lists. For example,
-`<div class="alpha bravo"></div>` is represented as
+values.  In HAST, these should be treated as ordered lists.
+For example, `<div class="alpha bravo"></div>` is represented as
 `['alpha', 'bravo']`.
 
 > There’s no special format for `style`.
