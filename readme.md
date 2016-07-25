@@ -2,7 +2,7 @@
 
 **H**ypertext **A**bstract **S**yntax **T**ree format.
 
-***
+* * *
 
 **HAST** discloses HTML as an abstract syntax tree.  _Abstract_
 means not all information is stored in this tree and an exact replica
@@ -25,6 +25,17 @@ The reason for introducing a new “virtual” DOM is primarily:
 **HAST** is a subset of [Unist][], and implemented by [rehype][].
 
 This document describes version 1.0.0 of **HAST**. [Changelog »][changelog].
+
+## Table of Contents
+
+*   [List of Utilities](#list-of-utilities)
+*   [AST](#ast)
+    *   [Root](#root)
+    *   [Element](#element)
+    *   [Doctype](#doctype)
+    *   [Comment](#comment)
+    *   [Text](#text)
+*   [Related](#related)
 
 ## List of Utilities
 
