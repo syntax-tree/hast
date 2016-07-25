@@ -24,7 +24,7 @@ The reason for introducing a new “virtual” DOM is primarily:
 
 **HAST** is a subset of [Unist][], and implemented by [rehype][].
 
-This document describes version 1.0.0 of **HAST**.  [Changelog »][changelog].
+This document describes version 2.0.0 of **HAST**.  [Changelog »][changelog].
 
 ## Table of Contents
 
