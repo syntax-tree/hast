@@ -288,7 +288,7 @@ Yields:
 
 <!-- Definitions -->
 
-[logo]: https://cdn.rawgit.com/wooorm/hast/master/logo.svg
+[logo]: https://cdn.rawgit.com/wooorm/hast/342f7b8/logo.svg
 
 [changelog]: https://github.com/wooorm/hast/releases
 
