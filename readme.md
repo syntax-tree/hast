@@ -39,8 +39,6 @@ This document describes version 2.0.0 of **HAST**.  [Changelog »][changelog].
 
 ## List of Utilities
 
-<!--lint disable list-item-spacing-->
-
 <!--
 Utilities.  The first two are special.  The rest is sorted
 alphabetically based on content after `hast-util-`
@@ -51,33 +49,49 @@ alphabetically based on content after `hast-util-`
 *   [`wooorm/hast-to-hyperscript`](https://github.com/wooorm/hast-to-hyperscript)
     — Convert a Node to React, Virtual DOM, Hyperscript, and more;
 *   [`wooorm/hast-util-embedded`](https://github.com/wooorm/hast-util-embedded)
-    — Check if a node is embedded content;
+    — Check if `node` is embedded content;
+*   [`wooorm/hast-util-from-string`](https://github.com/wooorm/rehype-minify/tree/master/packages/hast-util-from-string)
+    — Set the plain-text value of a HAST node;
 *   [`wooorm/hast-util-has-property`](https://github.com/wooorm/hast-util-has-property)
     — Check if a node has a property;
 *   [`wooorm/hast-util-heading`](https://github.com/wooorm/hast-util-heading)
     — Check if a node is heading content;
 *   [`wooorm/hast-util-interactive`](https://github.com/wooorm/hast-util-interactive)
     — Check if a node is interactive;
+*   [`wooorm/hast-util-is-body-ok-link`](https://github.com/wooorm/rehype-minify/tree/master/packages/hast-util-is-body-ok-link)
+    — Check if a `link` element is “Body OK”;
+*   [`wooorm/hast-util-is-conditional-comment`](https://github.com/wooorm/rehype-minify/tree/master/packages/hast-util-is-conditional-comment)
+    — Check if `node` is a conditional comment;
+*   [`wooorm/hast-util-is-css-link`](https://github.com/wooorm/rehype-minify/tree/master/packages/hast-util-is-css-link)
+    — Check if `node` is a CSS `link`;
+*   [`wooorm/hast-util-is-css-style`](https://github.com/wooorm/rehype-minify/tree/master/packages/hast-util-is-css-style)
+    — Check if `node` is a CSS `style`;
 *   [`wooorm/hast-util-is-element`](https://github.com/wooorm/hast-util-is-element)
-    — Check if a node is a (certain) element;
+    — Check if `node` is a (certain) element;
+*   [`wooorm/hast-util-is-event-handler`](https://github.com/wooorm/rehype-minify/tree/master/packages/hast-util-is-event-handler)
+    — Check if `property` is an event handler;
+*   [`wooorm/hast-util-is-javascript`](https://github.com/wooorm/rehype-minify/tree/master/packages/hast-util-is-javascript)
+    — Check if `node` is a JavaScript `script`;
 *   [`wooorm/hast-util-labelable`](https://github.com/wooorm/hast-util-labelable)
-    — Check if a node is labelable;
+    — Check if `node` is labelable;
 *   [`wooorm/hast-util-menu-state`](https://github.com/wooorm/hast-util-menu-state)
     — Check the state of a menu element;
 *   [`wooorm/hast-util-parse-selector`](https://github.com/wooorm/hast-util-parse-selector)
-    — Create a node from a simple CSS selector;
+    — Create an element from a simple CSS selector;
 *   [`wooorm/hast-util-sanitize`](https://github.com/wooorm/hast-util-sanitize)
     — Sanitise nodes;
 *   [`wooorm/hast-util-script-supporting`](https://github.com/wooorm/hast-util-script-supporting)
-    — Check if a node is script-supporting content;
+    — Check if `node` is script-supporting content;
 *   [`wooorm/hast-util-sectioning`](https://github.com/wooorm/hast-util-sectioning)
-    — Check if a node is sectioning content;
+    — Check if `node` is sectioning content;
 *   [`wooorm/hast-util-to-html`](https://github.com/wooorm/hast-util-to-html)
     — Stringify nodes to HTML;
+*   [`wooorm/hast-util-to-string`](https://github.com/wooorm/rehype-minify/tree/master/packages/hast-util-to-string)
+    — Get the plain-text value of a HAST node;
 *   [`wooorm/hast-util-transparent`](https://github.com/wooorm/hast-util-transparent)
-    — Check if a node is transparent content;
+    — Check if `node` is transparent content;
 *   [`wooorm/hast-util-whitespace`](https://github.com/wooorm/hast-util-whitespace)
-    — Check if a node is inter-element whitespace;
+    — Check if `node` is inter-element whitespace;
 
 See the [List of Unist Utilities][unist-utility] for projects which
 work with **HAST** nodes too.
