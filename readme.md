@@ -26,6 +26,7 @@ This document describes version 2.0.0 of **HAST**.  [Changelog »][changelog].
 ## Table of Contents
 
 *   [List of Utilities](#list-of-utilities)
+*   [Related HTML Utilities](#related-html-utilities)
 *   [AST](#ast)
     *   [Root](#root)
     *   [Element](#element)
@@ -92,6 +93,41 @@ alphabetically based on content after `hast-util-`
 
 See the [List of Unist Utilities][unist-utility] for projects which
 work with **HAST** nodes too.
+
+## Related HTML Utilities
+
+*   [`wooorm/a-rel`](https://github.com/wooorm/a-rel)
+    — List of link types for `rel` on `a` / `area`;
+*   [`wooorm/aria-attributes`](https://github.com/wooorm/aria-attributes)
+    — List of ARIA attributes;
+*   [`wooorm/collapse-white-space`](https://github.com/wooorm/collapse-white-space)
+    — Replace multiple white-space characters with a single space;
+*   [`wooorm/comma-separated-tokens`](https://github.com/wooorm/comma-separated-tokens)
+    — Parse/stringify comma-separated tokens;
+*   [`wooorm/html-tag-names`](https://github.com/wooorm/html-tag-names)
+    — List of HTML tag-names;
+*   [`wooorm/html-dangerous-encodings`](https://github.com/wooorm/html-dangerous-encodings)
+    — List of dangerous HTML character encoding labels;
+*   [`wooorm/html-encodings`](https://github.com/wooorm/html-encodings)
+    — List of HTML character encoding labels;
+*   [`wooorm/html-element-attributes`](https://github.com/wooorm/html-element-attributes)
+    — Map of HTML attributes;
+*   [`wooorm/html-void-elements`](https://github.com/wooorm/html-void-elements)
+    — List of void HTML tag-names;
+*   [`wooorm/link-rel`](https://github.com/wooorm/link-rel)
+    — List of link types for `rel` on `link`;
+*   [`wooorm/mathml-tag-names`](https://github.com/wooorm/mathml-tag-names)
+    — List of MathML tag-names;
+*   [`wooorm/meta-name`](https://github.com/wooorm/meta-name)
+    — List of values for `name` on `meta`;
+*   [`wooorm/property-information`](https://github.com/wooorm/property-information)
+    — Information on HTML properties;
+*   [`wooorm/space-separated-tokens`](https://github.com/wooorm/space-separated-tokens)
+    — Parse/stringify space-separated tokens;
+*   [`wooorm/svg-tag-names`](https://github.com/wooorm/svg-tag-names)
+    — List of SVG tag-names;
+*   [`wooorm/web-namespaces`](https://github.com/wooorm/web-namespaces)
+    — Map of web namespaces.
 
 ## AST
 
