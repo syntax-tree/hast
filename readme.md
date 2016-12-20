@@ -46,10 +46,16 @@ alphabetically based on content after `hast-util-`
     — Hyperscript compatible DSL for creating nodes;
 *   [`hast-to-hyperscript`](https://github.com/syntax-tree/hast-to-hyperscript)
     — Convert a Node to React, Virtual DOM, Hyperscript, and more;
+*   [`hast-util-assert`](https://github.com/syntax-tree/hast-util-assert)
+    — Assert HAST nodes;
 *   [`hast-util-embedded`](https://github.com/syntax-tree/hast-util-embedded)
     — Check if `node` is embedded content;
+*   [`hast-util-find-and-replace`](https://github.com/syntax-tree/hast-util-find-and-replace)
+    — Find and replace text;
+*   [`hast-util-from-parse5`](https://github.com/syntax-tree/hast-util-to-parse5)
+    — Transform Parse5’s AST to HAST;
 *   [`hast-util-from-string`](https://github.com/wooorm/rehype-minify/tree/master/packages/hast-util-from-string)
-    — Set the plain-text value of a HAST node;
+    — Set the plain-text value of a node;
 *   [`hast-util-has-property`](https://github.com/syntax-tree/hast-util-has-property)
     — Check if a node has a property;
 *   [`hast-util-heading`](https://github.com/syntax-tree/hast-util-heading)
@@ -76,6 +82,10 @@ alphabetically based on content after `hast-util-`
     — Check the state of a menu element;
 *   [`hast-util-parse-selector`](https://github.com/syntax-tree/hast-util-parse-selector)
     — Create an element from a simple CSS selector;
+*   [`hast-util-phrasing`](https://github.com/syntax-tree/hast-util-phrasing)
+    — Check if a node is phrasing content;
+*   [`hast-util-raw`](https://github.com/syntax-tree/hast-util-raw)
+    — Reparse a HAST tree;
 *   [`hast-util-sanitize`](https://github.com/syntax-tree/hast-util-sanitize)
     — Sanitise nodes;
 *   [`hast-util-script-supporting`](https://github.com/syntax-tree/hast-util-script-supporting)
@@ -84,8 +94,12 @@ alphabetically based on content after `hast-util-`
     — Check if `node` is sectioning content;
 *   [`hast-util-to-html`](https://github.com/syntax-tree/hast-util-to-html)
     — Stringify nodes to HTML;
+*   [`hast-util-to-nlcst`](https://github.com/syntax-tree/hast-util-to-nlcst)
+    — Transform HAST to NLCST;
+*   [`hast-util-to-parse5`](https://github.com/syntax-tree/hast-util-to-parse5)
+    — Transform HAST to Parse5’s AST;
 *   [`hast-util-to-string`](https://github.com/syntax-tree/rehype-minify/tree/master/packages/hast-util-to-string)
-    — Get the plain-text value of a HAST node;
+    — Get the plain-text value of a node;
 *   [`hast-util-transparent`](https://github.com/syntax-tree/hast-util-transparent)
     — Check if `node` is transparent content;
 *   [`hast-util-whitespace`](https://github.com/syntax-tree/hast-util-whitespace)
