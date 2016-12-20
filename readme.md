@@ -335,28 +335,28 @@ Yields:
 
 <!-- Definitions -->
 
-[logo]: https://cdn.rawgit.com/wooorm/hast/342f7b8/logo.svg
+[logo]: https://cdn.rawgit.com/syntax-tree/hast/342f7b8/logo.svg
 
-[changelog]: https://github.com/wooorm/hast/releases
+[changelog]: https://github.com/syntax-tree/hast/releases
 
 [html-element]: https://dom.spec.whatwg.org/#interface-element
 
-[unist-utility]: https://github.com/wooorm/unist#list-of-utilities
+[unist-utility]: https://github.com/syntax-tree/unist#list-of-utilities
 
-[unist]: https://github.com/wooorm/unist
+[unist]: https://github.com/syntax-tree/unist
 
-[node]: https://github.com/wooorm/unist#node
+[node]: https://github.com/syntax-tree/unist#node
 
-[parent]: https://github.com/wooorm/unist#parent
+[parent]: https://github.com/syntax-tree/unist#parent
 
-[text]: https://github.com/wooorm/unist#text
+[text]: https://github.com/syntax-tree/unist#text
 
 [rehype]: https://github.com/wooorm/rehype
 
-[nlcst]: https://github.com/wooorm/nlcst
+[nlcst]: https://github.com/syntax-tree/nlcst
 
-[mdast]: https://github.com/wooorm/mdast
+[mdast]: https://github.com/syntax-tree/mdast
 
-[vfile]: https://github.com/wooorm/vfile
+[vfile]: https://github.com/vfile/vfile
 
 [properties]: #properties
