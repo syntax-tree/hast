@@ -14,7 +14,7 @@ The reason for introducing a new “virtual” DOM is primarily:
 
 *   The DOM is very heavy to implement outside of the browser;
     a lean, stripped down virtual DOM can be used everywhere;
-*   Most virtual DOMs do not focus on easy of use in transformations;
+*   Most virtual DOMs do not focus on ease of use in transformations;
 *   Other virtual DOMs cannot represent the syntax of HTML in its
     entirety, think comments, document types, and character data;
 *   Neither HTML nor virtual DOMs focus on positional information.
