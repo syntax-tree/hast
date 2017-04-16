@@ -88,6 +88,8 @@ alphabetically based on content after `hast-util-`
     — Reparse a HAST tree;
 *   [`hast-util-sanitize`](https://github.com/syntax-tree/hast-util-sanitize)
     — Sanitise nodes;
+*   [`hast-util-select`](https://github.com/syntax-tree/hast-util-select)
+    — `querySelector`, `querySelectorAll`, and `matches`;
 *   [`hast-util-script-supporting`](https://github.com/syntax-tree/hast-util-script-supporting)
     — Check if `node` is script-supporting content;
 *   [`hast-util-sectioning`](https://github.com/syntax-tree/hast-util-sectioning)
