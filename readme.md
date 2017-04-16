@@ -96,6 +96,8 @@ alphabetically based on content after `hast-util-`
     — Check if `node` is sectioning content;
 *   [`hast-util-to-html`](https://github.com/syntax-tree/hast-util-to-html)
     — Stringify nodes to HTML;
+*   [`hast-util-to-mdast`](https://github.com/syntax-tree/hast-util-to-mdast)
+    — Transform HAST to MDAST;
 *   [`hast-util-to-nlcst`](https://github.com/syntax-tree/hast-util-to-nlcst)
     — Transform HAST to NLCST;
 *   [`hast-util-to-parse5`](https://github.com/syntax-tree/hast-util-to-parse5)
