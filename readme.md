@@ -142,6 +142,8 @@ work with **HAST** nodes too.
     — Parse/stringify space-separated tokens;
 *   [`svg-tag-names`](https://github.com/wooorm/svg-tag-names)
     — List of SVG tag-names;
+*   [`svg-element-attributes`](https://github.com/wooorm/svg-element-attributes)
+    — Map of SVG attributes;
 *   [`web-namespaces`](https://github.com/wooorm/web-namespaces)
     — Map of web namespaces.
 
