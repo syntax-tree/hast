@@ -12,12 +12,12 @@ re-created.
 
 The reason for introducing a new “virtual” DOM is primarily:
 
-*   The DOM is very heavy to implement outside of the browser;
-    a lean, stripped down virtual DOM can be used everywhere;
-*   Most virtual DOMs do not focus on ease of use in transformations;
+*   The DOM is very heavy to implement outside of the browser,
+    a lean and stripped down virtual DOM can be used everywhere
+*   Most virtual DOMs do not focus on ease of use in transformations
 *   Other virtual DOMs cannot represent the syntax of HTML in its
-    entirety, think comments, document types, and character data;
-*   Neither HTML nor virtual DOMs focus on positional information.
+    entirety, think comments, document types, and character data
+*   Neither HTML nor virtual DOMs focus on positional information
 
 **HAST** is a subset of [Unist][], and implemented by [rehype][].
 
@@ -43,71 +43,71 @@ alphabetically based on content after `hast-util-`
 -->
 
 *   [`hastscript`](https://github.com/syntax-tree/hastscript)
-    — Hyperscript compatible DSL for creating nodes;
+    — Hyperscript compatible DSL for creating nodes
 *   [`hast-to-hyperscript`](https://github.com/syntax-tree/hast-to-hyperscript)
-    — Convert a Node to React, Virtual DOM, Hyperscript, and more;
+    — Convert a Node to React, Virtual DOM, Hyperscript, and more
 *   [`hast-util-assert`](https://github.com/syntax-tree/hast-util-assert)
-    — Assert HAST nodes;
+    — Assert HAST nodes
 *   [`hast-util-embedded`](https://github.com/syntax-tree/hast-util-embedded)
-    — Check if `node` is embedded content;
+    — Check if `node` is embedded content
 *   [`hast-util-find-and-replace`](https://github.com/syntax-tree/hast-util-find-and-replace)
-    — Find and replace text;
+    — Find and replace text
 *   [`hast-util-from-parse5`](https://github.com/syntax-tree/hast-util-to-parse5)
-    — Transform Parse5’s AST to HAST;
+    — Transform Parse5’s AST to HAST
 *   [`hast-util-from-string`](https://github.com/wooorm/rehype-minify/tree/master/packages/hast-util-from-string)
-    — Set the plain-text value of a node;
+    — Set the plain-text value of a node
 *   [`hast-util-has-property`](https://github.com/syntax-tree/hast-util-has-property)
-    — Check if a node has a property;
+    — Check if a node has a property
 *   [`hast-util-heading`](https://github.com/syntax-tree/hast-util-heading)
-    — Check if a node is heading content;
+    — Check if a node is heading content
 *   [`hast-util-interactive`](https://github.com/syntax-tree/hast-util-interactive)
-    — Check if a node is interactive;
+    — Check if a node is interactive
 *   [`hast-util-is-body-ok-link`](https://github.com/wooorm/rehype-minify/tree/master/packages/hast-util-is-body-ok-link)
-    — Check if a `link` element is “Body OK”;
+    — Check if a `link` element is “Body OK”
 *   [`hast-util-is-conditional-comment`](https://github.com/wooorm/rehype-minify/tree/master/packages/hast-util-is-conditional-comment)
-    — Check if `node` is a conditional comment;
+    — Check if `node` is a conditional comment
 *   [`hast-util-is-css-link`](https://github.com/wooorm/rehype-minify/tree/master/packages/hast-util-is-css-link)
-    — Check if `node` is a CSS `link`;
+    — Check if `node` is a CSS `link`
 *   [`hast-util-is-css-style`](https://github.com/wooorm/rehype-minify/tree/master/packages/hast-util-is-css-style)
-    — Check if `node` is a CSS `style`;
+    — Check if `node` is a CSS `style`
 *   [`hast-util-is-element`](https://github.com/syntax-tree/hast-util-is-element)
-    — Check if `node` is a (certain) element;
+    — Check if `node` is a (certain) element
 *   [`hast-util-is-event-handler`](https://github.com/wooorm/rehype-minify/tree/master/packages/hast-util-is-event-handler)
-    — Check if `property` is an event handler;
+    — Check if `property` is an event handler
 *   [`hast-util-is-javascript`](https://github.com/wooorm/rehype-minify/tree/master/packages/hast-util-is-javascript)
-    — Check if `node` is a JavaScript `script`;
+    — Check if `node` is a JavaScript `script`
 *   [`hast-util-labelable`](https://github.com/syntax-tree/hast-util-labelable)
-    — Check if `node` is labelable;
+    — Check if `node` is labelable
 *   [`hast-util-menu-state`](https://github.com/syntax-tree/hast-util-menu-state)
-    — Check the state of a menu element;
+    — Check the state of a menu element
 *   [`hast-util-parse-selector`](https://github.com/syntax-tree/hast-util-parse-selector)
-    — Create an element from a simple CSS selector;
+    — Create an element from a simple CSS selector
 *   [`hast-util-phrasing`](https://github.com/syntax-tree/hast-util-phrasing)
-    — Check if a node is phrasing content;
+    — Check if a node is phrasing content
 *   [`hast-util-raw`](https://github.com/syntax-tree/hast-util-raw)
-    — Reparse a HAST tree;
+    — Reparse a HAST tree
 *   [`hast-util-sanitize`](https://github.com/syntax-tree/hast-util-sanitize)
-    — Sanitise nodes;
+    — Sanitise nodes
 *   [`hast-util-select`](https://github.com/syntax-tree/hast-util-select)
-    — `querySelector`, `querySelectorAll`, and `matches`;
+    — `querySelector`, `querySelectorAll`, and `matches`
 *   [`hast-util-script-supporting`](https://github.com/syntax-tree/hast-util-script-supporting)
-    — Check if `node` is script-supporting content;
+    — Check if `node` is script-supporting content
 *   [`hast-util-sectioning`](https://github.com/syntax-tree/hast-util-sectioning)
-    — Check if `node` is sectioning content;
+    — Check if `node` is sectioning content
 *   [`hast-util-to-html`](https://github.com/syntax-tree/hast-util-to-html)
-    — Stringify nodes to HTML;
+    — Stringify nodes to HTML
 *   [`hast-util-to-mdast`](https://github.com/syntax-tree/hast-util-to-mdast)
-    — Transform HAST to MDAST;
+    — Transform HAST to MDAST
 *   [`hast-util-to-nlcst`](https://github.com/syntax-tree/hast-util-to-nlcst)
-    — Transform HAST to NLCST;
+    — Transform HAST to NLCST
 *   [`hast-util-to-parse5`](https://github.com/syntax-tree/hast-util-to-parse5)
-    — Transform HAST to Parse5’s AST;
+    — Transform HAST to Parse5’s AST
 *   [`hast-util-to-string`](https://github.com/syntax-tree/rehype-minify/tree/master/packages/hast-util-to-string)
-    — Get the plain-text value of a node;
+    — Get the plain-text value of a node
 *   [`hast-util-transparent`](https://github.com/syntax-tree/hast-util-transparent)
-    — Check if `node` is transparent content;
+    — Check if `node` is transparent content
 *   [`hast-util-whitespace`](https://github.com/syntax-tree/hast-util-whitespace)
-    — Check if `node` is inter-element whitespace;
+    — Check if `node` is inter-element whitespace
 
 See the [List of Unist Utilities][unist-utility] for projects which
 work with **HAST** nodes too.
@@ -115,39 +115,39 @@ work with **HAST** nodes too.
 ## Related HTML Utilities
 
 *   [`a-rel`](https://github.com/wooorm/a-rel)
-    — List of link types for `rel` on `a` / `area`;
+    — List of link types for `rel` on `a` / `area`
 *   [`aria-attributes`](https://github.com/wooorm/aria-attributes)
-    — List of ARIA attributes;
+    — List of ARIA attributes
 *   [`collapse-white-space`](https://github.com/wooorm/collapse-white-space)
-    — Replace multiple white-space characters with a single space;
+    — Replace multiple white-space characters with a single space
 *   [`comma-separated-tokens`](https://github.com/wooorm/comma-separated-tokens)
-    — Parse/stringify comma-separated tokens;
+    — Parse/stringify comma-separated tokens
 *   [`html-tag-names`](https://github.com/wooorm/html-tag-names)
-    — List of HTML tag-names;
+    — List of HTML tag-names
 *   [`html-dangerous-encodings`](https://github.com/wooorm/html-dangerous-encodings)
-    — List of dangerous HTML character encoding labels;
+    — List of dangerous HTML character encoding labels
 *   [`html-encodings`](https://github.com/wooorm/html-encodings)
-    — List of HTML character encoding labels;
+    — List of HTML character encoding labels
 *   [`html-element-attributes`](https://github.com/wooorm/html-element-attributes)
-    — Map of HTML attributes;
+    — Map of HTML attributes
 *   [`html-void-elements`](https://github.com/wooorm/html-void-elements)
-    — List of void HTML tag-names;
+    — List of void HTML tag-names
 *   [`link-rel`](https://github.com/wooorm/link-rel)
-    — List of link types for `rel` on `link`;
+    — List of link types for `rel` on `link`
 *   [`mathml-tag-names`](https://github.com/wooorm/mathml-tag-names)
-    — List of MathML tag-names;
+    — List of MathML tag-names
 *   [`meta-name`](https://github.com/wooorm/meta-name)
-    — List of values for `name` on `meta`;
+    — List of values for `name` on `meta`
 *   [`property-information`](https://github.com/wooorm/property-information)
-    — Information on HTML properties;
+    — Information on HTML properties
 *   [`space-separated-tokens`](https://github.com/wooorm/space-separated-tokens)
-    — Parse/stringify space-separated tokens;
+    — Parse/stringify space-separated tokens
 *   [`svg-tag-names`](https://github.com/wooorm/svg-tag-names)
-    — List of SVG tag-names;
+    — List of SVG tag-names
 *   [`svg-element-attributes`](https://github.com/wooorm/svg-element-attributes)
-    — Map of SVG attributes;
+    — Map of SVG attributes
 *   [`web-namespaces`](https://github.com/wooorm/web-namespaces)
-    — Map of web namespaces.
+    — Map of web namespaces
 
 ## AST
 
