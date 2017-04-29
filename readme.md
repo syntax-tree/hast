@@ -102,7 +102,7 @@ alphabetically based on content after `hast-util-`
     — Transform HAST to NLCST
 *   [`hast-util-to-parse5`](https://github.com/syntax-tree/hast-util-to-parse5)
     — Transform HAST to Parse5’s AST
-*   [`hast-util-to-string`](https://github.com/syntax-tree/rehype-minify/tree/master/packages/hast-util-to-string)
+*   [`hast-util-to-string`](https://github.com/wooorm/rehype-minify/tree/master/packages/hast-util-to-string)
     — Get the plain-text value of a node
 *   [`hast-util-transparent`](https://github.com/syntax-tree/hast-util-transparent)
     — Check if `node` is transparent content
