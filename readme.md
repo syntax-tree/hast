@@ -167,11 +167,17 @@ interface Root <: Parent {
 a `div`.  HAST Elements corresponds to the [HTML Element][html-element]
 interface.
 
+One element is special, and comes with another property: `<template>` with
+`content`.  The contents of a template element is not exposed through its
+`children`, like other elements, but instead on a `content` property which
+houses a [`Root`][root] node.
+
 ```idl
 interface Element <: Parent {
   type: "element";
   tagName: string;
   properties: Properties;
+  content: Root?;
 }
 ```
 
@@ -380,3 +386,5 @@ Yields:
 [vfile]: https://github.com/vfile/vfile
 
 [properties]: #properties
+
+[root]: #root
