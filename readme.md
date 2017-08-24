@@ -21,7 +21,8 @@ The reason for introducing a new “virtual” DOM is primarily:
 
 **HAST** is a subset of [Unist][], and implemented by [rehype][].
 
-This document describes version 2.1.0 of **HAST**.  [Changelog »][changelog].
+This document may not be released. See [releases][] for released
+documents. The latest released version is [`2.1.0`][latest].
 
 ## Table of Contents
 
@@ -363,7 +364,9 @@ Yields:
 
 [logo]: https://cdn.rawgit.com/syntax-tree/hast/342f7b8/logo.svg
 
-[changelog]: https://github.com/syntax-tree/hast/releases
+[releases]: https://github.com/syntax-tree/hast/releases
+
+[latest]: https://github.com/syntax-tree/hast/releases/tag/2.1.0
 
 [html-element]: https://dom.spec.whatwg.org/#interface-element
 
