@@ -362,7 +362,7 @@ Yields:
 
 <!-- Definitions -->
 
-[logo]: https://cdn.rawgit.com/syntax-tree/hast/342f7b8/logo.svg
+[logo]: https://cdn.rawgit.com/syntax-tree/hast/96a20f3/logo.svg
 
 [releases]: https://github.com/syntax-tree/hast/releases
 
