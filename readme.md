@@ -37,6 +37,7 @@ documents. The latest released version is [`2.1.0`][latest].
 *   [Related](#related)
 *   [Contribute](#contribute)
 *   [Acknowledgments](#acknowledgments)
+*   [License](#license)
 
 ## List of Utilities
 
@@ -393,6 +394,10 @@ Thanks to [**@kthjm**](https://github.com/kthjm)
 [**@sethvincent**](https://github.com/sethvincent), and
 [**@simov**](https://github.com/simov) for contributing commits since!
 
+## License
+
+[CC-BY-4.0][license] © [Titus Wormer][author]
+
 <!-- Definitions -->
 
 [logo]: https://cdn.rawgit.com/syntax-tree/hast/96a20f3/logo.svg
@@ -432,3 +437,7 @@ Thanks to [**@kthjm**](https://github.com/kthjm)
 [ideas]: https://github.com/syntax-tree/ideas
 
 [chat]: https://gitter.im/wooorm/rehype
+
+[license]: https://creativecommons.org/licenses/by/4.0/
+
+[author]: http://wooorm.com
