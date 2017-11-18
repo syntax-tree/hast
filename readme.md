@@ -36,6 +36,7 @@ documents. The latest released version is [`2.1.0`][latest].
     *   [Text](#text)
 *   [Related](#related)
 *   [Contribute](#contribute)
+*   [Acknowledgments](#acknowledgments)
 
 ## List of Utilities
 
@@ -374,6 +375,23 @@ Want to chat with the community and contributors?  Join us in [Gitter][chat]!
 Have an idea for a cool new utility or tool?  That’s great!  If you want
 feedback, help, or just to share it with the world you can do so by creating
 an issue in the [`syntax-tree/ideas`][ideas] repository!
+
+## Acknowledgments
+
+The initial release of this project was authored by
+[**@wooorm**](https://github.com/wooorm).
+
+Special thanks to [**@eush77**](https://github.com/eush77) for their work,
+ideas, and incredibly valuable feedback!
+
+Thanks to [**@kthjm**](https://github.com/kthjm)
+[**@KyleAMathews**](https://github.com/KyleAMathews),
+[**@rhysd**](https://github.com/rhysd),
+[**@Rokt33r**](https://github.com/Rokt33r),
+[**@s1n**](https://github.com/s1n),
+[**@Sarah-Seo**](https://github.com/Sarah-Seo),
+[**@sethvincent**](https://github.com/sethvincent), and
+[**@simov**](https://github.com/simov) for contributing commits since!
 
 <!-- Definitions -->
 
