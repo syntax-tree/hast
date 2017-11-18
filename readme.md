@@ -35,6 +35,7 @@ documents. The latest released version is [`2.1.0`][latest].
     *   [Comment](#comment)
     *   [Text](#text)
 *   [Related](#related)
+*   [Contribute](#contribute)
 
 ## List of Utilities
 
@@ -360,6 +361,20 @@ Yields:
 *   [NLCST][]
 *   [MDAST][]
 
+## Contribute
+
+**hast** is built by people just like you!  Check out
+[`contribute.md`][contribute] for ways to get started.
+
+This project has a [Code of Conduct][coc].  By interacting with this repository,
+organisation, or community you agree to abide by its terms.
+
+Want to chat with the community and contributors?  Join us in [Gitter][chat]!
+
+Have an idea for a cool new utility or tool?  That’s great!  If you want
+feedback, help, or just to share it with the world you can do so by creating
+an issue in the [`syntax-tree/ideas`][ideas] repository!
+
 <!-- Definitions -->
 
 [logo]: https://cdn.rawgit.com/syntax-tree/hast/96a20f3/logo.svg
@@ -391,3 +406,11 @@ Yields:
 [properties]: #properties
 
 [root]: #root
+
+[contribute]: contributing.md
+
+[coc]: code-of-conduct.md
+
+[ideas]: https://github.com/syntax-tree/ideas
+
+[chat]: https://gitter.im/wooorm/rehype
