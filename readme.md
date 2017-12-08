@@ -58,7 +58,7 @@ alphabetically based on content after `hast-util-`
     — Find and replace text
 *   [`hast-util-from-parse5`](https://github.com/syntax-tree/hast-util-from-parse5)
     — Transform Parse5’s AST to HAST
-*   [`hast-util-from-string`](https://github.com/wooorm/rehype-minify/tree/master/packages/hast-util-from-string)
+*   [`hast-util-from-string`](https://github.com/rehypejs/rehype-minify/tree/master/packages/hast-util-from-string)
     — Set the plain-text value of a node
 *   [`hast-util-has-property`](https://github.com/syntax-tree/hast-util-has-property)
     — Check if a node has a property
@@ -66,19 +66,19 @@ alphabetically based on content after `hast-util-`
     — Check if a node is heading content
 *   [`hast-util-interactive`](https://github.com/syntax-tree/hast-util-interactive)
     — Check if a node is interactive
-*   [`hast-util-is-body-ok-link`](https://github.com/wooorm/rehype-minify/tree/master/packages/hast-util-is-body-ok-link)
+*   [`hast-util-is-body-ok-link`](https://github.com/rehypejs/rehype-minify/tree/master/packages/hast-util-is-body-ok-link)
     — Check if a `link` element is “Body OK”
-*   [`hast-util-is-conditional-comment`](https://github.com/wooorm/rehype-minify/tree/master/packages/hast-util-is-conditional-comment)
+*   [`hast-util-is-conditional-comment`](https://github.com/rehypejs/rehype-minify/tree/master/packages/hast-util-is-conditional-comment)
     — Check if `node` is a conditional comment
-*   [`hast-util-is-css-link`](https://github.com/wooorm/rehype-minify/tree/master/packages/hast-util-is-css-link)
+*   [`hast-util-is-css-link`](https://github.com/rehypejs/rehype-minify/tree/master/packages/hast-util-is-css-link)
     — Check if `node` is a CSS `link`
-*   [`hast-util-is-css-style`](https://github.com/wooorm/rehype-minify/tree/master/packages/hast-util-is-css-style)
+*   [`hast-util-is-css-style`](https://github.com/rehypejs/rehype-minify/tree/master/packages/hast-util-is-css-style)
     — Check if `node` is a CSS `style`
 *   [`hast-util-is-element`](https://github.com/syntax-tree/hast-util-is-element)
     — Check if `node` is a (certain) element
-*   [`hast-util-is-event-handler`](https://github.com/wooorm/rehype-minify/tree/master/packages/hast-util-is-event-handler)
+*   [`hast-util-is-event-handler`](https://github.com/rehypejs/rehype-minify/tree/master/packages/hast-util-is-event-handler)
     — Check if `property` is an event handler
-*   [`hast-util-is-javascript`](https://github.com/wooorm/rehype-minify/tree/master/packages/hast-util-is-javascript)
+*   [`hast-util-is-javascript`](https://github.com/rehypejs/rehype-minify/tree/master/packages/hast-util-is-javascript)
     — Check if `node` is a JavaScript `script`
 *   [`hast-util-labelable`](https://github.com/syntax-tree/hast-util-labelable)
     — Check if `node` is labelable
@@ -106,7 +106,7 @@ alphabetically based on content after `hast-util-`
     — Transform HAST to NLCST
 *   [`hast-util-to-parse5`](https://github.com/syntax-tree/hast-util-to-parse5)
     — Transform HAST to Parse5’s AST
-*   [`hast-util-to-string`](https://github.com/wooorm/rehype-minify/tree/master/packages/hast-util-to-string)
+*   [`hast-util-to-string`](https://github.com/rehypejs/rehype-minify/tree/master/packages/hast-util-to-string)
     — Get the plain-text value of a node
 *   [`hast-util-transparent`](https://github.com/syntax-tree/hast-util-transparent)
     — Check if `node` is transparent content
@@ -418,7 +418,7 @@ Thanks to [**@kthjm**](https://github.com/kthjm)
 
 [text]: https://github.com/syntax-tree/unist#text
 
-[rehype]: https://github.com/wooorm/rehype
+[rehype]: https://github.com/rehypejs/rehype
 
 [nlcst]: https://github.com/syntax-tree/nlcst
 
@@ -436,7 +436,7 @@ Thanks to [**@kthjm**](https://github.com/kthjm)
 
 [ideas]: https://github.com/syntax-tree/ideas
 
-[chat]: https://gitter.im/wooorm/rehype
+[chat]: https://gitter.im/rehypejs/Lobby
 
 [license]: https://creativecommons.org/licenses/by/4.0/
 
