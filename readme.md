@@ -98,6 +98,8 @@ alphabetically based on content after `hast-util-`
     — Check if `node` is script-supporting content
 *   [`hast-util-sectioning`](https://github.com/syntax-tree/hast-util-sectioning)
     — Check if `node` is sectioning content
+*   [`hast-util-table-cell-style`](https://github.com/mapbox/hast-util-table-cell-style)
+    — Transform deprecated styling attributes on table cells to inline styles
 *   [`hast-util-to-html`](https://github.com/syntax-tree/hast-util-to-html)
     — Stringify nodes to HTML
 *   [`hast-util-to-mdast`](https://github.com/syntax-tree/hast-util-to-mdast)
