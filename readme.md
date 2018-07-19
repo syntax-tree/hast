@@ -176,6 +176,9 @@ One element is special, and comes with another property: `<template>` with
 `children`, like other elements, but instead on a `content` property which
 houses a [`Root`][root] node.
 
+`<noscript>` elements should house their tree in the same way as other elements,
+as if scripting was not enabled.
+
 ```idl
 interface Element <: Parent {
   type: "element";
