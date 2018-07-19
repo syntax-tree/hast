@@ -16,10 +16,10 @@ The reason for introducing a new “virtual” DOM is primarily:
     a lean and stripped down virtual DOM can be used everywhere
 *   Most virtual DOMs do not focus on ease of use in transformations
 *   Other virtual DOMs cannot represent the syntax of HTML in its
-    entirety, think comments, document types, and character data
+    entirety (think comments, document types, and character data)
 *   Neither HTML nor virtual DOMs focus on positional information
 
-**HAST** is a subset of [Unist][], and implemented by [rehype][].
+**HAST** is a subset of [Unist][] and implemented by [rehype][].
 
 This document may not be released. See [releases][] for released
 documents. The latest released version is [`2.1.0`][latest].
@@ -223,22 +223,74 @@ interface Properties {}
 ##### Property names
 
 Property names are keys on [`properties`][properties] objects and
-reflect HTML attribute names.  Often, they have the same value as
-the corresponding HTML attribute (for example, `href` is a property
-name reflecting the `href` attribute name).
-If the HTML attribute name contains one or more dashes, the HAST
-property name must be camel-cased (for example, `ariaLabel` is a
-property reflecting the `aria-label` attribute).
-If the HTML attribute is a reserved ECMAScript keyword, a common
-alternative must be used.  This is the case for `class`, which uses
-`className` in HAST (and DOM), and `for`, which uses `htmlFor`.
+reflect HTML, SVG, ARIA, XML, XMLNS, or XLink attribute names.
+Often, they have the same value as the corresponding attribute
+(for example, `id` is a property name reflecting the `id` attribute
+name), but there are some notable differences.
 
-> DOM uses other prefixes and suffixes too, for example, `relList`
-> for HTML `rel` attributes.  This does not occur in HAST.
+> These rules aren’t simple.  Use [`hastscript`][h] (or
+> [`property-information`][pi] directly) to help.
 
-When possible, HAST properties must be camel-cased if the HTML property
-name originates from multiple words.  For example, the `minlength` HTML
-attribute is cased as `minLength`, and `typemustmatch` as `typeMustMatch`.
+The following rules are used to disambiguate the names of attributes and their
+corresponding HAST property name.
+These rules are based on [how ARIA is reflected in the DOM][aria-dfn], and
+differs from how some (older) HTML attributes are reflected in the DOM.
+
+1.  Any name referencing a combinations of multiple words (such as “stroke
+    miter limit”) becomes a camel-cased property name capitalising each word
+    boundary.
+    This includes combinations that are sometimes written as several words.
+    For example, `stroke-miterlimit` becomes `strokeMiterLimit`, `autocorrect`
+    becomes `autoCorrect`, and `allowfullscreen` becomes `allowFullScreen`.
+2.  Any name that can be hyphenated, becomes a camel-cased property name
+    capitalising each boundary.
+    For example, “read-only” becomes `readOnly`.
+3.  Compound words that are not used with spaces or hyphens are treated as a
+    normal word and the previous rules apply.
+    For example, “placeholder”, “strikethrough”, and “playback” stay the same.
+4.  Acronyms in names are treated as a normal word and the previous rules apply.
+    For example, `itemid` become `itemId` and `bgcolor` becomes `bgColor`.
+
+###### Exceptions
+
+Some jargon is seen as one word even though it may not be seen as such by
+dictionaries.
+For example, `nohref` becomes `noHref`, `playsinline` becomes `playsInline`,
+and `accept-charset` becomes `acceptCharset`.
+
+The HTML attributes `class` and `for` respectively become `className` and
+`htmlFor` in alignment with the DOM.
+No other attributes gain different names as properties, other than a change in
+casing.
+
+###### Notes
+
+The HAST rules for property names differ from how HTML is reflected in the DOM
+for the following attributes:
+
+<details>
+<summary>View list of differences</summary>
+
+*   `charoff` becomes `charOff` (not `chOff`)
+*   `char` stays `char` (does not become `ch`)
+*   `rel` stays `rel` (does not become `relList`)
+*   `checked` stays `checked` (does not become `defaultChecked`)
+*   `muted` stays `muted` (does not become `defaultMuted`)
+*   `value` stays `value` (does not become `defaultValue`)
+*   `selected` stays `selected` (does not become `defaultSelected`)
+*   `char` stays `char` (does not become `ch`)
+*   `allowfullscreen` becomes `allowFullScreen` (not `allowFullscreen`)
+*   `hreflang` becomes `hrefLang`, not `hreflang`
+*   `autoplay` becomes `autoPlay`, not `autoplay`
+*   `autocomplete` becomes `autoComplete` (not `autocomplete`)
+*   `autofocus` becomes `autoFocus`, not `autofocus`
+*   `enctype` becomes `encType`, not `enctype`
+*   `formenctype` becomes `formEncType` (not `formEnctype`)
+*   `vspace` becomes `vSpace`, not `vspace`
+*   `hspace` becomes `hSpace`, not `hspace`
+*   `lowsrc` becomes `lowSrc`, not `lowsrc`
+
+</details>
 
 ##### Property values
 
@@ -247,13 +299,11 @@ property name.  For example, the following HTML `<div hidden></div>`
 contains a `hidden` (boolean) attribute, which is reflected as a `hidden`
 property name set to `true` (boolean) as value in HAST, and
 `<input minlength="5">`, which contains a `minlength` (valid
-non-negative integer) attribute, is reflected as a property `minLength`
+integer) attribute, is reflected as a property `minLength`
 set to `5` (number) in HAST.
 
-> In JSON, the property value `null` must be treated as if the
-> property was not included.
-> In JavaScript, both `null` and `undefined` must be similarly
-> ignored.
+> In JSON, the value `null` must be treated as if the property was not included.
+> In JavaScript, both `null` and `undefined` must be similarly ignored.
 
 The DOM is strict in reflecting those properties, and HAST is not,
 where the DOM treats `<div hidden=no></div>` as having a `true`
@@ -262,7 +312,7 @@ as having a `0` (number) value for the `width` attribute, these should
 be reflected as `'no'` and `'yes'`, respectively, in HAST.
 
 > The reason for this is to allow plug-ins and utilities to inspect
-> these values.
+> these non-standard values.
 
 The DOM also specifies comma- and space-separated lists attribute
 values.  In HAST, these should be treated as ordered lists.
@@ -444,3 +494,9 @@ Thanks to [**@kthjm**](https://github.com/kthjm)
 [license]: https://creativecommons.org/licenses/by/4.0/
 
 [author]: http://wooorm.com
+
+[aria-dfn]: https://www.w3.org/TR/wai-aria-1.2/#idl_attr_disambiguation
+
+[h]: https://github.com/syntax-tree/hastscript
+
+[pi]: https://github.com/wooorm/property-information
