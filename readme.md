@@ -52,6 +52,8 @@ alphabetically based on content after `hast-util-`
     — Convert a Node to React, Virtual DOM, Hyperscript, and more
 *   [`hast-util-assert`](https://github.com/syntax-tree/hast-util-assert)
     — Assert HAST nodes
+*   [`hast-util-class-list`](https://github.com/brechtcs/hast-util-class-list)
+    — Simulate the browser's `classList` API for HAST nodes 
 *   [`hast-util-embedded`](https://github.com/syntax-tree/hast-util-embedded)
     — Check if `node` is embedded content
 *   [`hast-util-find-and-replace`](https://github.com/syntax-tree/hast-util-find-and-replace)
