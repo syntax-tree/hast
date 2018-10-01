@@ -62,6 +62,9 @@ alphabetically based on content after `hast-util-`
     — Transform Parse5’s AST to HAST
 *   [`hast-util-from-string`](https://github.com/rehypejs/rehype-minify/tree/master/packages/hast-util-from-string)
     — Set the plain-text value of a node
+    — Find and replace text
+*   [`hast-util-from-webparser`](https://github.com/Prettyhtml/prettyhtml/tree/master/packages/hast-util-from-webparser)
+    — Transform Webparser’s AST to HAST
 *   [`hast-util-has-property`](https://github.com/syntax-tree/hast-util-has-property)
     — Check if a node has a property
 *   [`hast-util-heading`](https://github.com/syntax-tree/hast-util-heading)
