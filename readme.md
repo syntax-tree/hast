@@ -1,27 +1,14 @@
 <!--lint disable no-html-->
 
-# ![HAST][logo]
+# ![hast][logo]
 
 **H**ypertext **A**bstract **S**yntax **T**ree format.
 
 * * *
 
-**HAST** discloses HTML as an abstract syntax tree.  _Abstract_
-means not all information is stored in this tree and an exact replica
-of the original document cannot be re-created.  _Syntax Tree_ means syntax
-**is** present in the tree, thus an exact syntactic document can be
-re-created.
-
-The reason for introducing a new “virtual” DOM is primarily:
-
-*   The DOM is very heavy to implement outside of the browser,
-    a lean and stripped down virtual DOM can be used everywhere
-*   Most virtual DOMs do not focus on ease of use in transformations
-*   Other virtual DOMs cannot represent the syntax of HTML in its
-    entirety (think comments, document types, and character data)
-*   Neither HTML nor virtual DOMs focus on positional information
-
-**HAST** is a subset of [Unist][] and implemented by [rehype][].
+**hast** is a specification for representing [HTML][] (and embedded [SVG][] or
+[MathML][]) as an abstract [syntax tree][syntax-tree].
+It implements the [**unist**][unist] spec.
 
 This document may not be released.
 See [releases][] for released documents.
@@ -29,24 +16,375 @@ The latest released version is [`2.2.0`][latest].
 
 ## Table of Contents
 
-*   [List of Utilities](#list-of-utilities)
-*   [Related HTML Utilities](#related-html-utilities)
-*   [AST](#ast)
+*   [Introduction](#introduction)
+    *   [Where this specification fits](#where-this-specification-fits)
+    *   [Virtual DOM](#virtual-dom)
+*   [Nodes](#nodes)
+    *   [Parent](#parent)
+    *   [Literal](#literal)
     *   [Root](#root)
     *   [Element](#element)
     *   [Doctype](#doctype)
     *   [Comment](#comment)
     *   [Text](#text)
-*   [Related](#related)
+*   [Glossary](#glossary)
+*   [List of Utilities](#list-of-utilities)
+*   [Related HTML Utilities](#related-html-utilities)
+*   [References](#references)
 *   [Contribute](#contribute)
 *   [Acknowledgments](#acknowledgments)
 *   [License](#license)
 
+## Introduction
+
+This document defines a format for representing hypertext as an [abstract
+syntax tree][syntax-tree].
+Development of hast started in April 2016 for [rehype][].
+This specification is written in a [Web IDL][webidl]-like grammar.
+
+### Where this specification fits
+
+hast extends [unist][], a format for syntax trees, to benefit from its
+[ecosystem of utilities][utilities].
+
+hast relates to [JavaScript][] in that it has an [ecosystem of
+utilities][list-of-utilities] for working with compliant syntax trees in
+JavaScript.
+However, hast is not limited to JavaScript and can be used in other
+programming languages.
+
+hast relates to the [unified][] and [rehype][] projects in that hast syntax
+trees are used throughout their ecosystems.
+
+### Virtual DOM
+
+The reason for introducing a new “virtual” DOM is primarily:
+
+*   The DOM is very heavy to implement outside of the browser,
+    a lean and stripped down virtual DOM can be used everywhere
+*   Most virtual DOMs do not focus on ease of use in transformations
+*   Other virtual DOMs cannot represent the syntax of HTML in its
+    entirety (think comments and document types)
+*   Neither HTML nor virtual DOMs focus on positional information
+
+## Nodes
+
+### `Parent`
+
+```idl
+interface Parent <: UnistParent {
+  children: [Element | Doctype | Comment | Text]
+}
+```
+
+**Parent** ([**UnistParent**][dfn-unist-parent]) represents a node in hast
+containing other nodes (said to be [_children_][term-child]).
+
+Its content is limited to only other hast content.
+
+### `Literal`
+
+```idl
+interface Literal <: UnistLiteral {
+  value: string
+}
+```
+
+**Literal** ([**UnistLiteral**][dfn-unist-literal]) represents a node in hast
+containing a value.
+
+### `Root`
+
+```idl
+interface Root <: Parent {
+  type: "root"
+}
+```
+
+**Root** ([**Parent**][dfn-parent]) represents a document.
+
+**Root** can be used as the [_root_][term-root] of a [_tree_][term-tree], or as
+a value of the `content` field on a `'template'` [**Element**][dfn-element],
+never as a [_child_][term-child].
+
+### `Element`
+
+```idl
+interface Element <: Parent {
+  type: "element"
+  tagName: string
+  properties: Properties?
+  content: Root?
+  children: [Element | Comment | Text]
+}
+```
+
+**Element** ([**Parent**][dfn-parent]) represents an [HTML
+Element][concept-element].
+
+A `tagName` field must be present.
+It represents the element’s [local name][concept-local-name].
+
+The `properties` field represents information associated with the element.
+The value of the `properties` field implements the
+[**Properties**][dfn-properties] interface.
+
+If the `tagName` field is `'template'`, a `content` field can be present.
+The value of the `content` field implements the [**Root**][dfn-root] interface.
+
+If the `tagName` field is `'template'`, the element must be a
+[_leaf_][term-leaf].
+
+If the `tagName` field is `'noscript'`, its [_children_][term-child] should
+be represented as if [_scripting is disabled_][concept-scripting].
+
+For example, the following HTML:
+
+```html
+<a href="http://alpha.com" class="bravo" download></a>
+```
+
+Yields:
+
+```javascript
+{
+  type: 'element',
+  tagName: 'a',
+  properties: {
+    href: 'http://alpha.com',
+    id: 'bravo',
+    className: ['bravo'],
+    download: true
+  },
+  children: []
+}
+```
+
+#### `Properties`
+
+```idl
+interface Properties {}
+```
+
+**Properties** represents information associated with an element.
+
+Every field must be a [**PropertyName**][dfn-property-name] and every value a
+[**PropertyValue**][dfn-property-value].
+
+#### `PropertyName`
+
+```idl
+typedef string PropertyName
+```
+
+Property names are keys on [**Properties**][dfn-properties] objects and reflect
+HTML, SVG, ARIA, XML, XMLNS, or XLink attribute names.
+Often, they have the same value as the corresponding attribute (for example,
+`id` is a property name reflecting the `id` attribute name), but there are some
+notable differences.
+
+> These rules aren’t simple.
+> Use [`hastscript`][h] (or [`property-information`][pi] directly) to help.
+
+The following rules are used to transform HTML attribute names to property
+names.
+These rules are based on [how ARIA is reflected in the
+DOM][concept-aria-reflection], and differs from how some (older) HTML attributes
+are reflected in the DOM.
+
+1.  Any name referencing a combinations of multiple words (such as “stroke
+    miter limit”) becomes a camel-cased property name capitalising each word
+    boundary.
+    This includes combinations that are sometimes written as several words.
+    For example, `stroke-miterlimit` becomes `strokeMiterLimit`, `autocorrect`
+    becomes `autoCorrect`, and `allowfullscreen` becomes `allowFullScreen`.
+2.  Any name that can be hyphenated, becomes a camel-cased property name
+    capitalising each boundary.
+    For example, “read-only” becomes `readOnly`.
+3.  Compound words that are not used with spaces or hyphens are treated as a
+    normal word and the previous rules apply.
+    For example, “placeholder”, “strikethrough”, and “playback” stay the same.
+4.  Acronyms in names are treated as a normal word and the previous rules apply.
+    For example, `itemid` become `itemId` and `bgcolor` becomes `bgColor`.
+
+###### Exceptions
+
+Some jargon is seen as one word even though it may not be seen as such by
+dictionaries.
+For example, `nohref` becomes `noHref`, `playsinline` becomes `playsInline`,
+and `accept-charset` becomes `acceptCharset`.
+
+The HTML attributes `class` and `for` respectively become `className` and
+`htmlFor` in alignment with the DOM.
+No other attributes gain different names as properties, other than a change in
+casing.
+
+###### Notes
+
+The property name rules differ from how HTML is reflected in the DOM for the
+following attributes:
+
+<details>
+<summary>View list of differences</summary>
+
+*   `charoff` becomes `charOff` (not `chOff`)
+*   `char` stays `char` (does not become `ch`)
+*   `rel` stays `rel` (does not become `relList`)
+*   `checked` stays `checked` (does not become `defaultChecked`)
+*   `muted` stays `muted` (does not become `defaultMuted`)
+*   `value` stays `value` (does not become `defaultValue`)
+*   `selected` stays `selected` (does not become `defaultSelected`)
+*   `char` stays `char` (does not become `ch`)
+*   `allowfullscreen` becomes `allowFullScreen` (not `allowFullscreen`)
+*   `hreflang` becomes `hrefLang`, not `hreflang`
+*   `autoplay` becomes `autoPlay`, not `autoplay`
+*   `autocomplete` becomes `autoComplete` (not `autocomplete`)
+*   `autofocus` becomes `autoFocus`, not `autofocus`
+*   `enctype` becomes `encType`, not `enctype`
+*   `formenctype` becomes `formEncType` (not `formEnctype`)
+*   `vspace` becomes `vSpace`, not `vspace`
+*   `hspace` becomes `hSpace`, not `hspace`
+*   `lowsrc` becomes `lowSrc`, not `lowsrc`
+
+</details>
+
+#### `PropertyValue`
+
+```idl
+typedef any PropertyValue
+```
+
+Property values should reflect the data type determined by their property name.
+For example, the HTML `<div hidden></div>` has a `hidden` attribute, which is
+reflected as a `hidden` property name set to the property value `true`, and
+`<input minlength="5">`, which has a `minlength` attribute, is reflected as a
+`minLength` property name set to the property value `5`.
+
+> In [JSON][], the value `null` must be treated as if the property was not
+> included.
+> In [JavaScript][], both `null` and `undefined` must be similarly ignored.
+
+The DOM is strict in reflecting HTML and hast is not.
+Where the DOM treats `<div hidden=no></div>` as having a value of `true` and
+`<img width="yes">` as having a value of `0`, these should be reflected as
+`'no'` and `'yes'`, respectively, in hast.
+
+> The reason for this is to allow plug-ins and utilities to inspect these
+> non-standard values.
+
+The DOM also specifies comma- and space-separated lists attribute values.
+In hast, these should be treated as ordered lists.
+For example, `<div class="alpha bravo"></div>` is represented as `['alpha',
+'bravo']`.
+
+> There’s no special format for the property value of the `style` property name.
+
+### `Doctype`
+
+```idl
+interface Doctype <: Node {
+  type: "doctype"
+  name: string
+  public: string?
+  system: string?
+}
+```
+
+**Doctype** ([**Node**][dfn-unist-node]) represents an [HTML
+DocumentType][concept-documenttype].
+
+A `name` field must be present.
+
+A `public` field can be present.
+If present, it must be set to a string, and represents the document’s public
+identifier.
+
+A `system` field can be present.
+If system, it must be set to a string, and represents the document’s system
+identifier.
+
+For example, the following HTML:
+
+```html
+<!doctype html>
+```
+
+Yields:
+
+```javascript
+{
+  type: 'doctype',
+  name: 'html',
+  public: null,
+  system: null
+}
+```
+
+### `Comment`
+
+```idl
+interface Comment <: Literal {
+  type: "comment"
+}
+```
+
+**Comment** ([**Literal**][dfn-literal]) represents an [HTML
+Comment][concept-comment].
+
+For example, the following HTML:
+
+```html
+<!--Charlie-->
+```
+
+Yields:
+
+```javascript
+{
+  type: 'comment',
+  value: 'Charlie'
+}
+```
+
+### `Text`
+
+```idl
+interface Text <: Literal {
+  type: "text"
+}
+```
+
+**Text** ([**Literal**][dfn-literal]) represents an [HTML Text][concept-text].
+
+For example, the following HTML:
+
+```html
+<span>Foxtrot</span>
+```
+
+Yields:
+
+```javascript
+{
+  type: 'element',
+  tagName: 'span',
+  properties: {},
+  children: [{type: 'text', value: 'Foxtrot'}]
+}
+```
+
+## Glossary
+
+See the [unist glossary][glossary].
+
 ## List of Utilities
 
+See the [unist list of utilities][utilities] for more utilities.
+
 <!--
-Utilities.  The first two are special.  The rest is sorted
-alphabetically based on content after `hast-util-`
+Utilities.
+The first two are special.
+The rest is sorted alphabetically based on content after `hast-util-`
 -->
 
 *   [`hastscript`](https://github.com/syntax-tree/hastscript)
@@ -65,7 +403,6 @@ alphabetically based on content after `hast-util-`
     — Transform Parse5’s AST to HAST
 *   [`hast-util-from-string`](https://github.com/rehypejs/rehype-minify/tree/master/packages/hast-util-from-string)
     — Set the plain-text value of a node
-    — Find and replace text
 *   [`hast-util-from-webparser`](https://github.com/Prettyhtml/prettyhtml/tree/master/packages/hast-util-from-webparser)
     — Transform Webparser’s AST to HAST
 *   [`hast-util-has-property`](https://github.com/syntax-tree/hast-util-has-property)
@@ -123,9 +460,6 @@ alphabetically based on content after `hast-util-`
 *   [`hast-util-whitespace`](https://github.com/syntax-tree/hast-util-whitespace)
     — Check if `node` is inter-element whitespace
 
-See the [List of Unist Utilities][unist-utility] for projects which
-work with **HAST** nodes too.
-
 ## Related HTML Utilities
 
 *   [`a-rel`](https://github.com/wooorm/a-rel)
@@ -163,282 +497,73 @@ work with **HAST** nodes too.
 *   [`web-namespaces`](https://github.com/wooorm/web-namespaces)
     — Map of web namespaces
 
-## AST
+## References
 
-### `Root`
-
-**Root** ([**Parent**][parent]) houses all nodes.
-
-```idl
-interface Root <: Parent {
-  type: "root";
-}
-```
-
-### `Element`
-
-**Element** ([**Parent**][parent]) represents an HTML Element.  For example,
-a `div`.  HAST Elements corresponds to the [HTML Element][html-element]
-interface.
-
-One element is special, and comes with another property: `<template>` with
-`content`.  The contents of a template element is not exposed through its
-`children`, like other elements, but instead on a `content` property which
-houses a [`Root`][root] node.
-
-`<noscript>` elements should house their tree in the same way as other elements,
-as if scripting was not enabled.
-
-```idl
-interface Element <: Parent {
-  type: "element";
-  tagName: string;
-  properties: Properties;
-  content: Root?;
-}
-```
-
-For example, the following HTML:
-
-```html
-<a href="http://alpha.com" class="bravo" download></a>
-```
-
-Yields:
-
-```json
-{
-  "type": "element",
-  "tagName": "a",
-  "properties": {
-    "href": "http://alpha.com",
-    "id": "bravo",
-    "className": ["bravo"],
-    "download": true
-  },
-  "children": []
-}
-```
-
-#### `Properties`
-
-A dictionary of property names to property values.  Most virtual DOMs
-require a disambiguation between `attributes` and `properties`.  HAST
-does not and defers this to compilers.
-
-```idl
-interface Properties {}
-```
-
-##### Property names
-
-Property names are keys on [`properties`][properties] objects and
-reflect HTML, SVG, ARIA, XML, XMLNS, or XLink attribute names.
-Often, they have the same value as the corresponding attribute
-(for example, `id` is a property name reflecting the `id` attribute
-name), but there are some notable differences.
-
-> These rules aren’t simple.  Use [`hastscript`][h] (or
-> [`property-information`][pi] directly) to help.
-
-The following rules are used to disambiguate the names of attributes and their
-corresponding HAST property name.
-These rules are based on [how ARIA is reflected in the DOM][aria-dfn], and
-differs from how some (older) HTML attributes are reflected in the DOM.
-
-1.  Any name referencing a combinations of multiple words (such as “stroke
-    miter limit”) becomes a camel-cased property name capitalising each word
-    boundary.
-    This includes combinations that are sometimes written as several words.
-    For example, `stroke-miterlimit` becomes `strokeMiterLimit`, `autocorrect`
-    becomes `autoCorrect`, and `allowfullscreen` becomes `allowFullScreen`.
-2.  Any name that can be hyphenated, becomes a camel-cased property name
-    capitalising each boundary.
-    For example, “read-only” becomes `readOnly`.
-3.  Compound words that are not used with spaces or hyphens are treated as a
-    normal word and the previous rules apply.
-    For example, “placeholder”, “strikethrough”, and “playback” stay the same.
-4.  Acronyms in names are treated as a normal word and the previous rules apply.
-    For example, `itemid` become `itemId` and `bgcolor` becomes `bgColor`.
-
-###### Exceptions
-
-Some jargon is seen as one word even though it may not be seen as such by
-dictionaries.
-For example, `nohref` becomes `noHref`, `playsinline` becomes `playsInline`,
-and `accept-charset` becomes `acceptCharset`.
-
-The HTML attributes `class` and `for` respectively become `className` and
-`htmlFor` in alignment with the DOM.
-No other attributes gain different names as properties, other than a change in
-casing.
-
-###### Notes
-
-The HAST rules for property names differ from how HTML is reflected in the DOM
-for the following attributes:
-
-<details>
-<summary>View list of differences</summary>
-
-*   `charoff` becomes `charOff` (not `chOff`)
-*   `char` stays `char` (does not become `ch`)
-*   `rel` stays `rel` (does not become `relList`)
-*   `checked` stays `checked` (does not become `defaultChecked`)
-*   `muted` stays `muted` (does not become `defaultMuted`)
-*   `value` stays `value` (does not become `defaultValue`)
-*   `selected` stays `selected` (does not become `defaultSelected`)
-*   `char` stays `char` (does not become `ch`)
-*   `allowfullscreen` becomes `allowFullScreen` (not `allowFullscreen`)
-*   `hreflang` becomes `hrefLang`, not `hreflang`
-*   `autoplay` becomes `autoPlay`, not `autoplay`
-*   `autocomplete` becomes `autoComplete` (not `autocomplete`)
-*   `autofocus` becomes `autoFocus`, not `autofocus`
-*   `enctype` becomes `encType`, not `enctype`
-*   `formenctype` becomes `formEncType` (not `formEnctype`)
-*   `vspace` becomes `vSpace`, not `vspace`
-*   `hspace` becomes `hSpace`, not `hspace`
-*   `lowsrc` becomes `lowSrc`, not `lowsrc`
-
-</details>
-
-##### Property values
-
-Property values should reflect the data type determined by their
-property name.  For example, the following HTML `<div hidden></div>`
-contains a `hidden` (boolean) attribute, which is reflected as a `hidden`
-property name set to `true` (boolean) as value in HAST, and
-`<input minlength="5">`, which contains a `minlength` (valid
-integer) attribute, is reflected as a property `minLength`
-set to `5` (number) in HAST.
-
-> In JSON, the value `null` must be treated as if the property was not included.
-> In JavaScript, both `null` and `undefined` must be similarly ignored.
-
-The DOM is strict in reflecting those properties, and HAST is not,
-where the DOM treats `<div hidden=no></div>` as having a `true`
-(boolean) value for the `hidden` attribute, and `<img width="yes">`
-as having a `0` (number) value for the `width` attribute, these should
-be reflected as `'no'` and `'yes'`, respectively, in HAST.
-
-> The reason for this is to allow plug-ins and utilities to inspect
-> these non-standard values.
-
-The DOM also specifies comma- and space-separated lists attribute
-values.  In HAST, these should be treated as ordered lists.
-For example, `<div class="alpha bravo"></div>` is represented as
-`['alpha', 'bravo']`.
-
-> There’s no special format for `style`.
-
-### `Doctype`
-
-**Doctype** ([**Node**][node]) defines the type of the document.
-
-```idl
-interface Doctype <: Node {
-  type: "doctype";
-  name: string;
-  public: string?;
-  system: string?;
-}
-```
-
-For example, the following HTML:
-
-```html
-<!DOCTYPE html>
-```
-
-Yields:
-
-```json
-{
-  "type": "doctype",
-  "name": "html",
-  "public": null,
-  "system": null
-}
-```
-
-### `Comment`
-
-**Comment** ([**Text**][text]) represents embedded information.
-
-```idl
-interface Comment <: Text {
-  type: "comment";
-}
-```
-
-For example, the following HTML:
-
-```html
-<!--Charlie-->
-```
-
-Yields:
-
-```json
-{
-  "type": "comment",
-  "value": "Charlie"
-}
-```
-
-### `Text`
-
-**TextNode** ([**Text**][text]) represents everything that is text.
-Note that its `type` property is `text`, but it is different
-from the abstract **Unist** interface **Text**.
-
-```idl
-interface TextNode <: Text {
-  type: "text";
-}
-```
-
-For example, the following HTML:
-
-```html
-<span>Foxtrot</span>
-```
-
-Yields:
-
-```json
-{
-  "type": "element",
-  "tagName": "span",
-  "properties": {},
-  "children": [{
-    "type": "text",
-    "value": "Foxtrot"
-  }]
-}
-```
-
-## Related
-
-*   [rehype][]
-*   [Unist][]
-*   [VFile][]
-*   [NLCST][]
-*   [MDAST][]
+*   **unist**:
+    [Universal Syntax Tree][unist].
+    T. Wormer; et al.
+*   **JavaScript**
+    [ECMAScript Language Specification][javascript].
+    Ecma International.
+*   **HTML**:
+    [HTML Standard][html],
+    A. van Kesteren; et al.
+    WHATWG.
+*   **SVG**:
+    [Scalable Vector Graphics (SVG)][svg],
+    N. Andronikos,
+    R. Atanassov,
+    T. Bah,
+    B. Birtles,
+    B. Brinza,
+    C. Concolato,
+    E. Dahlström,
+    C. Lilley,
+    C. McCormack,
+    D. Schepers,
+    R. Schwerdtfeger,
+    D. Storey,
+    S. Takagi,
+    J. Watt.
+    W3C.
+*   **MathML**:
+    [Mathematical Markup Language Standard][mathml],
+    D. Carlisle,
+    P. Ion,
+    R. Miner.
+    W3C.
+*   **ARIA**:
+    [Accessible Rich Internet Applications (WAI-ARIA)][aria],
+    J. Diggs,
+    J. Craig,
+    S. McCarron,
+    M. Cooper.
+    W3C.
+*   **JSON**
+    [The JavaScript Object Notation (JSON) Data Interchange Format][json],
+    T. Bray.
+    IETF.
+*   **Web IDL**:
+    [Web IDL][webidl],
+    C. McCormack.
+    W3C.
 
 ## Contribute
 
-**hast** is built by people just like you!  Check out
-[`contribute.md`][contribute] for ways to get started.
+**hast** is built by people just like you!
+Check out [`contributing.md`][contributing] for ways to get started.
 
-This project has a [Code of Conduct][coc].  By interacting with this repository,
-organisation, or community you agree to abide by its terms.
+This project has a [Code of Conduct][coc].
+By interacting with this repository, organisation, or community you agree to
+abide by its terms.
 
-Want to chat with the community and contributors?  Join us in [Gitter][chat]!
+Want to chat with the community and contributors?
+Join us in [Gitter][chat]!
 
-Have an idea for a cool new utility or tool?  That’s great!  If you want
-feedback, help, or just to share it with the world you can do so by creating
-an issue in the [`syntax-tree/ideas`][ideas] repository!
+Have an idea for a cool new utility or tool?
+That’s great!
+If you want feedback, help, or just to share it with the world you can do so by
+creating an issue in the [`syntax-tree/ideas`][ideas] repository!
 
 ## Acknowledgments
 
@@ -448,14 +573,16 @@ The initial release of this project was authored by
 Special thanks to [**@eush77**](https://github.com/eush77) for their work,
 ideas, and incredibly valuable feedback!
 
-Thanks to [**@kthjm**](https://github.com/kthjm)
+Thanks to
+[**@kthjm**](https://github.com/kthjm)
 [**@KyleAMathews**](https://github.com/KyleAMathews),
 [**@rhysd**](https://github.com/rhysd),
 [**@Rokt33r**](https://github.com/Rokt33r),
 [**@s1n**](https://github.com/s1n),
 [**@Sarah-Seo**](https://github.com/Sarah-Seo),
 [**@sethvincent**](https://github.com/sethvincent), and
-[**@simov**](https://github.com/simov) for contributing commits since!
+[**@simov**](https://github.com/simov)
+for contributing to hast and related projects!
 
 ## License
 
@@ -463,50 +590,94 @@ Thanks to [**@kthjm**](https://github.com/kthjm)
 
 <!-- Definitions -->
 
+[contributing]: contributing.md
+
+[coc]: code-of-conduct.md
+
+[license]: https://creativecommons.org/licenses/by/4.0/
+
+[author]: https://wooorm.com
+
 [logo]: https://raw.githubusercontent.com/syntax-tree/hast/ec9bdf3/logo.svg?sanitize=true
+
+[ideas]: https://github.com/syntax-tree/ideas
+
+[chat]: https://gitter.im/rehypejs/rehype
 
 [releases]: https://github.com/syntax-tree/hast/releases
 
 [latest]: https://github.com/syntax-tree/hast/releases/tag/2.2.0
 
-[html-element]: https://dom.spec.whatwg.org/#interface-element
+[dfn-unist-node]: https://github.com/syntax-tree/unist#node
 
-[unist-utility]: https://github.com/syntax-tree/unist#list-of-utilities
+[dfn-unist-parent]: https://github.com/syntax-tree/unist#parent
+
+[dfn-unist-literal]: https://github.com/syntax-tree/unist#literal
+
+[list-of-utilities]: #list-of-utilities
 
 [unist]: https://github.com/syntax-tree/unist
 
-[node]: https://github.com/syntax-tree/unist#node
+[syntax-tree]: https://github.com/syntax-tree/unist#syntax-tree
 
-[parent]: https://github.com/syntax-tree/unist#parent
+[javascript]: https://www.ecma-international.org/ecma-262/9.0/index.html
 
-[text]: https://github.com/syntax-tree/unist#text
+[html]: https://html.spec.whatwg.org/multipage/
+
+[svg]: https://svgwg.org/svg2-draft/
+
+[mathml]: https://www.w3.org/Math/draft-spec/
+
+[aria]: https://w3c.github.io/aria/
+
+[json]: https://tools.ietf.org/html/rfc7159
+
+[webidl]: https://heycam.github.io/webidl/
+
+[glossary]: https://github.com/syntax-tree/unist#glossary
+
+[utilities]: https://github.com/syntax-tree/unist#list-of-utilities
+
+[unified]: https://github.com/unifiedjs/unified
 
 [rehype]: https://github.com/rehypejs/rehype
-
-[nlcst]: https://github.com/syntax-tree/nlcst
-
-[mdast]: https://github.com/syntax-tree/mdast
-
-[vfile]: https://github.com/vfile/vfile
-
-[properties]: #properties
-
-[root]: #root
-
-[contribute]: contributing.md
-
-[coc]: code-of-conduct.md
-
-[ideas]: https://github.com/syntax-tree/ideas
-
-[chat]: https://gitter.im/rehypejs/Lobby
-
-[license]: https://creativecommons.org/licenses/by/4.0/
-
-[author]: http://wooorm.com
-
-[aria-dfn]: https://www.w3.org/TR/wai-aria-1.2/#idl_attr_disambiguation
 
 [h]: https://github.com/syntax-tree/hastscript
 
 [pi]: https://github.com/wooorm/property-information
+
+[concept-element]: https://dom.spec.whatwg.org/#interface-element
+
+[concept-local-name]: https://dom.spec.whatwg.org/#concept-element-local-name
+
+[concept-documenttype]: https://dom.spec.whatwg.org/#documenttype
+
+[concept-comment]: https://dom.spec.whatwg.org/#interface-comment
+
+[concept-text]: https://dom.spec.whatwg.org/#interface-text
+
+[concept-scripting]: https://html.spec.whatwg.org/#enabling-and-disabling-scripting
+
+[concept-aria-reflection]: https://w3c.github.io/aria/#idl_attr_disambiguation
+
+[term-tree]: https://github.com/syntax-tree/unist#tree
+
+[term-child]: https://github.com/syntax-tree/unist#child
+
+[term-root]: https://github.com/syntax-tree/unist#root
+
+[term-leaf]: https://github.com/syntax-tree/unist#leaf
+
+[dfn-parent]: #parent
+
+[dfn-literal]: #literal
+
+[dfn-root]: #root
+
+[dfn-element]: #element
+
+[dfn-properties]: #properties
+
+[dfn-property-name]: #propertyname
+
+[dfn-property-value]: #propertyvalue
