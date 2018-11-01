@@ -12,7 +12,7 @@ It implements the [**unist**][unist] spec.
 
 This document may not be released.
 See [releases][] for released documents.
-The latest released version is [`2.2.0`][latest].
+The latest released version is [`2.3.0`][latest].
 
 ## Table of Contents
 
@@ -606,7 +606,7 @@ for contributing to hast and related projects!
 
 [releases]: https://github.com/syntax-tree/hast/releases
 
-[latest]: https://github.com/syntax-tree/hast/releases/tag/2.2.0
+[latest]: https://github.com/syntax-tree/hast/releases/tag/2.3.0
 
 [dfn-unist-node]: https://github.com/syntax-tree/unist#node
 
