@@ -1,3 +1,5 @@
+<!--lint disable no-html-->
+
 # ![HAST][logo]
 
 **H**ypertext **A**bstract **S**yntax **T**ree format.
@@ -21,8 +23,9 @@ The reason for introducing a new “virtual” DOM is primarily:
 
 **HAST** is a subset of [Unist][] and implemented by [rehype][].
 
-This document may not be released. See [releases][] for released
-documents. The latest released version is [`2.2.0`][latest].
+This document may not be released.
+See [releases][] for released documents.
+The latest released version is [`2.2.0`][latest].
 
 ## Table of Contents
 
@@ -53,7 +56,7 @@ alphabetically based on content after `hast-util-`
 *   [`hast-util-assert`](https://github.com/syntax-tree/hast-util-assert)
     — Assert HAST nodes
 *   [`hast-util-class-list`](https://github.com/brechtcs/hast-util-class-list)
-    — Simulate the browser's `classList` API for HAST nodes 
+    — Simulate the browser’s `classList` API for HAST nodes 
 *   [`hast-util-embedded`](https://github.com/syntax-tree/hast-util-embedded)
     — Check if `node` is embedded content
 *   [`hast-util-find-and-replace`](https://github.com/syntax-tree/hast-util-find-and-replace)
