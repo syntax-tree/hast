@@ -463,7 +463,7 @@ Thanks to [**@kthjm**](https://github.com/kthjm)
 
 <!-- Definitions -->
 
-[logo]: https://cdn.rawgit.com/syntax-tree/hast/96a20f3/logo.svg
+[logo]: https://raw.githubusercontent.com/syntax-tree/hast/ec9bdf3/logo.svg?sanitize=true
 
 [releases]: https://github.com/syntax-tree/hast/releases
 
