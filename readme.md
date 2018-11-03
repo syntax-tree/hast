@@ -558,7 +558,7 @@ By interacting with this repository, organisation, or community you agree to
 abide by its terms.
 
 Want to chat with the community and contributors?
-Join us in [Gitter][chat]!
+Join us in [spectrum][chat]!
 
 Have an idea for a cool new utility or tool?
 That’s great!
@@ -602,7 +602,7 @@ for contributing to hast and related projects!
 
 [ideas]: https://github.com/syntax-tree/ideas
 
-[chat]: https://gitter.im/rehypejs/rehype
+[chat]: https://spectrum.chat/unified/rehype
 
 [releases]: https://github.com/syntax-tree/hast/releases
 
