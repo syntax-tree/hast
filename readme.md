@@ -152,7 +152,6 @@ Yields:
   tagName: 'a',
   properties: {
     href: 'http://alpha.com',
-    id: 'bravo',
     className: ['bravo'],
     download: true
   },
