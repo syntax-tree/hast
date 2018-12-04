@@ -264,7 +264,7 @@ reflected as a `hidden` property name set to the property value `true`, and
 > In [JavaScript][], both `null` and `undefined` must be similarly ignored.
 
 The DOM is strict in reflecting HTML and hast is not.
-Where the DOM treats `<div hidden=no></div>` as having a value of `true` and
+Where the DOM treats `<div hidden="no"></div>` as having a value of `true` and
 `<img width="yes">` as having a value of `0`, these should be reflected as
 `'no'` and `'yes'`, respectively, in hast.
 
