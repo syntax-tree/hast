@@ -233,7 +233,6 @@ following attributes:
 *   `muted` stays `muted` (does not become `defaultMuted`)
 *   `value` stays `value` (does not become `defaultValue`)
 *   `selected` stays `selected` (does not become `defaultSelected`)
-*   `char` stays `char` (does not become `ch`)
 *   `allowfullscreen` becomes `allowFullScreen` (not `allowFullscreen`)
 *   `hreflang` becomes `hrefLang`, not `hreflang`
 *   `autoplay` becomes `autoPlay`, not `autoplay`
