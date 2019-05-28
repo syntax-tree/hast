@@ -459,7 +459,9 @@ The rest is sorted alphabetically based on content after `hast-util-`
 *   [`hast-util-to-snabbdom`](https://github.com/syntax-tree/hast-util-to-snabbdom)
     — Transform to a Snabbdom tree
 *   [`hast-util-to-string`](https://github.com/rehypejs/rehype-minify/tree/master/packages/hast-util-to-string)
-    — Get the plain-text value of a node
+    — Get the plain-text value of a node (`textContent`)
+*   [`hast-util-to-text`](https://github.com/syntax-tree/hast-util-to-text)
+    — Get the plain-text value of a node (`innerText`)
 *   [`hast-util-transparent`](https://github.com/syntax-tree/hast-util-transparent)
     — Check if `node` is transparent content
 *   [`hast-util-whitespace`](https://github.com/syntax-tree/hast-util-whitespace)
