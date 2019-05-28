@@ -403,7 +403,9 @@ The rest is sorted alphabetically based on content after `hast-util-`
 *   [`hast-util-from-parse5`](https://github.com/syntax-tree/hast-util-from-parse5)
     — Transform Parse5’s AST to HAST
 *   [`hast-util-from-string`](https://github.com/rehypejs/rehype-minify/tree/master/packages/hast-util-from-string)
-    — Set the plain-text value of a node
+    — Set the plain-text value of a node (`textContent`)
+*   [`hast-util-from-text`](https://github.com/syntax-tree/hast-util-from-text)
+    — Set the plain-text value of a node (`innerText`)
 *   [`hast-util-from-webparser`](https://github.com/Prettyhtml/prettyhtml/tree/master/packages/hast-util-from-webparser)
     — Transform Webparser’s AST to HAST
 *   [`hast-util-has-property`](https://github.com/syntax-tree/hast-util-has-property)
