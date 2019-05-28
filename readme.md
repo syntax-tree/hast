@@ -438,12 +438,14 @@ The rest is sorted alphabetically based on content after `hast-util-`
     — Reparse a HAST tree
 *   [`hast-util-sanitize`](https://github.com/syntax-tree/hast-util-sanitize)
     — Sanitise nodes
-*   [`hast-util-select`](https://github.com/syntax-tree/hast-util-select)
-    — `querySelector`, `querySelectorAll`, and `matches`
 *   [`hast-util-script-supporting`](https://github.com/syntax-tree/hast-util-script-supporting)
     — Check if `node` is script-supporting content
+*   [`hast-util-select`](https://github.com/syntax-tree/hast-util-select)
+    — `querySelector`, `querySelectorAll`, and `matches`
 *   [`hast-util-sectioning`](https://github.com/syntax-tree/hast-util-sectioning)
     — Check if `node` is sectioning content
+*   [`hast-util-shift-heading`](https://github.com/syntax-tree/hast-util-shift-heading)
+    — Change heading rank (depth, level)
 *   [`hast-util-table-cell-style`](https://github.com/mapbox/hast-util-table-cell-style)
     — Transform deprecated styling attributes on table cells to inline styles
 *   [`hast-util-to-dom`](https://github.com/syntax-tree/hast-util-to-dom)
