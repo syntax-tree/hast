@@ -454,6 +454,8 @@ The rest is sorted alphabetically based on content after `hast-util-`
     — Transform to a DOM tree
 *   [`hast-util-to-html`](https://github.com/syntax-tree/hast-util-to-html)
     — Stringify nodes to HTML
+*   [`hast-util-to-jsx`](https://github.com/mapbox/jsxtreme-markdown/tree/master/packages/hast-util-to-jsx)
+    — Transform hast to JSX
 *   [`hast-util-to-mdast`](https://github.com/syntax-tree/hast-util-to-mdast)
     — Transform HAST to MDAST
 *   [`hast-util-to-nlcst`](https://github.com/syntax-tree/hast-util-to-nlcst)
