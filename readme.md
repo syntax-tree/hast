@@ -398,6 +398,8 @@ The rest is sorted alphabetically based on content after `hast-util-`
     — Check if `node` is embedded content
 *   [`hast-util-find-and-replace`](https://github.com/syntax-tree/hast-util-find-and-replace)
     — Find and replace text
+*   [`hast-util-from-dom`](https://github.com/syntax-tree/hast-util-from-dom)
+    — Transform a DOM tree to hast
 *   [`hast-util-from-parse5`](https://github.com/syntax-tree/hast-util-from-parse5)
     — Transform Parse5’s AST to HAST
 *   [`hast-util-from-string`](https://github.com/rehypejs/rehype-minify/tree/master/packages/hast-util-from-string)
