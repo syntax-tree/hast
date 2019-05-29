@@ -393,7 +393,7 @@ The rest is sorted alphabetically based on content after `hast-util-`
 *   [`hast-util-assert`](https://github.com/syntax-tree/hast-util-assert)
     — Assert HAST nodes
 *   [`hast-util-class-list`](https://github.com/brechtcs/hast-util-class-list)
-    — Simulate the browser’s `classList` API for HAST nodes 
+    — Simulate the browser’s `classList` API for HAST nodes
 *   [`hast-util-embedded`](https://github.com/syntax-tree/hast-util-embedded)
     — Check if `node` is embedded content
 *   [`hast-util-find-and-replace`](https://github.com/syntax-tree/hast-util-find-and-replace)
@@ -563,20 +563,17 @@ The rest is sorted alphabetically based on content after `hast-util-`
 
 ## Contribute
 
-**hast** is built by people just like you!
-Check out [`contributing.md`][contributing] for ways to get started.
+See [`contributing.md`][contributing] in [`syntax-tree/.github`][health] for
+ways to get started.
+See [`support.md`][support] for ways to get help.
+Ideas for new utilities and tools can be posted in [`syntax-tree/ideas`][ideas].
+
+A curated list of awesome syntax-tree, unist, hast, mdast, and nlcst resources
+can be found in [awesome syntax-tree][awesome].
 
 This project has a [Code of Conduct][coc].
 By interacting with this repository, organisation, or community you agree to
 abide by its terms.
-
-Want to chat with the community and contributors?
-Join us in [spectrum][chat]!
-
-Have an idea for a cool new utility or tool?
-That’s great!
-If you want feedback, help, or just to share it with the world you can do so by
-creating an issue in the [`syntax-tree/ideas`][ideas] repository!
 
 ## Acknowledgments
 
@@ -603,19 +600,23 @@ for contributing to hast and related projects!
 
 <!-- Definitions -->
 
-[contributing]: contributing.md
+[health]: https://github.com/syntax-tree/.github
 
-[coc]: code-of-conduct.md
+[contributing]: https://github.com/syntax-tree/.github/blob/master/contributing.md
+
+[support]: https://github.com/syntax-tree/.github/blob/master/support.md
+
+[coc]: https://github.com/syntax-tree/.github/blob/master/code-of-conduct.md
+
+[awesome]: https://github.com/syntax-tree/awesome-syntax-tree
+
+[ideas]: https://github.com/syntax-tree/ideas
 
 [license]: https://creativecommons.org/licenses/by/4.0/
 
 [author]: https://wooorm.com
 
 [logo]: https://raw.githubusercontent.com/syntax-tree/hast/ec9bdf3/logo.svg?sanitize=true
-
-[ideas]: https://github.com/syntax-tree/ideas
-
-[chat]: https://spectrum.chat/unified/rehype
 
 [releases]: https://github.com/syntax-tree/hast/releases
 
