@@ -37,8 +37,8 @@ The latest released version is [`2.3.0`][latest].
 
 ## Introduction
 
-This document defines a format for representing hypertext as an [abstract
-syntax tree][syntax-tree].
+This document defines a format for representing hypertext as an [abstract syntax
+tree][syntax-tree].
 Development of hast started in April 2016 for [rehype][].
 This specification is written in a [Web IDL][webidl]-like grammar.
 
@@ -50,8 +50,8 @@ hast extends [unist][], a format for syntax trees, to benefit from its
 hast relates to [JavaScript][] in that it has an [ecosystem of
 utilities][list-of-utilities] for working with compliant syntax trees in
 JavaScript.
-However, hast is not limited to JavaScript and can be used in other
-programming languages.
+However, hast is not limited to JavaScript and can be used in other programming
+languages.
 
 hast relates to the [unified][] and [rehype][] projects in that hast syntax
 trees are used throughout their ecosystems.
@@ -60,12 +60,12 @@ trees are used throughout their ecosystems.
 
 The reason for introducing a new “virtual” DOM is primarily:
 
-*   The DOM is very heavy to implement outside of the browser,
-    a lean and stripped down virtual DOM can be used everywhere
+*   The [DOM][] is very heavy to implement outside of the browser, a lean and
+    stripped down virtual DOM can be used everywhere
 *   Most virtual DOMs do not focus on ease of use in transformations
-*   Other virtual DOMs cannot represent the syntax of HTML in its
-    entirety (think comments and document types)
-*   Neither HTML nor virtual DOMs focus on positional information
+*   Other virtual DOMs cannot represent the syntax of HTML in its entirety
+    (think comments and document types)
+*   Neither the DOM nor virtual DOMs focus on positional information
 
 ## Nodes
 
@@ -119,11 +119,11 @@ interface Element <: Parent {
 }
 ```
 
-**Element** ([**Parent**][dfn-parent]) represents an [HTML
-Element][concept-element].
+**Element** ([**Parent**][dfn-parent]) represents an [Element][concept-element]
+([\[DOM\]][dom]).
 
 A `tagName` field must be present.
-It represents the element’s [local name][concept-local-name].
+It represents the element’s [local name][concept-local-name] ([\[DOM\]][dom]).
 
 The `properties` field represents information associated with the element.
 The value of the `properties` field implements the
@@ -136,22 +136,23 @@ If the `tagName` field is `'template'`, the element must be a
 [*leaf*][term-leaf].
 
 If the `tagName` field is `'noscript'`, its [*children*][term-child] should
-be represented as if [*scripting is disabled*][concept-scripting].
+be represented as if [*scripting is disabled*][concept-scripting]
+([\[HTML\]][html]).
 
 For example, the following HTML:
 
 ```html
-<a href="http://alpha.com" class="bravo" download></a>
+<a href="https://alpha.com" class="bravo" download></a>
 ```
 
 Yields:
 
-```javascript
+```js
 {
   type: 'element',
   tagName: 'a',
   properties: {
-    href: 'http://alpha.com',
+    href: 'https://alpha.com',
     className: ['bravo'],
     download: true
   },
@@ -188,8 +189,8 @@ notable differences.
 The following rules are used to transform HTML attribute names to property
 names.
 These rules are based on [how ARIA is reflected in the
-DOM][concept-aria-reflection], and differs from how some (older) HTML attributes
-are reflected in the DOM.
+DOM][concept-aria-reflection] ([\[ARIA\]][aria]), and differs from how some
+(older) HTML attributes are reflected in the DOM.
 
 1.  Any name referencing a combinations of multiple words (such as “stroke
     miter limit”) becomes a camel-cased property name capitalising each word
@@ -262,8 +263,8 @@ reflected as a `hidden` property name set to the property value `true`, and
 > included.
 > In [JavaScript][], both `null` and `undefined` must be similarly ignored.
 
-The DOM has strict rules on how it coerces HTML to expected values, whereas
-hast is more lenient in how it reflects the source.
+The DOM has strict rules on how it coerces HTML to expected values, whereas hast
+is more lenient in how it reflects the source.
 Where the DOM treats `<div hidden="no"></div>` as having a value of `true` and
 `<img width="yes">` as having a value of `0`, these should be reflected as
 `'no'` and `'yes'`, respectively, in hast.
@@ -289,8 +290,8 @@ interface Doctype <: Node {
 }
 ```
 
-**Doctype** ([**Node**][dfn-unist-node]) represents an [HTML
-DocumentType][concept-documenttype].
+**Doctype** ([**Node**][dfn-unist-node]) represents a
+[DocumentType][concept-documenttype] ([\[DOM\]][dom]).
 
 A `name` field must be present.
 
@@ -310,7 +311,7 @@ For example, the following HTML:
 
 Yields:
 
-```javascript
+```js
 {
   type: 'doctype',
   name: 'html',
@@ -327,8 +328,8 @@ interface Comment <: Literal {
 }
 ```
 
-**Comment** ([**Literal**][dfn-literal]) represents an [HTML
-Comment][concept-comment].
+**Comment** ([**Literal**][dfn-literal]) represents a [Comment][concept-comment]
+([\[DOM\]][dom]).
 
 For example, the following HTML:
 
@@ -338,11 +339,8 @@ For example, the following HTML:
 
 Yields:
 
-```javascript
-{
-  type: 'comment',
-  value: 'Charlie'
-}
+```js
+{type: 'comment', value: 'Charlie'}
 ```
 
 ### `Text`
@@ -353,7 +351,8 @@ interface Text <: Literal {
 }
 ```
 
-**Text** ([**Literal**][dfn-literal]) represents an [HTML Text][concept-text].
+**Text** ([**Literal**][dfn-literal]) represents a [Text][concept-text]
+([\[DOM\]][dom]).
 
 For example, the following HTML:
 
@@ -363,7 +362,7 @@ For example, the following HTML:
 
 Yields:
 
-```javascript
+```js
 {
   type: 'element',
   tagName: 'span',
@@ -515,12 +514,18 @@ The rest is sorted alphabetically based on content after `hast-util-`
 *   **unist**:
     [Universal Syntax Tree][unist].
     T. Wormer; et al.
-*   **JavaScript**
+*   **JavaScript**:
     [ECMAScript Language Specification][javascript].
     Ecma International.
 *   **HTML**:
     [HTML Standard][html],
     A. van Kesteren; et al.
+    WHATWG.
+*   **DOM**:
+    [DOM Standard][dom],
+    A. van Kesteren,
+    A. Gregor,
+    Ms2ger.
     WHATWG.
 *   **SVG**:
     [Scalable Vector Graphics (SVG)][svg],
@@ -636,6 +641,8 @@ for contributing to hast and related projects!
 
 [javascript]: https://www.ecma-international.org/ecma-262/9.0/index.html
 
+[dom]: https://dom.spec.whatwg.org/
+
 [html]: https://html.spec.whatwg.org/multipage/
 
 [svg]: https://svgwg.org/svg2-draft/
@@ -670,7 +677,7 @@ for contributing to hast and related projects!
 
 [concept-text]: https://dom.spec.whatwg.org/#interface-text
 
-[concept-scripting]: https://html.spec.whatwg.org/#enabling-and-disabling-scripting
+[concept-scripting]: https://html.spec.whatwg.org/multipage/webappapis.html#enabling-and-disabling-scripting
 
 [concept-aria-reflection]: https://w3c.github.io/aria/#idl_attr_disambiguation
 
