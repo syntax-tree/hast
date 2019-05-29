@@ -78,7 +78,7 @@ interface Parent <: UnistParent {
 ```
 
 **Parent** ([**UnistParent**][dfn-unist-parent]) represents a node in hast
-containing other nodes (said to be [_children_][term-child]).
+containing other nodes (said to be [*children*][term-child]).
 
 Its content is limited to only other hast content.
 
@@ -103,9 +103,9 @@ interface Root <: Parent {
 
 **Root** ([**Parent**][dfn-parent]) represents a document.
 
-**Root** can be used as the [_root_][term-root] of a [_tree_][term-tree], or as
+**Root** can be used as the [*root*][term-root] of a [*tree*][term-tree], or as
 a value of the `content` field on a `'template'` [**Element**][dfn-element],
-never as a [_child_][term-child].
+never as a [*child*][term-child].
 
 ### `Element`
 
@@ -133,10 +133,10 @@ If the `tagName` field is `'template'`, a `content` field can be present.
 The value of the `content` field implements the [**Root**][dfn-root] interface.
 
 If the `tagName` field is `'template'`, the element must be a
-[_leaf_][term-leaf].
+[*leaf*][term-leaf].
 
-If the `tagName` field is `'noscript'`, its [_children_][term-child] should
-be represented as if [_scripting is disabled_][concept-scripting].
+If the `tagName` field is `'noscript'`, its [*children*][term-child] should
+be represented as if [*scripting is disabled*][concept-scripting].
 
 For example, the following HTML:
 
