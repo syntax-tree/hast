@@ -1,5 +1,4 @@
 {
-  "name": "hast",
   "private": true,
   "version": "0.0.0",
   "description": "hypertext abstract syntax tree",
