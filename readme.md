@@ -31,6 +31,7 @@ The latest released version is [`2.3.0`][latest].
 *   [List of Utilities](#list-of-utilities)
 *   [Related HTML Utilities](#related-html-utilities)
 *   [References](#references)
+*   [Security](#security)
 *   [Contribute](#contribute)
 *   [Acknowledgments](#acknowledgments)
 *   [License](#license)
@@ -193,12 +194,12 @@ DOM][concept-aria-reflection] ([\[ARIA\]][aria]), and differs from how some
 (older) HTML attributes are reflected in the DOM.
 
 1.  Any name referencing a combinations of multiple words (such as “stroke
-    miter limit”) becomes a camel-cased property name capitalising each word
+    miter limit”) becomes a camelcased property name capitalising each word
     boundary.
     This includes combinations that are sometimes written as several words.
     For example, `stroke-miterlimit` becomes `strokeMiterLimit`, `autocorrect`
     becomes `autoCorrect`, and `allowfullscreen` becomes `allowFullScreen`.
-2.  Any name that can be hyphenated, becomes a camel-cased property name
+2.  Any name that can be hyphenated, becomes a camelcased property name
     capitalising each boundary.
     For example, “read-only” becomes `readOnly`.
 3.  Compound words that are not used with spaces or hyphens are treated as a
@@ -269,10 +270,11 @@ Where the DOM treats `<div hidden="no"></div>` as having a value of `true` and
 `<img width="yes">` as having a value of `0`, these should be reflected as
 `'no'` and `'yes'`, respectively, in hast.
 
-> The reason for this is to allow plug-ins and utilities to inspect these
+> The reason for this is to allow plugins and utilities to inspect these
 > non-standard values.
 
-The DOM also specifies comma- and space-separated lists attribute values.
+The DOM also specifies comma separated and space separated lists attribute
+values.
 In hast, these should be treated as ordered lists.
 For example, `<div class="alpha bravo"></div>` is represented as `['alpha',
 'bravo']`.
@@ -390,9 +392,9 @@ The rest is sorted alphabetically based on content after `hast-util-`
 *   [`hast-to-hyperscript`](https://github.com/syntax-tree/hast-to-hyperscript)
     — Convert a Node to React, Virtual DOM, Hyperscript, and more
 *   [`hast-util-assert`](https://github.com/syntax-tree/hast-util-assert)
-    — Assert HAST nodes
+    — Assert hast nodes
 *   [`hast-util-class-list`](https://github.com/brechtcs/hast-util-class-list)
-    — Simulate the browser’s `classList` API for HAST nodes
+    — Simulate the browser’s `classList` API for hast nodes
 *   [`hast-util-embedded`](https://github.com/syntax-tree/hast-util-embedded)
     — Check if `node` is embedded content
 *   [`hast-util-find-and-replace`](https://github.com/syntax-tree/hast-util-find-and-replace)
@@ -400,13 +402,13 @@ The rest is sorted alphabetically based on content after `hast-util-`
 *   [`hast-util-from-dom`](https://github.com/syntax-tree/hast-util-from-dom)
     — Transform a DOM tree to hast
 *   [`hast-util-from-parse5`](https://github.com/syntax-tree/hast-util-from-parse5)
-    — Transform Parse5’s AST to HAST
+    — Transform Parse5’s AST to hast
 *   [`hast-util-from-string`](https://github.com/rehypejs/rehype-minify/tree/master/packages/hast-util-from-string)
     — Set the plain-text value of a node (`textContent`)
 *   [`hast-util-from-text`](https://github.com/syntax-tree/hast-util-from-text)
     — Set the plain-text value of a node (`innerText`)
 *   [`hast-util-from-webparser`](https://github.com/Prettyhtml/prettyhtml/tree/master/packages/hast-util-from-webparser)
-    — Transform Webparser’s AST to HAST
+    — Transform Webparser’s AST to hast
 *   [`hast-util-has-property`](https://github.com/syntax-tree/hast-util-has-property)
     — Check if a node has a property
 *   [`hast-util-heading`](https://github.com/syntax-tree/hast-util-heading)
@@ -436,7 +438,7 @@ The rest is sorted alphabetically based on content after `hast-util-`
 *   [`hast-util-phrasing`](https://github.com/syntax-tree/hast-util-phrasing)
     — Check if a node is phrasing content
 *   [`hast-util-raw`](https://github.com/syntax-tree/hast-util-raw)
-    — Reparse a HAST tree
+    — Reparse a hast tree
 *   [`hast-util-sanitize`](https://github.com/syntax-tree/hast-util-sanitize)
     — Sanitise nodes
 *   [`hast-util-script-supporting`](https://github.com/syntax-tree/hast-util-script-supporting)
@@ -456,11 +458,11 @@ The rest is sorted alphabetically based on content after `hast-util-`
 *   [`hast-util-to-jsx`](https://github.com/mapbox/jsxtreme-markdown/tree/master/packages/hast-util-to-jsx)
     — Transform hast to JSX
 *   [`hast-util-to-mdast`](https://github.com/syntax-tree/hast-util-to-mdast)
-    — Transform HAST to MDAST
+    — Transform hast to mdast
 *   [`hast-util-to-nlcst`](https://github.com/syntax-tree/hast-util-to-nlcst)
-    — Transform HAST to NLCST
+    — Transform hast to nlcst
 *   [`hast-util-to-parse5`](https://github.com/syntax-tree/hast-util-to-parse5)
-    — Transform HAST to Parse5’s AST
+    — Transform hast to Parse5’s AST
 *   [`hast-util-to-snabbdom`](https://github.com/syntax-tree/hast-util-to-snabbdom)
     — Transform to a Snabbdom tree
 *   [`hast-util-to-string`](https://github.com/rehypejs/rehype-minify/tree/master/packages/hast-util-to-string)
@@ -481,31 +483,35 @@ The rest is sorted alphabetically based on content after `hast-util-`
 *   [`collapse-white-space`](https://github.com/wooorm/collapse-white-space)
     — Replace multiple white-space characters with a single space
 *   [`comma-separated-tokens`](https://github.com/wooorm/comma-separated-tokens)
-    — Parse/stringify comma-separated tokens
+    — Parse/stringify comma separated tokens
 *   [`html-tag-names`](https://github.com/wooorm/html-tag-names)
-    — List of HTML tag-names
+    — List of HTML tag names
 *   [`html-dangerous-encodings`](https://github.com/wooorm/html-dangerous-encodings)
     — List of dangerous HTML character encoding labels
 *   [`html-encodings`](https://github.com/wooorm/html-encodings)
     — List of HTML character encoding labels
 *   [`html-element-attributes`](https://github.com/wooorm/html-element-attributes)
     — Map of HTML attributes
+*   [`html-event-attributes`](https://github.com/wooorm/html-event-attributes)
+    — List of HTML event handler content attributes
 *   [`html-void-elements`](https://github.com/wooorm/html-void-elements)
-    — List of void HTML tag-names
+    — List of void HTML tag names
 *   [`link-rel`](https://github.com/wooorm/link-rel)
     — List of link types for `rel` on `link`
 *   [`mathml-tag-names`](https://github.com/wooorm/mathml-tag-names)
-    — List of MathML tag-names
+    — List of MathML tag names
 *   [`meta-name`](https://github.com/wooorm/meta-name)
     — List of values for `name` on `meta`
 *   [`property-information`](https://github.com/wooorm/property-information)
     — Information on HTML properties
 *   [`space-separated-tokens`](https://github.com/wooorm/space-separated-tokens)
-    — Parse/stringify space-separated tokens
+    — Parse/stringify space separated tokens
 *   [`svg-tag-names`](https://github.com/wooorm/svg-tag-names)
-    — List of SVG tag-names
+    — List of SVG tag names
 *   [`svg-element-attributes`](https://github.com/wooorm/svg-element-attributes)
     — Map of SVG attributes
+*   [`svg-event-attributes`](https://github.com/wooorm/svg-event-attributes)
+    — List of SVG event handler content attributes
 *   [`web-namespaces`](https://github.com/wooorm/web-namespaces)
     — Map of web namespaces
 
@@ -596,14 +602,56 @@ Special thanks to [**@eush77**](https://github.com/eush77) for their work,
 ideas, and incredibly valuable feedback!
 
 Thanks to
-[**@kthjm**](https://github.com/kthjm)
+[**@andrewburgess**](https://github.com/andrewburgess),
+[**@arobase-che**](https://github.com/arobase-che),
+[**@arystan-sw**](https://github.com/arystan-sw),
+[**@BarryThePenguin**](https://github.com/BarryThePenguin),
+[**@brechtcs**](https://github.com/brechtcs),
+[**@ChristianMurphy**](https://github.com/ChristianMurphy),
+[**@ChristopherBiscardi**](https://github.com/ChristopherBiscardi),
+[**@craftzdog**](https://github.com/craftzdog),
+[**@cupojoe**](https://github.com/cupojoe),
+[**@davidtheclark**](https://github.com/davidtheclark),
+[**@derhuerst**](https://github.com/derhuerst),
+[**@detj**](https://github.com/detj),
+[**@DxCx**](https://github.com/DxCx),
+[**@erquhart**](https://github.com/erquhart),
+[**@flurmbo**](https://github.com/flurmbo),
+[**@Hamms**](https://github.com/Hamms),
+[**@Hypercubed**](https://github.com/Hypercubed),
+[**@inklesspen**](https://github.com/inklesspen),
+[**@jeffal**](https://github.com/jeffal),
+[**@jlevy**](https://github.com/jlevy),
+[**@Justineo**](https://github.com/Justineo),
+[**@lfittl**](https://github.com/lfittl),
+[**@kgryte**](https://github.com/kgryte),
+[**@kmck**](https://github.com/kmck),
+[**@kthjm**](https://github.com/kthjm),
 [**@KyleAMathews**](https://github.com/KyleAMathews),
+[**@macklinu**](https://github.com/macklinu),
+[**@medfreeman**](https://github.com/medfreeman),
+[**@Murderlon**](https://github.com/Murderlon),
+[**@nevik**](https://github.com/nevik),
+[**@nokome**](https://github.com/nokome),
+[**@phiresky**](https://github.com/phiresky),
+[**@revolunet**](https://github.com/revolunet),
 [**@rhysd**](https://github.com/rhysd),
 [**@Rokt33r**](https://github.com/Rokt33r),
+[**@rubys**](https://github.com/rubys),
 [**@s1n**](https://github.com/s1n),
 [**@Sarah-Seo**](https://github.com/Sarah-Seo),
-[**@sethvincent**](https://github.com/sethvincent), and
-[**@simov**](https://github.com/simov)
+[**@sethvincent**](https://github.com/sethvincent),
+[**@simov**](https://github.com/simov),
+[**@s1n**](https://github.com/s1n),
+[**@StarpTech**](https://github.com/StarpTech),
+[**@stefanprobst**](https://github.com/stefanprobst),
+[**@stuff**](https://github.com/stuff),
+[**@subhero24**](https://github.com/subhero24),
+[**@tripodsan**](https://github.com/tripodsan),
+[**@tunnckoCore**](https://github.com/tunnckoCore),
+[**@vhf**](https://github.com/vhf),
+[**@voischev**](https://github.com/voischev), and
+[**@zjaml**](https://github.com/zjaml),
 for contributing to hast and related projects!
 
 ## License
