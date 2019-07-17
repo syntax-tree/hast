@@ -566,6 +566,13 @@ The rest is sorted alphabetically based on content after `hast-util-`
     C. McCormack.
     W3C.
 
+## Security
+
+As hast represents HTML, and improper use of HTML can open you up to a
+[cross-site scripting (XSS)][xss] attack, improper use of hast is also unsafe.
+Always be careful with user input and use [`hast-util-santize`][sanitize] to
+make the hast tree safe.
+
 ## Contribute
 
 See [`contributing.md`][contributing] in [`syntax-tree/.github`][health] for
@@ -680,6 +687,10 @@ for contributing to hast and related projects!
 [concept-scripting]: https://html.spec.whatwg.org/multipage/webappapis.html#enabling-and-disabling-scripting
 
 [concept-aria-reflection]: https://w3c.github.io/aria/#idl_attr_disambiguation
+
+[xss]: https://en.wikipedia.org/wiki/Cross-site_scripting
+
+[sanitize]: https://github.com/syntax-tree/hast-util-sanitize
 
 [term-tree]: https://github.com/syntax-tree/unist#tree
 
