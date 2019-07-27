@@ -19,7 +19,7 @@ The latest released version is [`2.3.0`][latest].
 *   [Introduction](#introduction)
     *   [Where this specification fits](#where-this-specification-fits)
     *   [Virtual DOM](#virtual-dom)
-*   [Generating HAST Syntax Trees](#generating-hast-syntax-trees)
+*   [Generating hast Syntax Trees](#generating-hast-syntax-trees)
 *   [Nodes](#nodes)
     *   [Parent](#parent)
     *   [Literal](#literal)
@@ -69,7 +69,7 @@ The reason for introducing a new “virtual” DOM is primarily:
     (think comments and document types)
 *   Neither the DOM nor virtual DOMs focus on positional information
 
-## Generating HAST Syntax Trees
+## Generating hast Syntax Trees
 
 Use [`rehype-parse`](https://github.com/rehypejs/rehype/tree/master/packages/rehype-parse) or [`rehype-dom-parse`](https://github.com/rehypejs/rehype-dom/tree/master/packages/rehype-dom-parse) to generate a hast syntax tree from HTML text or from a DOM tree, respectively. Once you've generated a syntax tree, see the sorts of [Nodes](#nodes) you'll encounter in the tree.
 
