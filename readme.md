@@ -19,6 +19,7 @@ The latest released version is [`2.3.0`][latest].
 *   [Introduction](#introduction)
     *   [Where this specification fits](#where-this-specification-fits)
     *   [Virtual DOM](#virtual-dom)
+*   [Generating HAST Syntax Trees](#generating-hast-syntax-trees)
 *   [Nodes](#nodes)
     *   [Parent](#parent)
     *   [Literal](#literal)
@@ -67,6 +68,12 @@ The reason for introducing a new “virtual” DOM is primarily:
 *   Other virtual DOMs cannot represent the syntax of HTML in its entirety
     (think comments and document types)
 *   Neither the DOM nor virtual DOMs focus on positional information
+
+## Generating HAST Syntax Trees
+
+Use [`rehype-parse`](https://github.com/rehypejs/rehype/tree/master/packages/rehype-parse) or [`rehype-dom-parse`](https://github.com/rehypejs/rehype-dom/tree/master/packages/rehype-dom-parse) to generate a hast syntax tree from HTML text or from a DOM tree, respectively. Once you've generated a syntax tree, see the sorts of [Nodes](#nodes) you'll encounter in the tree.
+
+Also see additional tools in [List of Utilities](#list-of-utilities).
 
 ## Nodes
 
@@ -387,6 +394,8 @@ The first two are special.
 The rest is sorted alphabetically based on content after `hast-util-`
 -->
 
+*   [`rehype-parse`](https://github.com/rehypejs/rehype/tree/master/packages/rehype-parse) — Parses HTML to hast syntax trees.
+*   [`rehype-dom-parse`](https://github.com/rehypejs/rehype-dom/tree/master/packages/rehype-dom-parse) — Generate a hast syntax tree from a DOM tree.
 *   [`hastscript`](https://github.com/syntax-tree/hastscript)
     — Hyperscript compatible DSL for creating nodes
 *   [`hast-to-hyperscript`](https://github.com/syntax-tree/hast-to-hyperscript)
