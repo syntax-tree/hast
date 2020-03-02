@@ -14,19 +14,19 @@ This document may not be released.
 See [releases][] for released documents.
 The latest released version is [`2.3.0`][latest].
 
-## Table of Contents
+## Contents
 
 *   [Introduction](#introduction)
     *   [Where this specification fits](#where-this-specification-fits)
     *   [Virtual DOM](#virtual-dom)
 *   [Nodes](#nodes)
-    *   [Parent](#parent)
-    *   [Literal](#literal)
-    *   [Root](#root)
-    *   [Element](#element)
-    *   [Doctype](#doctype)
-    *   [Comment](#comment)
-    *   [Text](#text)
+    *   [`Parent`](#parent)
+    *   [`Literal`](#literal)
+    *   [`Root`](#root)
+    *   [`Element`](#element)
+    *   [`Doctype`](#doctype)
+    *   [`Comment`](#comment)
+    *   [`Text`](#text)
 *   [Glossary](#glossary)
 *   [List of Utilities](#list-of-utilities)
 *   [Related HTML Utilities](#related-html-utilities)
@@ -194,13 +194,13 @@ DOM][concept-aria-reflection] ([\[ARIA\]][aria]), and differs from how some
 (older) HTML attributes are reflected in the DOM.
 
 1.  Any name referencing a combinations of multiple words (such as “stroke
-    miter limit”) becomes a camelcased property name capitalising each word
+    miter limit”) becomes a camelcased property name capitalizing each word
     boundary.
     This includes combinations that are sometimes written as several words.
     For example, `stroke-miterlimit` becomes `strokeMiterLimit`, `autocorrect`
     becomes `autoCorrect`, and `allowfullscreen` becomes `allowFullScreen`.
 2.  Any name that can be hyphenated, becomes a camelcased property name
-    capitalising each boundary.
+    capitalizing each boundary.
     For example, “read-only” becomes `readOnly`.
 3.  Compound words that are not used with spaces or hyphens are treated as a
     normal word and the previous rules apply.
@@ -586,11 +586,11 @@ ways to get started.
 See [`support.md`][support] for ways to get help.
 Ideas for new utilities and tools can be posted in [`syntax-tree/ideas`][ideas].
 
-A curated list of awesome syntax-tree, unist, hast, mdast, and nlcst resources
-can be found in [awesome syntax-tree][awesome].
+A curated list of awesome syntax-tree, unist, mdast, hast, xast, and nlcst
+resources can be found in [awesome syntax-tree][awesome].
 
-This project has a [Code of Conduct][coc].
-By interacting with this repository, organisation, or community you agree to
+This project has a [code of conduct][coc].
+By interacting with this repository, organization, or community you agree to
 abide by its terms.
 
 ## Acknowledgments
