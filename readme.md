@@ -394,8 +394,10 @@ The rest is sorted alphabetically based on content after `hast-util-`
     — Convert a Node to React, Virtual DOM, Hyperscript, and more
 *   [`hast-util-assert`](https://github.com/syntax-tree/hast-util-assert)
     — Assert hast nodes
-*   [`hast-util-class-list`](https://github.com/brechtcs/hast-util-class-list)
+*   [`hast-util-class-list`](https://github.com/shredsnews/hast-util-class-list)
     — Simulate the browser’s `classList` API for hast nodes
+*   [`hast-util-classnames`](https://github.com/syntax-tree/hast-util-classnames)
+    — Merge class names together
 *   [`hast-util-embedded`](https://github.com/syntax-tree/hast-util-embedded)
     — Check if `node` is embedded content
 *   [`hast-util-find-and-replace`](https://github.com/syntax-tree/hast-util-find-and-replace)
@@ -404,6 +406,8 @@ The rest is sorted alphabetically based on content after `hast-util-`
     — Transform a DOM tree to hast
 *   [`hast-util-from-parse5`](https://github.com/syntax-tree/hast-util-from-parse5)
     — Transform Parse5’s AST to hast
+*   [`hast-util-from-selector`](https://github.com/syntax-tree/hast-util-from-selector)
+    — Create an element from a complex CSS selector
 *   [`hast-util-from-string`](https://github.com/rehypejs/rehype-minify/tree/master/packages/hast-util-from-string)
     — Set the plain-text value of a node (`textContent`)
 *   [`hast-util-from-text`](https://github.com/syntax-tree/hast-util-from-text)
@@ -459,17 +463,21 @@ The rest is sorted alphabetically based on content after `hast-util-`
 *   [`hast-util-to-jsx`](https://github.com/mapbox/jsxtreme-markdown/tree/master/packages/hast-util-to-jsx)
     — Transform hast to JSX
 *   [`hast-util-to-mdast`](https://github.com/syntax-tree/hast-util-to-mdast)
-    — Transform hast to mdast
+    — Transform hast to mdast (markdown)
 *   [`hast-util-to-nlcst`](https://github.com/syntax-tree/hast-util-to-nlcst)
-    — Transform hast to nlcst
+    — Transform hast to nlcst (natural language)
 *   [`hast-util-to-parse5`](https://github.com/syntax-tree/hast-util-to-parse5)
     — Transform hast to Parse5’s AST
+*   [`hast-util-to-portable-text`](https://github.com/rexxars/hast-util-to-portable-text)
+    — Transform hast to portable text
 *   [`hast-util-to-snabbdom`](https://github.com/syntax-tree/hast-util-to-snabbdom)
     — Transform to a Snabbdom tree
 *   [`hast-util-to-string`](https://github.com/rehypejs/rehype-minify/tree/master/packages/hast-util-to-string)
     — Get the plain-text value of a node (`textContent`)
 *   [`hast-util-to-text`](https://github.com/syntax-tree/hast-util-to-text)
     — Get the plain-text value of a node (`innerText`)
+*   [`hast-util-to-xast`](https://github.com/syntax-tree/hast-util-to-xast)
+    — Transform hast to xast (xml)
 *   [`hast-util-transparent`](https://github.com/syntax-tree/hast-util-transparent)
     — Check if `node` is transparent content
 *   [`hast-util-whitespace`](https://github.com/syntax-tree/hast-util-whitespace)
