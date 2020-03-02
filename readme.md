@@ -28,8 +28,8 @@ The latest released version is [`2.3.0`][latest].
     *   [`Comment`](#comment)
     *   [`Text`](#text)
 *   [Glossary](#glossary)
-*   [List of Utilities](#list-of-utilities)
-*   [Related HTML Utilities](#related-html-utilities)
+*   [List of utilities](#list-of-utilities)
+*   [Related HTML utilities](#related-html-utilities)
 *   [References](#references)
 *   [Security](#security)
 *   [Related](#related)
@@ -378,7 +378,7 @@ Yields:
 
 See the [unist glossary][glossary].
 
-## List of Utilities
+## List of utilities
 
 See the [unist list of utilities][utilities] for more utilities.
 
@@ -475,7 +475,7 @@ The rest is sorted alphabetically based on content after `hast-util-`
 *   [`hast-util-whitespace`](https://github.com/syntax-tree/hast-util-whitespace)
     — Check if `node` is inter-element whitespace
 
-## Related HTML Utilities
+## Related HTML utilities
 
 *   [`a-rel`](https://github.com/wooorm/a-rel)
     — List of link types for `rel` on `a` / `area`
