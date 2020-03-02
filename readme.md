@@ -32,6 +32,7 @@ The latest released version is [`2.3.0`][latest].
 *   [Related HTML Utilities](#related-html-utilities)
 *   [References](#references)
 *   [Security](#security)
+*   [Related](#related)
 *   [Contribute](#contribute)
 *   [Acknowledgments](#acknowledgments)
 *   [License](#license)
@@ -578,6 +579,15 @@ As hast represents HTML, and improper use of HTML can open you up to a
 [cross-site scripting (XSS)][xss] attack, improper use of hast is also unsafe.
 Always be careful with user input and use [`hast-util-santize`][sanitize] to
 make the hast tree safe.
+
+## Related
+
+*   [mdast](https://github.com/syntax-tree/mdast)
+    — Markdown Abstract Syntax Tree format
+*   [nlcst](https://github.com/syntax-tree/nlcst)
+    — Natural Language Concrete Syntax Tree format
+*   [xast](https://github.com/syntax-tree/xast)
+    — Extensible Abstract Syntax Tree
 
 ## Contribute
 
