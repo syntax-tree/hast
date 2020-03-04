@@ -418,6 +418,8 @@ The rest is sorted alphabetically based on content after `hast-util-`
     — Check if a node has a property
 *   [`hast-util-heading`](https://github.com/syntax-tree/hast-util-heading)
     — Check if a node is heading content
+*   [`hast-util-heading-rank`](https://github.com/syntax-tree/hast-util-heading-rank)
+    — Get the rank (or depth, level) of headings
 *   [`hast-util-interactive`](https://github.com/syntax-tree/hast-util-interactive)
     — Check if a node is interactive
 *   [`hast-util-is-body-ok-link`](https://github.com/rehypejs/rehype-minify/tree/master/packages/hast-util-is-body-ok-link)
