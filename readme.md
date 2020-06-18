@@ -4,7 +4,7 @@
 
 **H**ypertext **A**bstract **S**yntax **T**ree format.
 
-* * *
+***
 
 **hast** is a specification for representing [HTML][] (and embedded [SVG][] or
 [MathML][]) as an abstract [syntax tree][syntax-tree].
