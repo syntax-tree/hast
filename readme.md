@@ -408,11 +408,11 @@ The rest is sorted alphabetically based on content after `hast-util-`
     — Transform Parse5’s AST to hast
 *   [`hast-util-from-selector`](https://github.com/syntax-tree/hast-util-from-selector)
     — Create an element from a complex CSS selector
-*   [`hast-util-from-string`](https://github.com/rehypejs/rehype-minify/tree/master/packages/hast-util-from-string)
+*   [`hast-util-from-string`](https://github.com/rehypejs/rehype-minify/tree/HEAD/packages/hast-util-from-string)
     — Set the plain-text value of a node (`textContent`)
 *   [`hast-util-from-text`](https://github.com/syntax-tree/hast-util-from-text)
     — Set the plain-text value of a node (`innerText`)
-*   [`hast-util-from-webparser`](https://github.com/Prettyhtml/prettyhtml/tree/master/packages/hast-util-from-webparser)
+*   [`hast-util-from-webparser`](https://github.com/Prettyhtml/prettyhtml/tree/HEAD/packages/hast-util-from-webparser)
     — Transform Webparser’s AST to hast
 *   [`hast-util-has-property`](https://github.com/syntax-tree/hast-util-has-property)
     — Check if a node has a property
@@ -422,19 +422,19 @@ The rest is sorted alphabetically based on content after `hast-util-`
     — Get the rank (or depth, level) of headings
 *   [`hast-util-interactive`](https://github.com/syntax-tree/hast-util-interactive)
     — Check if a node is interactive
-*   [`hast-util-is-body-ok-link`](https://github.com/rehypejs/rehype-minify/tree/master/packages/hast-util-is-body-ok-link)
+*   [`hast-util-is-body-ok-link`](https://github.com/rehypejs/rehype-minify/tree/HEAD/packages/hast-util-is-body-ok-link)
     — Check if a `link` element is “Body OK”
-*   [`hast-util-is-conditional-comment`](https://github.com/rehypejs/rehype-minify/tree/master/packages/hast-util-is-conditional-comment)
+*   [`hast-util-is-conditional-comment`](https://github.com/rehypejs/rehype-minify/tree/HEAD/packages/hast-util-is-conditional-comment)
     — Check if `node` is a conditional comment
-*   [`hast-util-is-css-link`](https://github.com/rehypejs/rehype-minify/tree/master/packages/hast-util-is-css-link)
+*   [`hast-util-is-css-link`](https://github.com/rehypejs/rehype-minify/tree/HEAD/packages/hast-util-is-css-link)
     — Check if `node` is a CSS `link`
-*   [`hast-util-is-css-style`](https://github.com/rehypejs/rehype-minify/tree/master/packages/hast-util-is-css-style)
+*   [`hast-util-is-css-style`](https://github.com/rehypejs/rehype-minify/tree/HEAD/packages/hast-util-is-css-style)
     — Check if `node` is a CSS `style`
 *   [`hast-util-is-element`](https://github.com/syntax-tree/hast-util-is-element)
     — Check if `node` is a (certain) element
-*   [`hast-util-is-event-handler`](https://github.com/rehypejs/rehype-minify/tree/master/packages/hast-util-is-event-handler)
+*   [`hast-util-is-event-handler`](https://github.com/rehypejs/rehype-minify/tree/HEAD/packages/hast-util-is-event-handler)
     — Check if `property` is an event handler
-*   [`hast-util-is-javascript`](https://github.com/rehypejs/rehype-minify/tree/master/packages/hast-util-is-javascript)
+*   [`hast-util-is-javascript`](https://github.com/rehypejs/rehype-minify/tree/HEAD/packages/hast-util-is-javascript)
     — Check if `node` is a JavaScript `script`
 *   [`hast-util-labelable`](https://github.com/syntax-tree/hast-util-labelable)
     — Check if `node` is labelable
@@ -462,7 +462,7 @@ The rest is sorted alphabetically based on content after `hast-util-`
     — Transform to a DOM tree
 *   [`hast-util-to-html`](https://github.com/syntax-tree/hast-util-to-html)
     — Stringify nodes to HTML
-*   [`hast-util-to-jsx`](https://github.com/mapbox/jsxtreme-markdown/tree/master/packages/hast-util-to-jsx)
+*   [`hast-util-to-jsx`](https://github.com/mapbox/jsxtreme-markdown/tree/HEAD/packages/hast-util-to-jsx)
     — Transform hast to JSX
 *   [`hast-util-to-mdast`](https://github.com/syntax-tree/hast-util-to-mdast)
     — Transform hast to mdast (markdown)
@@ -474,7 +474,7 @@ The rest is sorted alphabetically based on content after `hast-util-`
     — Transform hast to portable text
 *   [`hast-util-to-snabbdom`](https://github.com/syntax-tree/hast-util-to-snabbdom)
     — Transform to a Snabbdom tree
-*   [`hast-util-to-string`](https://github.com/rehypejs/rehype-minify/tree/master/packages/hast-util-to-string)
+*   [`hast-util-to-string`](https://github.com/rehypejs/rehype-minify/tree/HEAD/packages/hast-util-to-string)
     — Get the plain-text value of a node (`textContent`)
 *   [`hast-util-to-text`](https://github.com/syntax-tree/hast-util-to-text)
     — Get the plain-text value of a node (`innerText`)
@@ -682,11 +682,11 @@ for contributing to hast and related projects!
 
 [health]: https://github.com/syntax-tree/.github
 
-[contributing]: https://github.com/syntax-tree/.github/blob/master/contributing.md
+[contributing]: https://github.com/syntax-tree/.github/blob/HEAD/contributing.md
 
-[support]: https://github.com/syntax-tree/.github/blob/master/support.md
+[support]: https://github.com/syntax-tree/.github/blob/HEAD/support.md
 
-[coc]: https://github.com/syntax-tree/.github/blob/master/code-of-conduct.md
+[coc]: https://github.com/syntax-tree/.github/blob/HEAD/code-of-conduct.md
 
 [awesome]: https://github.com/syntax-tree/awesome-syntax-tree
 
