@@ -458,6 +458,8 @@ The rest is sorted alphabetically based on content after `hast-util-`
     — Change heading rank (depth, level)
 *   [`hast-util-table-cell-style`](https://github.com/mapbox/hast-util-table-cell-style)
     — Transform deprecated styling attributes on table cells to inline styles
+*   [`hast-util-to-babel-ast`](https://github.com/gregberge/svgr/tree/master/packages/hast-util-to-babel-ast)
+    — Transform to Babel's AST
 *   [`hast-util-to-dom`](https://github.com/syntax-tree/hast-util-to-dom)
     — Transform to a DOM tree
 *   [`hast-util-to-html`](https://github.com/syntax-tree/hast-util-to-html)
