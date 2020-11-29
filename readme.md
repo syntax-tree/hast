@@ -223,6 +223,8 @@ casing.
 
 ###### Notes
 
+[`property-information`][pi] lists all property names.
+
 The property name rules differ from how HTML is reflected in the DOM for the
 following attributes:
 
