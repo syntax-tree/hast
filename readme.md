@@ -698,7 +698,7 @@ for contributing to hast and related projects!
 
 [author]: https://wooorm.com
 
-[logo]: https://raw.githubusercontent.com/syntax-tree/hast/ec9bdf3/logo.svg?sanitize=true
+[logo]: https://raw.githubusercontent.com/syntax-tree/hast/6a36689/logo.svg?sanitize=true
 
 [releases]: https://github.com/syntax-tree/hast/releases
 
