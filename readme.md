@@ -289,24 +289,11 @@ For example, `<div class="alpha bravo"></div>` is represented as `['alpha',
 ```idl
 interface Doctype <: Node {
   type: "doctype"
-  name: string
-  public: string?
-  system: string?
 }
 ```
 
 **Doctype** ([**Node**][dfn-unist-node]) represents a
 [DocumentType][concept-documenttype] ([\[DOM\]][dom]).
-
-A `name` field must be present.
-
-A `public` field can be present.
-If present, it must be set to a string, and represents the document’s public
-identifier.
-
-A `system` field can be present.
-If system, it must be set to a string, and represents the document’s system
-identifier.
 
 For example, the following HTML:
 
@@ -317,12 +304,7 @@ For example, the following HTML:
 Yields:
 
 ```js
-{
-  type: 'doctype',
-  name: 'html',
-  public: null,
-  system: null
-}
+{type: 'doctype'}
 ```
 
 ### `Comment`
