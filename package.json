@@ -11,8 +11,8 @@
     "Titus Wormer <tituswormer@gmail.com> (wooorm.com)"
   ],
   "devDependencies": {
-    "remark-cli": "^9.0.0",
-    "remark-preset-wooorm": "^8.0.0"
+    "remark-cli": "^10.0.0",
+    "remark-preset-wooorm": "^9.0.0"
   },
   "scripts": {
     "format": "remark . -qfo",
