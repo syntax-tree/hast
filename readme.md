@@ -8,7 +8,7 @@
 
 **hast** is a specification for representing [HTML][] (and embedded [SVG][] or
 [MathML][]) as an abstract [syntax tree][syntax-tree].
-It implements the [**unist**][unist] spec.
+It implements the **[unist][]** spec.
 
 This document may not be released.
 See [releases][] for released documents.
@@ -79,8 +79,8 @@ interface Parent <: UnistParent {
 }
 ```
 
-**Parent** ([**UnistParent**][dfn-unist-parent]) represents a node in hast
-containing other nodes (said to be [*children*][term-child]).
+**Parent** (**[UnistParent][dfn-unist-parent]**) represents a node in hast
+containing other nodes (said to be *[children][term-child]*).
 
 Its content is limited to only other hast content.
 
@@ -92,7 +92,7 @@ interface Literal <: UnistLiteral {
 }
 ```
 
-**Literal** ([**UnistLiteral**][dfn-unist-literal]) represents a node in hast
+**Literal** (**[UnistLiteral][dfn-unist-literal]**) represents a node in hast
 containing a value.
 
 ### `Root`
@@ -103,11 +103,11 @@ interface Root <: Parent {
 }
 ```
 
-**Root** ([**Parent**][dfn-parent]) represents a document.
+**Root** (**[Parent][dfn-parent]**) represents a document.
 
-**Root** can be used as the [*root*][term-root] of a [*tree*][term-tree], or as
-a value of the `content` field on a `'template'` [**Element**][dfn-element],
-never as a [*child*][term-child].
+**Root** can be used as the *[root][term-root]* of a *[tree][term-tree]*, or as
+a value of the `content` field on a `'template'` **[Element][dfn-element]**,
+never as a *[child][term-child]*.
 
 ### `Element`
 
@@ -121,7 +121,7 @@ interface Element <: Parent {
 }
 ```
 
-**Element** ([**Parent**][dfn-parent]) represents an [Element][concept-element]
+**Element** (**[Parent][dfn-parent]**) represents an [Element][concept-element]
 ([\[DOM\]][dom]).
 
 A `tagName` field must be present.
@@ -129,16 +129,16 @@ It represents the element’s [local name][concept-local-name] ([\[DOM\]][dom]).
 
 The `properties` field represents information associated with the element.
 The value of the `properties` field implements the
-[**Properties**][dfn-properties] interface.
+**[Properties][dfn-properties]** interface.
 
 If the `tagName` field is `'template'`, a `content` field can be present.
-The value of the `content` field implements the [**Root**][dfn-root] interface.
+The value of the `content` field implements the **[Root][dfn-root]** interface.
 
 If the `tagName` field is `'template'`, the element must be a
-[*leaf*][term-leaf].
+*[leaf][term-leaf]*.
 
-If the `tagName` field is `'noscript'`, its [*children*][term-child] should
-be represented as if [*scripting is disabled*][concept-scripting]
+If the `tagName` field is `'noscript'`, its *[children][term-child]* should
+be represented as if *[scripting is disabled][concept-scripting]*
 ([\[HTML\]][html]).
 
 For example, the following HTML:
@@ -170,8 +170,8 @@ interface Properties {}
 
 **Properties** represents information associated with an element.
 
-Every field must be a [**PropertyName**][dfn-property-name] and every value a
-[**PropertyValue**][dfn-property-value].
+Every field must be a **[PropertyName][dfn-property-name]** and every value a
+**[PropertyValue][dfn-property-value]**.
 
 #### `PropertyName`
 
@@ -179,7 +179,7 @@ Every field must be a [**PropertyName**][dfn-property-name] and every value a
 typedef string PropertyName
 ```
 
-Property names are keys on [**Properties**][dfn-properties] objects and reflect
+Property names are keys on **[Properties][dfn-properties]** objects and reflect
 HTML, SVG, ARIA, XML, XMLNS, or XLink attribute names.
 Often, they have the same value as the corresponding attribute (for example,
 `id` is a property name reflecting the `id` attribute name), but there are some
@@ -292,7 +292,7 @@ interface Doctype <: Node {
 }
 ```
 
-**Doctype** ([**Node**][dfn-unist-node]) represents a
+**Doctype** (**[Node][dfn-unist-node]**) represents a
 [DocumentType][concept-documenttype] ([\[DOM\]][dom]).
 
 For example, the following HTML:
@@ -315,7 +315,7 @@ interface Comment <: Literal {
 }
 ```
 
-**Comment** ([**Literal**][dfn-literal]) represents a [Comment][concept-comment]
+**Comment** (**[Literal][dfn-literal]**) represents a [Comment][concept-comment]
 ([\[DOM\]][dom]).
 
 For example, the following HTML:
@@ -338,7 +338,7 @@ interface Text <: Literal {
 }
 ```
 
-**Text** ([**Literal**][dfn-literal]) represents a [Text][concept-text]
+**Text** (**[Literal][dfn-literal]**) represents a [Text][concept-text]
 ([\[DOM\]][dom]).
 
 For example, the following HTML:
@@ -373,101 +373,109 @@ The rest is sorted alphabetically based on content after `hast-util-`
 -->
 
 *   [`hastscript`](https://github.com/syntax-tree/hastscript)
-    — Hyperscript compatible DSL for creating nodes
+    — create trees
 *   [`hast-to-hyperscript`](https://github.com/syntax-tree/hast-to-hyperscript)
-    — Convert a Node to React, Virtual DOM, Hyperscript, and more
+    — transform to something else through a hyperscript DSL
 *   [`hast-util-assert`](https://github.com/syntax-tree/hast-util-assert)
-    — Assert hast nodes
+    — assert nodes
 *   [`hast-util-class-list`](https://github.com/shredsnews/hast-util-class-list)
-    — Simulate the browser’s `classList` API for hast nodes
+    — simulate the browser’s `classList` API for hast nodes
 *   [`hast-util-classnames`](https://github.com/syntax-tree/hast-util-classnames)
-    — Merge class names together
+    — merge class names together
 *   [`hast-util-embedded`](https://github.com/syntax-tree/hast-util-embedded)
-    — Check if `node` is embedded content
+    — check if a node is an embedded element
+*   [`hast-util-excerpt`](https://github.com/syntax-tree/hast-util-excerpt)
+    — truncate the tree to a comment
 *   [`hast-util-find-and-replace`](https://github.com/syntax-tree/hast-util-find-and-replace)
-    — Find and replace text
+    — find and replace text in a tree
 *   [`hast-util-from-dom`](https://github.com/syntax-tree/hast-util-from-dom)
-    — Transform a DOM tree to hast
+    — transform from DOM tree
+*   [`hast-util-from-html`](https://github.com/syntax-tree/hast-util-from-html)
+    — parse from HTML
 *   [`hast-util-from-parse5`](https://github.com/syntax-tree/hast-util-from-parse5)
-    — Transform Parse5’s AST to hast
+    — transform from Parse5’s AST
 *   [`hast-util-from-selector`](https://github.com/syntax-tree/hast-util-from-selector)
-    — Create an element from a complex CSS selector
-*   [`hast-util-from-string`](https://github.com/rehypejs/rehype-minify/tree/HEAD/packages/hast-util-from-string)
-    — Set the plain-text value of a node (`textContent`)
+    — parse CSS selectors to nodes
+*   [`hast-util-from-string`](https://github.com/rehypejs/rehype-minify/tree/main/packages/hast-util-from-string)
+    — set the plain-text value of a node (`textContent`)
 *   [`hast-util-from-text`](https://github.com/syntax-tree/hast-util-from-text)
-    — Set the plain-text value of a node (`innerText`)
+    — set the plain-text value of a node (`innerText`)
 *   [`hast-util-from-webparser`](https://github.com/Prettyhtml/prettyhtml/tree/HEAD/packages/hast-util-from-webparser)
-    — Transform Webparser’s AST to hast
+    — transform Webparser’s AST to hast
 *   [`hast-util-has-property`](https://github.com/syntax-tree/hast-util-has-property)
-    — Check if a node has a property
+    — check if an element has a certain property
 *   [`hast-util-heading`](https://github.com/syntax-tree/hast-util-heading)
-    — Check if a node is heading content
+    — check if a node is heading content
 *   [`hast-util-heading-rank`](https://github.com/syntax-tree/hast-util-heading-rank)
-    — Get the rank (or depth, level) of headings
+    — get the rank (also known as depth or level) of headings
 *   [`hast-util-interactive`](https://github.com/syntax-tree/hast-util-interactive)
-    — Check if a node is interactive
-*   [`hast-util-is-body-ok-link`](https://github.com/rehypejs/rehype-minify/tree/HEAD/packages/hast-util-is-body-ok-link)
-    — Check if a `link` element is “Body OK”
+    — check if a node is interactive
+*   [`hast-util-is-body-ok-link`](https://github.com/rehypejs/rehype-minify/tree/main/packages/hast-util-is-body-ok-link)
+    — check if a `link` element is “Body OK”
 *   [`hast-util-is-conditional-comment`](https://github.com/rehypejs/rehype-minify/tree/HEAD/packages/hast-util-is-conditional-comment)
-    — Check if `node` is a conditional comment
-*   [`hast-util-is-css-link`](https://github.com/rehypejs/rehype-minify/tree/HEAD/packages/hast-util-is-css-link)
-    — Check if `node` is a CSS `link`
-*   [`hast-util-is-css-style`](https://github.com/rehypejs/rehype-minify/tree/HEAD/packages/hast-util-is-css-style)
-    — Check if `node` is a CSS `style`
+    — check if `node` is a conditional comment
+*   [`hast-util-is-css-link`](https://github.com/rehypejs/rehype-minify/tree/main/packages/hast-util-is-css-link)
+    — check if `node` is a CSS `link`
+*   [`hast-util-is-css-style`](https://github.com/rehypejs/rehype-minify/tree/main/packages/hast-util-is-css-style)
+    — check if `node` is a CSS `style`
 *   [`hast-util-is-element`](https://github.com/syntax-tree/hast-util-is-element)
-    — Check if `node` is a (certain) element
-*   [`hast-util-is-event-handler`](https://github.com/rehypejs/rehype-minify/tree/HEAD/packages/hast-util-is-event-handler)
-    — Check if `property` is an event handler
-*   [`hast-util-is-javascript`](https://github.com/rehypejs/rehype-minify/tree/HEAD/packages/hast-util-is-javascript)
-    — Check if `node` is a JavaScript `script`
+    — check if `node` is a (certain) element
+*   [`hast-util-is-event-handler`](https://github.com/rehypejs/rehype-minify/tree/main/packages/hast-util-is-event-handler)
+    — check if `property` is an event handler
+*   [`hast-util-is-javascript`](https://github.com/rehypejs/rehype-minify/tree/main/packages/hast-util-is-javascript)
+    — check if `node` is a JavaScript `script`
 *   [`hast-util-labelable`](https://github.com/syntax-tree/hast-util-labelable)
-    — Check if `node` is labelable
+    — check if `node` is labelable
 *   [`hast-util-menu-state`](https://github.com/syntax-tree/hast-util-menu-state)
-    — Check the state of a menu element
+    — check the state of a menu element
 *   [`hast-util-parse-selector`](https://github.com/syntax-tree/hast-util-parse-selector)
-    — Create an element from a simple CSS selector
+    — create an element from a simple CSS selector
 *   [`hast-util-phrasing`](https://github.com/syntax-tree/hast-util-phrasing)
-    — Check if a node is phrasing content
+    — check if a node is phrasing content
 *   [`hast-util-raw`](https://github.com/syntax-tree/hast-util-raw)
-    — Reparse a hast tree
+    — parse a tree again
+*   [`hast-util-reading-time`](https://github.com/syntax-tree/hast-util-reading-time)
+    — estimate the reading time
 *   [`hast-util-sanitize`](https://github.com/syntax-tree/hast-util-sanitize)
-    — Sanitise nodes
+    — sanitize nodes
 *   [`hast-util-script-supporting`](https://github.com/syntax-tree/hast-util-script-supporting)
-    — Check if `node` is script-supporting content
+    — check if `node` is script-supporting content
 *   [`hast-util-select`](https://github.com/syntax-tree/hast-util-select)
     — `querySelector`, `querySelectorAll`, and `matches`
 *   [`hast-util-sectioning`](https://github.com/syntax-tree/hast-util-sectioning)
-    — Check if `node` is sectioning content
+    — check if `node` is sectioning content
 *   [`hast-util-shift-heading`](https://github.com/syntax-tree/hast-util-shift-heading)
-    — Change heading rank (depth, level)
+    — change heading rank (depth, level)
 *   [`hast-util-table-cell-style`](https://github.com/mapbox/hast-util-table-cell-style)
-    — Transform deprecated styling attributes on table cells to inline styles
+    — transform deprecated styling attributes on table cells to inline styles
 *   [`hast-util-to-dom`](https://github.com/syntax-tree/hast-util-to-dom)
-    — Transform to a DOM tree
+    — transform to a DOM tree
+*   [`hast-util-to-estree`](https://github.com/syntax-tree/hast-util-to-estree)
+    — transform to estree (JavaScript AST) JSX
 *   [`hast-util-to-html`](https://github.com/syntax-tree/hast-util-to-html)
-    — Stringify nodes to HTML
+    — serialize as HTML
 *   [`hast-util-to-jsx`](https://github.com/mapbox/jsxtreme-markdown/tree/HEAD/packages/hast-util-to-jsx)
-    — Transform hast to JSX
+    — transform hast to JSX
 *   [`hast-util-to-mdast`](https://github.com/syntax-tree/hast-util-to-mdast)
-    — Transform hast to mdast (markdown)
+    — transform to mdast (markdown)
 *   [`hast-util-to-nlcst`](https://github.com/syntax-tree/hast-util-to-nlcst)
-    — Transform hast to nlcst (natural language)
+    — transform to nlcst (natural language)
 *   [`hast-util-to-parse5`](https://github.com/syntax-tree/hast-util-to-parse5)
-    — Transform hast to Parse5’s AST
+    — transform to Parse5’s AST
 *   [`hast-util-to-portable-text`](https://github.com/rexxars/hast-util-to-portable-text)
-    — Transform hast to portable text
-*   [`hast-util-to-snabbdom`](https://github.com/syntax-tree/hast-util-to-snabbdom)
-    — Transform to a Snabbdom tree
+    — transform to portable text
 *   [`hast-util-to-string`](https://github.com/rehypejs/rehype-minify/tree/HEAD/packages/hast-util-to-string)
-    — Get the plain-text value of a node (`textContent`)
+    — get the plain-text value of a node (`textContent`)
 *   [`hast-util-to-text`](https://github.com/syntax-tree/hast-util-to-text)
-    — Get the plain-text value of a node (`innerText`)
+    — get the plain-text value of a node (`innerText`)
 *   [`hast-util-to-xast`](https://github.com/syntax-tree/hast-util-to-xast)
-    — Transform hast to xast (xml)
+    — transform to xast (xml)
 *   [`hast-util-transparent`](https://github.com/syntax-tree/hast-util-transparent)
-    — Check if `node` is transparent content
+    — check if `node` is transparent content
+*   [`hast-util-truncate`](https://github.com/syntax-tree/hast-util-truncate)
+    — truncate the tree to a certain number of characters
 *   [`hast-util-whitespace`](https://github.com/syntax-tree/hast-util-whitespace)
-    — Check if `node` is inter-element whitespace
+    — check if `node` is inter-element whitespace
 
 ## Related HTML utilities
 
