@@ -19,6 +19,7 @@ The latest released version is [`2.4.0`][latest].
 *   [Introduction](#introduction)
     *   [Where this specification fits](#where-this-specification-fits)
     *   [Virtual DOM](#virtual-dom)
+*   [Types](#types)
 *   [Nodes](#nodes)
     *   [`Parent`](#parent)
     *   [`Literal`](#literal)
@@ -68,6 +69,15 @@ The reason for introducing a new “virtual” DOM is primarily:
 *   Other virtual DOMs cannot represent the syntax of HTML in its entirety
     (think comments and document types)
 *   Neither the DOM nor virtual DOMs focus on positional information
+
+## Types
+
+If you are using TypeScript, you can use the unist types by installing them
+with npm:
+
+```sh
+npm install @types/hast
+```
 
 ## Nodes
 
