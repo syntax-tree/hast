@@ -99,7 +99,7 @@ containing a value.
 
 ```idl
 interface Root <: Parent {
-  type: "root"
+  type: 'root'
 }
 ```
 
@@ -113,7 +113,7 @@ never as a *[child][term-child]*.
 
 ```idl
 interface Element <: Parent {
-  type: "element"
+  type: 'element'
   tagName: string
   properties: Properties?
   content: Root?
@@ -288,7 +288,7 @@ For example, `<div class="alpha bravo"></div>` is represented as `['alpha',
 
 ```idl
 interface Doctype <: Node {
-  type: "doctype"
+  type: 'doctype'
 }
 ```
 
@@ -311,7 +311,7 @@ Yields:
 
 ```idl
 interface Comment <: Literal {
-  type: "comment"
+  type: 'comment'
 }
 ```
 
@@ -334,7 +334,7 @@ Yields:
 
 ```idl
 interface Text <: Literal {
-  type: "text"
+  type: 'text'
 }
 ```
 
