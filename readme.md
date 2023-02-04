@@ -368,14 +368,12 @@ See the [unist list of utilities][utilities] for more utilities.
 
 <!--
 Utilities.
-The first two are special.
+The first is special.
 The rest is sorted alphabetically based on content after `hast-util-`
 -->
 
 *   [`hastscript`](https://github.com/syntax-tree/hastscript)
     — create trees
-*   [`hast-to-hyperscript`](https://github.com/syntax-tree/hast-to-hyperscript)
-    — transform to something else through a hyperscript DSL
 *   [`hast-util-assert`](https://github.com/syntax-tree/hast-util-assert)
     — assert nodes
 *   [`hast-util-class-list`](https://github.com/shredsnews/hast-util-class-list)
@@ -426,8 +424,6 @@ The rest is sorted alphabetically based on content after `hast-util-`
     — check if `node` is a JavaScript `script`
 *   [`hast-util-labelable`](https://github.com/syntax-tree/hast-util-labelable)
     — check if `node` is labelable
-*   [`hast-util-menu-state`](https://github.com/syntax-tree/hast-util-menu-state)
-    — check the state of a menu element
 *   [`hast-util-parse-selector`](https://github.com/syntax-tree/hast-util-parse-selector)
     — create an element from a simple CSS selector
 *   [`hast-util-phrasing`](https://github.com/syntax-tree/hast-util-phrasing)
@@ -456,6 +452,8 @@ The rest is sorted alphabetically based on content after `hast-util-`
     — serialize as HTML
 *   [`hast-util-to-jsx`](https://github.com/mapbox/jsxtreme-markdown/tree/HEAD/packages/hast-util-to-jsx)
     — transform hast to JSX
+*   [`hast-util-to-jsx-runtime`](https://github.com/syntax-tree/hast-util-to-jsx-runtime)
+    — transform to preact, react, solid, svelte, vue, etc
 *   [`hast-util-to-mdast`](https://github.com/syntax-tree/hast-util-to-mdast)
     — transform to mdast (markdown)
 *   [`hast-util-to-nlcst`](https://github.com/syntax-tree/hast-util-to-nlcst)
