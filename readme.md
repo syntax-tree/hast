@@ -20,14 +20,16 @@ The latest released version is [`2.4.0`][latest].
     *   [Where this specification fits](#where-this-specification-fits)
     *   [Virtual DOM](#virtual-dom)
 *   [Types](#types)
-*   [Nodes](#nodes)
-    *   [`Parent`](#parent)
+*   [Nodes (abstract)](#nodes-abstract)
     *   [`Literal`](#literal)
-    *   [`Root`](#root)
-    *   [`Element`](#element)
-    *   [`Doctype`](#doctype)
+    *   [`Parent`](#parent)
+*   [Nodes](#nodes)
     *   [`Comment`](#comment)
+    *   [`Doctype`](#doctype)
+    *   [`Element`](#element)
+    *   [`Root`](#root)
     *   [`Text`](#text)
+    *   [Types](#types-1)
 *   [Glossary](#glossary)
 *   [List of utilities](#list-of-utilities)
 *   [Related HTML utilities](#related-html-utilities)
@@ -79,20 +81,7 @@ with npm:
 npm install @types/hast
 ```
 
-## Nodes
-
-### `Parent`
-
-```idl
-interface Parent <: UnistParent {
-  children: [Element | Doctype | Comment | Text]
-}
-```
-
-**Parent** (**[UnistParent][dfn-unist-parent]**) represents a node in hast
-containing other nodes (said to be *[children][term-child]*).
-
-Its content is limited to only other hast content.
+## Nodes (abstract)
 
 ### `Literal`
 
@@ -105,19 +94,66 @@ interface Literal <: UnistLiteral {
 **Literal** (**[UnistLiteral][dfn-unist-literal]**) represents a node in hast
 containing a value.
 
-### `Root`
+### `Parent`
 
 ```idl
-interface Root <: Parent {
-  type: 'root'
+interface Parent <: UnistParent {
+  children: [Comment | Doctype | Element | Text]
 }
 ```
 
-**Root** (**[Parent][dfn-parent]**) represents a document.
+**Parent** (**[UnistParent][dfn-unist-parent]**) represents a node in hast
+containing other nodes (said to be *[children][term-child]*).
 
-**Root** can be used as the *[root][term-root]* of a *[tree][term-tree]*, or as
-a value of the `content` field on a `'template'` **[Element][dfn-element]**,
-never as a *[child][term-child]*.
+Its content is limited to only other hast content.
+
+## Nodes
+
+### `Comment`
+
+```idl
+interface Comment <: Literal {
+  type: 'comment'
+}
+```
+
+**Comment** (**[Literal][dfn-literal]**) represents a [Comment][concept-comment]
+([\[DOM\]][dom]).
+
+For example, the following HTML:
+
+```html
+<!--Charlie-->
+```
+
+Yields:
+
+```js
+{type: 'comment', value: 'Charlie'}
+```
+
+### `Doctype`
+
+```idl
+interface Doctype <: Node {
+  type: 'doctype'
+}
+```
+
+**Doctype** (**[Node][dfn-unist-node]**) represents a
+[DocumentType][concept-documenttype] ([\[DOM\]][dom]).
+
+For example, the following HTML:
+
+```html
+<!doctype html>
+```
+
+Yields:
+
+```js
+{type: 'doctype'}
+```
 
 ### `Element`
 
@@ -127,7 +163,7 @@ interface Element <: Parent {
   tagName: string
   properties: Properties?
   content: Root?
-  children: [Element | Comment | Text]
+  children: [Comment | Element | Text]
 }
 ```
 
@@ -171,6 +207,50 @@ Yields:
   children: []
 }
 ```
+
+### `Root`
+
+```idl
+interface Root <: Parent {
+  type: 'root'
+}
+```
+
+**Root** (**[Parent][dfn-parent]**) represents a document.
+
+**Root** can be used as the *[root][term-root]* of a *[tree][term-tree]*, or as
+a value of the `content` field on a `'template'` **[Element][dfn-element]**,
+never as a *[child][term-child]*.
+
+### `Text`
+
+```idl
+interface Text <: Literal {
+  type: 'text'
+}
+```
+
+**Text** (**[Literal][dfn-literal]**) represents a [Text][concept-text]
+([\[DOM\]][dom]).
+
+For example, the following HTML:
+
+```html
+<span>Foxtrot</span>
+```
+
+Yields:
+
+```js
+{
+  type: 'element',
+  tagName: 'span',
+  properties: {},
+  children: [{type: 'text', value: 'Foxtrot'}]
+}
+```
+
+### Types
 
 #### `Properties`
 
@@ -293,80 +373,6 @@ For example, `<div class="alpha bravo"></div>` is represented as `['alpha',
 'bravo']`.
 
 > There’s no special format for the property value of the `style` property name.
-
-### `Doctype`
-
-```idl
-interface Doctype <: Node {
-  type: 'doctype'
-}
-```
-
-**Doctype** (**[Node][dfn-unist-node]**) represents a
-[DocumentType][concept-documenttype] ([\[DOM\]][dom]).
-
-For example, the following HTML:
-
-```html
-<!doctype html>
-```
-
-Yields:
-
-```js
-{type: 'doctype'}
-```
-
-### `Comment`
-
-```idl
-interface Comment <: Literal {
-  type: 'comment'
-}
-```
-
-**Comment** (**[Literal][dfn-literal]**) represents a [Comment][concept-comment]
-([\[DOM\]][dom]).
-
-For example, the following HTML:
-
-```html
-<!--Charlie-->
-```
-
-Yields:
-
-```js
-{type: 'comment', value: 'Charlie'}
-```
-
-### `Text`
-
-```idl
-interface Text <: Literal {
-  type: 'text'
-}
-```
-
-**Text** (**[Literal][dfn-literal]**) represents a [Text][concept-text]
-([\[DOM\]][dom]).
-
-For example, the following HTML:
-
-```html
-<span>Foxtrot</span>
-```
-
-Yields:
-
-```js
-{
-  type: 'element',
-  tagName: 'span',
-  properties: {},
-  children: [{type: 'text', value: 'Foxtrot'}]
-}
-```
 
 ## Glossary
 
