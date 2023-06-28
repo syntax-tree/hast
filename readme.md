@@ -29,7 +29,10 @@ The latest released version is [`2.4.0`][latest].
     *   [`Element`](#element)
     *   [`Root`](#root)
     *   [`Text`](#text)
-    *   [Types](#types-1)
+*   [Other types](#other-types)
+    *   [`Properties`](#properties)
+    *   [`PropertyName`](#propertyname)
+    *   [`PropertyValue`](#propertyvalue)
 *   [Glossary](#glossary)
 *   [List of utilities](#list-of-utilities)
 *   [Related HTML utilities](#related-html-utilities)
@@ -74,7 +77,7 @@ The reason for introducing a new “virtual” DOM is primarily:
 
 ## Types
 
-If you are using TypeScript, you can use the unist types by installing them
+If you are using TypeScript, you can use the hast types by installing them
 with npm:
 
 ```sh
@@ -250,9 +253,9 @@ Yields:
 }
 ```
 
-### Types
+## Other types
 
-#### `Properties`
+### `Properties`
 
 ```idl
 interface Properties {}
@@ -263,7 +266,7 @@ interface Properties {}
 Every field must be a **[PropertyName][dfn-property-name]** and every value a
 **[PropertyValue][dfn-property-value]**.
 
-#### `PropertyName`
+### `PropertyName`
 
 ```idl
 typedef string PropertyName
@@ -341,7 +344,7 @@ following attributes:
 
 </details>
 
-#### `PropertyValue`
+### `PropertyValue`
 
 ```idl
 typedef any PropertyValue
