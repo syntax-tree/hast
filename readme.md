@@ -443,6 +443,8 @@ The rest is sorted alphabetically based on content after `hast-util-`
     — check if `node` is a JavaScript `script`
 *   [`hast-util-labelable`](https://github.com/syntax-tree/hast-util-labelable)
     — check if `node` is labelable
+*   [`hast-util-merge`](https://github.com/viktor-yakubiv/hast-util-merge)
+    — merges elements or documents
 *   [`hast-util-parse-selector`](https://github.com/syntax-tree/hast-util-parse-selector)
     — create an element from a simple CSS selector
 *   [`hast-util-phrasing`](https://github.com/syntax-tree/hast-util-phrasing)
