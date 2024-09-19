@@ -405,6 +405,8 @@ The rest is sorted alphabetically based on content after `hast-util-`
   — truncate the tree to a comment
 * [`hast-util-find-and-replace`](https://github.com/syntax-tree/hast-util-find-and-replace)
   — find and replace text in a tree
+* [`hast-util-format`](https://github.com/syntax-tree/hast-util-format)
+  — format whitespace
 * [`hast-util-from-dom`](https://github.com/syntax-tree/hast-util-from-dom)
   — transform from DOM tree
 * [`hast-util-from-html`](https://github.com/syntax-tree/hast-util-from-html)
