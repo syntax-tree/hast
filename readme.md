@@ -52,13 +52,15 @@ This specification is written in a [Web IDL][webidl]-like grammar.
 
 ### Where this specification fits
 
-hast extends [unist][], a format for syntax trees, to benefit from its
-[ecosystem of utilities][utilities].
+hast extends [unist][],
+a format for syntax trees,
+to benefit from its [ecosystem of utilities][utilities].
 
 hast relates to [JavaScript][] in that it has an [ecosystem of
 utilities][list-of-utilities] for working with compliant syntax trees in
 JavaScript.
-However, hast is not limited to JavaScript and can be used in other programming
+However,
+hast is not limited to JavaScript and can be used in other programming
 languages.
 
 hast relates to the [unified][] and [rehype][] projects in that hast syntax
@@ -68,8 +70,8 @@ trees are used throughout their ecosystems.
 
 The reason for introducing a new “virtual” DOM is primarily:
 
-* The [DOM][] is very heavy to implement outside of the browser, a lean and
-  stripped down virtual DOM can be used everywhere
+* The [DOM][] is very heavy to implement outside of the browser,
+  a lean and stripped down virtual DOM can be used everywhere
 * Most virtual DOMs do not focus on ease of use in transformations
 * Other virtual DOMs cannot represent the syntax of HTML in its entirety
   (think comments and document types)
@@ -77,8 +79,8 @@ The reason for introducing a new “virtual” DOM is primarily:
 
 ## Types
 
-If you are using TypeScript, you can use the hast types by installing them
-with npm:
+If you are using TypeScript,
+you can use the hast types by installing them with npm:
 
 ```sh
 npm install @types/hast
@@ -123,7 +125,8 @@ interface Comment <: Literal {
 **Comment** (**[Literal][dfn-literal]**) represents a [Comment][concept-comment]
 ([\[DOM\]][dom]).
 
-For example, the following HTML:
+For example,
+the following HTML:
 
 ```html
 <!--Charlie-->
@@ -146,7 +149,8 @@ interface Doctype <: Node {
 **Doctype** (**[Node][dfn-unist-node]**) represents a
 [DocumentType][concept-documenttype] ([\[DOM\]][dom]).
 
-For example, the following HTML:
+For example,
+the following HTML:
 
 ```html
 <!doctype html>
@@ -180,17 +184,19 @@ The `properties` field represents information associated with the element.
 The value of the `properties` field implements the
 **[Properties][dfn-properties]** interface.
 
-If the `tagName` field is `'template'`, a `content` field can be present.
+If the `tagName` field is `'template'`,
+a `content` field can be present.
 The value of the `content` field implements the **[Root][dfn-root]** interface.
 
-If the `tagName` field is `'template'`, the element must be a
-*[leaf][term-leaf]*.
+If the `tagName` field is `'template'`,
+the element must be a *[leaf][term-leaf]*.
 
-If the `tagName` field is `'noscript'`, its *[children][term-child]* should
-be represented as if *[scripting is disabled][concept-scripting]*
-([\[HTML\]][html]).
+If the `tagName` field is `'noscript'`,
+its *[children][term-child]* should be represented as if
+*[scripting is disabled][concept-scripting]* ([\[HTML\]][html]).
 
-For example, the following HTML:
+For example,
+the following HTML:
 
 ```html
 <a href="https://alpha.com" class="bravo" download></a>
@@ -221,8 +227,9 @@ interface Root <: Parent {
 
 **Root** (**[Parent][dfn-parent]**) represents a document.
 
-**Root** can be used as the *[root][term-root]* of a *[tree][term-tree]*, or as
-a value of the `content` field on a `'template'` **[Element][dfn-element]**,
+**Root** can be used as the *[root][term-root]* of a *[tree][term-tree]*,
+or as a value of the `content` field on a `'template'`
+**[Element][dfn-element]**,
 never as a *[child][term-child]*.
 
 ### `Text`
@@ -236,7 +243,8 @@ interface Text <: Literal {
 **Text** (**[Literal][dfn-literal]**) represents a [Text][concept-text]
 ([\[DOM\]][dom]).
 
-For example, the following HTML:
+For example,
+the following HTML:
 
 ```html
 <span>Foxtrot</span>
@@ -273,46 +281,64 @@ typedef string PropertyName
 ```
 
 Property names are keys on **[Properties][dfn-properties]** objects and reflect
-HTML, SVG, ARIA, XML, XMLNS, or XLink attribute names.
-Often, they have the same value as the corresponding attribute (for example,
-`id` is a property name reflecting the `id` attribute name), but there are some
-notable differences.
+HTML,
+SVG,
+ARIA,
+XML,
+XMLNS,
+or XLink attribute names.
+Often,
+they have the same value as the corresponding attribute
+(for example,
+`id` is a property name reflecting the `id` attribute name),
+but there are some notable differences.
 
 > These rules aren’t simple.
 > Use [`hastscript`][h] (or [`property-information`][pi] directly) to help.
 
 The following rules are used to transform HTML attribute names to property
 names.
-These rules are based on [how ARIA is reflected in the
-DOM][concept-aria-reflection] ([\[ARIA\]][aria]), and differs from how some
-(older) HTML attributes are reflected in the DOM.
+These rules are based on
+[how ARIA is reflected in the DOM][concept-aria-reflection] ([\[ARIA\]][aria]),
+and differs from how some
+(older)
+HTML attributes are reflected in the DOM.
 
-1. Any name referencing a combinations of multiple words (such as “stroke
-   miter limit”) becomes a camelcased property name capitalizing each word
-   boundary.
-   This includes combinations that are sometimes written as several words.
-   For example, `stroke-miterlimit` becomes `strokeMiterLimit`, `autocorrect`
-   becomes `autoCorrect`, and `allowfullscreen` becomes `allowFullScreen`.
-2. Any name that can be hyphenated, becomes a camelcased property name
-   capitalizing each boundary.
-   For example, “read-only” becomes `readOnly`.
-3. Compound words that are not used with spaces or hyphens are treated as a
-   normal word and the previous rules apply.
-   For example, “placeholder”, “strikethrough”, and “playback” stay the same.
-4. Acronyms in names are treated as a normal word and the previous rules apply.
-   For example, `itemid` become `itemId` and `bgcolor` becomes `bgColor`.
+1. any name referencing a combinations of multiple words
+   (such as “stroke miter limit”) becomes a camelcased property name
+   capitalizing each word boundary;
+   this includes combinations that are sometimes written as several words;
+   for example,
+   `stroke-miterlimit` becomes `strokeMiterLimit`,
+   `autocorrect` becomes `autoCorrect`,
+   and `allowfullscreen` becomes `allowFullScreen`
+2. any name that can be hyphenated,
+   becomes a camelcased property name capitalizing each boundary;
+   for example,
+   “read-only” becomes `readOnly`
+3. compound words that are not used with spaces or hyphens are treated as a
+   normal word and the previous rules apply;
+   for example,
+   “placeholder”,
+   “strikethrough”,
+   and “playback” stay the same
+4. acronyms in names are treated as a normal word and the previous rules apply;
+   for example,
+   `itemid` become `itemId` and `bgcolor` becomes `bgColor`
 
 ###### Exceptions
 
 Some jargon is seen as one word even though it may not be seen as such by
 dictionaries.
-For example, `nohref` becomes `noHref`, `playsinline` becomes `playsInline`,
+For example,
+`nohref` becomes `noHref`,
+`playsinline` becomes `playsInline`,
 and `accept-charset` becomes `acceptCharset`.
 
 The HTML attributes `class` and `for` respectively become `className` and
 `htmlFor` in alignment with the DOM.
-No other attributes gain different names as properties, other than a change in
-casing.
+No other attributes gain different names as properties,
+other than a change in casing.
 
 ###### Notes
 
@@ -351,20 +377,25 @@ typedef any PropertyValue
 ```
 
 Property values should reflect the data type determined by their property name.
-For example, the HTML `<div hidden></div>` has a `hidden` attribute, which is
-reflected as a `hidden` property name set to the property value `true`, and
-`<input minlength="5">`, which has a `minlength` attribute, is reflected as a
-`minLength` property name set to the property value `5`.
+For example,
+the HTML `<div hidden></div>` has a `hidden` attribute,
+which is reflected as a `hidden` property name set to the property value `true`,
+and `<input minlength="5">`,
+which has a `minlength` attribute,
+is reflected as a `minLength` property name set to the property value `5`.
 
-> In [JSON][], the value `null` must be treated as if the property was not
-> included.
-> In [JavaScript][], both `null` and `undefined` must be similarly ignored.
+> In [JSON][],
+> the value `null` must be treated as if the property was not included.
+> In [JavaScript][],
+> both `null` and `undefined` must be similarly ignored.
 
-The DOM has strict rules on how it coerces HTML to expected values, whereas hast
-is more lenient in how it reflects the source.
+The DOM has strict rules on how it coerces HTML to expected values,
+whereas hast is more lenient in how it reflects the source.
 Where the DOM treats `<div hidden="no"></div>` as having a value of `true` and
-`<img width="yes">` as having a value of `0`, these should be reflected as
-`'no'` and `'yes'`, respectively, in hast.
+`<img width="yes">` as having a value of `0`,
+these should be reflected as `'no'` and `'yes'`,
+respectively,
+in hast.
 
 > The reason for this is to allow plugins and utilities to inspect these
 > non-standard values.
@@ -372,8 +403,8 @@ Where the DOM treats `<div hidden="no"></div>` as having a value of `true` and
 The DOM also specifies comma separated and space separated lists attribute
 values.
 In hast, these should be treated as ordered lists.
-For example, `<div class="alpha bravo"></div>` is represented as `['alpha',
-'bravo']`.
+For example,
+`<div class="alpha bravo"></div>` is represented as `['alpha', 'bravo']`.
 
 > There’s no special format for the property value of the `style` property name.
 
@@ -598,8 +629,10 @@ The rest is sorted alphabetically based on content after `hast-util-`
 
 ## Security
 
-As hast represents HTML, and improper use of HTML can open you up to a
-[cross-site scripting (XSS)][xss] attack, improper use of hast is also unsafe.
+As hast represents HTML,
+and improper use of HTML can open you up to a [cross-site scripting (XSS)][xss]
+attack,
+improper use of hast is also unsafe.
 Always be careful with user input and use [`hast-util-santize`][sanitize] to
 make the hast tree safe.
 
@@ -619,12 +652,17 @@ ways to get started.
 See [`support.md`][support] for ways to get help.
 Ideas for new utilities and tools can be posted in [`syntax-tree/ideas`][ideas].
 
-A curated list of awesome syntax-tree, unist, mdast, hast, xast, and nlcst
-resources can be found in [awesome syntax-tree][awesome].
+A curated list of awesome syntax-tree,
+unist,
+mdast,
+hast,
+xast,
+and nlcst resources can be found in [awesome syntax-tree][awesome].
 
 This project has a [code of conduct][coc].
-By interacting with this repository, organization, or community you agree to
-abide by its terms.
+By interacting with this repository,
+organization,
+or community you agree to abide by its terms.
 
 ## Acknowledgments
 
@@ -632,7 +670,8 @@ The initial release of this project was authored by
 [**@wooorm**](https://github.com/wooorm).
 
 Special thanks to [**@eush77**](https://github.com/eush77) for their work,
-ideas, and incredibly valuable feedback!
+ideas,
+and incredibly valuable feedback!
 
 Thanks to
 [**@andrewburgess**](https://github.com/andrewburgess),
