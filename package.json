@@ -1,26 +1,26 @@
 {
-  "private": true,
-  "version": "0.0.0",
-  "description": "hypertext abstract syntax tree",
-  "license": "MIT",
-  "keywords": [],
-  "repository": "syntax-tree/hast",
-  "bugs": "https://github.com/syntax-tree/hast/issues",
   "author": "Titus Wormer <tituswormer@gmail.com> (wooorm.com)",
+  "bugs": "https://github.com/syntax-tree/hast/issues",
   "contributors": [
     "Titus Wormer <tituswormer@gmail.com> (wooorm.com)"
   ],
+  "description": "hypertext abstract syntax tree",
   "devDependencies": {
     "remark-cli": "^12.0.0",
     "remark-preset-wooorm": "^10.0.0"
   },
+  "keywords": [],
+  "license": "MIT",
+  "private": true,
+  "repository": "syntax-tree/hast",
   "scripts": {
-    "format": "remark . -qfo",
+    "format": "remark --frail --output --quiet -- .",
     "test": "npm run format"
   },
   "remarkConfig": {
     "plugins": [
       "remark-preset-wooorm"
     ]
-  }
+  },
+  "version": "0.0.0"
 }
