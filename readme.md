@@ -169,7 +169,7 @@ Yields:
 interface Element <: Parent {
   type: 'element'
   tagName: string
-  properties: Properties?
+  properties: Properties
   content: Root?
   children: [Comment | Element | Text]
 }
