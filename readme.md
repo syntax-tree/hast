@@ -1,18 +1,19 @@
 <!--lint disable no-html-->
 
-# ![hast][logo]
+# ![hast][github-hast-logo]
 
 **H**ypertext **A**bstract **S**yntax **T**ree format.
 
 ***
 
-**hast** is a specification for representing [HTML][] (and embedded [SVG][] or
-[MathML][]) as an abstract [syntax tree][syntax-tree].
-It implements the **[unist][]** spec.
+**hast** is a specification for representing [HTML][whatwg-html]
+(and embedded [SVG][w3c-svg] or [MathML][w3c-mathml])
+as an abstract syntax tree.
+It implements the **[unist][github-unist]** spec.
 
 This document may not be released.
-See [releases][] for released documents.
-The latest released version is [`2.4.0`][latest].
+See [releases][github-hast-releases] for released documents.
+The latest released version is [`2.4.0`][github-hast-release].
 
 ## Contents
 
@@ -45,32 +46,32 @@ The latest released version is [`2.4.0`][latest].
 
 ## Introduction
 
-This document defines a format for representing hypertext as an [abstract syntax
-tree][syntax-tree].
-Development of hast started in April 2016 for [rehype][].
-This specification is written in a [Web IDL][webidl]-like grammar.
+This document defines a format for representing hypertext as an
+[abstract syntax tree][github-unist-syntax-tree].
+Development of hast started in April 2016 for [rehype][github-rehype].
+This specification is written in a [Web IDL][whatwg-webidl]-like grammar.
 
 ### Where this specification fits
 
-hast extends [unist][],
+hast extends [unist][github-unist],
 a format for syntax trees,
-to benefit from its [ecosystem of utilities][utilities].
+to benefit from its [ecosystem of utilities][github-unist-utilities].
 
-hast relates to [JavaScript][] in that it has an [ecosystem of
-utilities][list-of-utilities] for working with compliant syntax trees in
-JavaScript.
+hast relates to [JavaScript][ecma-javascript] in that it has an
+[ecosystem of utilities][section-utilities]
+for working with compliant syntax trees in JavaScript.
 However,
 hast is not limited to JavaScript and can be used in other programming
 languages.
 
-hast relates to the [unified][] and [rehype][] projects in that hast syntax
-trees are used throughout their ecosystems.
+hast relates to the [unified][github-unified] and [rehype][github-rehype]
+projects in that hast syntax trees are used throughout their ecosystems.
 
 ### Virtual DOM
 
 The reason for introducing a new “virtual” DOM is primarily:
 
-* The [DOM][] is very heavy to implement outside of the browser,
+* The [DOM][whatwg-dom] is very heavy to implement outside of the browser,
   a lean and stripped down virtual DOM can be used everywhere
 * Most virtual DOMs do not focus on ease of use in transformations
 * Other virtual DOMs cannot represent the syntax of HTML in its entirety
@@ -123,7 +124,7 @@ interface Comment <: Literal {
 ```
 
 **Comment** (**[Literal][dfn-literal]**) represents a [Comment][concept-comment]
-([\[DOM\]][dom]).
+([\[DOM\]][whatwg-dom]).
 
 For example,
 the following HTML:
@@ -147,7 +148,7 @@ interface Doctype <: Node {
 ```
 
 **Doctype** (**[Node][dfn-unist-node]**) represents a
-[DocumentType][concept-documenttype] ([\[DOM\]][dom]).
+[DocumentType][concept-documenttype] ([\[DOM\]][whatwg-dom]).
 
 For example,
 the following HTML:
@@ -175,10 +176,11 @@ interface Element <: Parent {
 ```
 
 **Element** (**[Parent][dfn-parent]**) represents an [Element][concept-element]
-([\[DOM\]][dom]).
+([\[DOM\]][whatwg-dom]).
 
 A `tagName` field must be present.
-It represents the element’s [local name][concept-local-name] ([\[DOM\]][dom]).
+It represents the element’s [local name][concept-local-name]
+([\[DOM\]][whatwg-dom]).
 
 The `properties` field represents information associated with the element.
 The value of the `properties` field implements the
@@ -193,7 +195,7 @@ the element must be a *[leaf][term-leaf]*.
 
 If the `tagName` field is `'noscript'`,
 its *[children][term-child]* should be represented as if
-*[scripting is disabled][concept-scripting]* ([\[HTML\]][html]).
+*[scripting is disabled][concept-scripting]* ([\[HTML\]][whatwg-html]).
 
 For example,
 the following HTML:
@@ -241,7 +243,7 @@ interface Text <: Literal {
 ```
 
 **Text** (**[Literal][dfn-literal]**) represents a [Text][concept-text]
-([\[DOM\]][dom]).
+([\[DOM\]][whatwg-dom]).
 
 For example,
 the following HTML:
@@ -294,12 +296,15 @@ they have the same value as the corresponding attribute
 but there are some notable differences.
 
 > These rules aren’t simple.
-> Use [`hastscript`][h] (or [`property-information`][pi] directly) to help.
+> Use [`hastscript`][github-hastscript]
+> (or [`property-information`][github-property-information] directly)
+> to help.
 
 The following rules are used to transform HTML attribute names to property
 names.
 These rules are based on
-[how ARIA is reflected in the DOM][concept-aria-reflection] ([\[ARIA\]][aria]),
+[how ARIA is reflected in the DOM][concept-aria-reflection]
+([\[ARIA\]][w3c-aria]),
 and differs from how some
 (older)
 HTML attributes are reflected in the DOM.
@@ -342,7 +347,7 @@ other than a change in casing.
 
 ###### Notes
 
-[`property-information`][pi] lists all property names.
+[`property-information`][github-property-information] lists all property names.
 
 The property name rules differ from how HTML is reflected in the DOM for the
 following attributes:
@@ -384,9 +389,9 @@ and `<input minlength="5">`,
 which has a `minlength` attribute,
 is reflected as a `minLength` property name set to the property value `5`.
 
-> In [JSON][],
+> In [JSON][ietf-json],
 > the value `null` must be treated as if the property was not included.
-> In [JavaScript][],
+> In [JavaScript][ecma-javascript],
 > both `null` and `undefined` must be similarly ignored.
 
 The DOM has strict rules on how it coerces HTML to expected values,
@@ -410,11 +415,14 @@ For example,
 
 ## Glossary
 
-See the [unist glossary][glossary].
+See [§ *Glossary* in `syntax-tree/unist`][github-unist-glossary].
 
 ## List of utilities
 
-See the [unist list of utilities][utilities] for more utilities.
+See [§ *List of utilities* in `syntax-tree/unist`][github-unist-utilities]
+for more utilities.
+
+<!--lint disable media-style-->
 
 <!--
 Utilities.
@@ -570,26 +578,28 @@ The rest is sorted alphabetically based on content after `hast-util-`
 * [`web-namespaces`](https://github.com/wooorm/web-namespaces)
   — Map of web namespaces
 
+<!--lint enable media-style-->
+
 ## References
 
 * **unist**:
-  [Universal Syntax Tree][unist].
+  [Universal Syntax Tree][github-unist].
   T. Wormer; et al.
 * **JavaScript**:
-  [ECMAScript Language Specification][javascript].
+  [ECMAScript Language Specification][ecma-javascript].
   Ecma International.
 * **HTML**:
-  [HTML Standard][html],
+  [HTML Standard][whatwg-html],
   A. van Kesteren; et al.
   WHATWG.
 * **DOM**:
-  [DOM Standard][dom],
+  [DOM Standard][whatwg-dom],
   A. van Kesteren,
   A. Gregor,
   Ms2ger.
   WHATWG.
 * **SVG**:
-  [Scalable Vector Graphics (SVG)][svg],
+  [Scalable Vector Graphics (SVG)][w3c-svg],
   N. Andronikos,
   R. Atanassov,
   T. Bah,
@@ -606,35 +616,35 @@ The rest is sorted alphabetically based on content after `hast-util-`
   J. Watt.
   W3C.
 * **MathML**:
-  [Mathematical Markup Language Standard][mathml],
+  [Mathematical Markup Language Standard][w3c-mathml],
   D. Carlisle,
   P. Ion,
   R. Miner.
   W3C.
 * **ARIA**:
-  [Accessible Rich Internet Applications (WAI-ARIA)][aria],
+  [Accessible Rich Internet Applications (WAI-ARIA)][w3c-aria],
   J. Diggs,
   J. Craig,
   S. McCarron,
   M. Cooper.
   W3C.
 * **JSON**
-  [The JavaScript Object Notation (JSON) Data Interchange Format][json],
+  [The JavaScript Object Notation (JSON) Data Interchange Format][ietf-json],
   T. Bray.
   IETF.
 * **Web IDL**:
-  [Web IDL][webidl],
+  [Web IDL][whatwg-webidl],
   C. McCormack.
   W3C.
 
 ## Security
 
 As hast represents HTML,
-and improper use of HTML can open you up to a [cross-site scripting (XSS)][xss]
-attack,
+and improper use of HTML can open you up to a
+[cross-site scripting (XSS)][wikipedia-xss] attack,
 improper use of hast is also unsafe.
-Always be careful with user input and use [`hast-util-santize`][sanitize] to
-make the hast tree safe.
+Always be careful with user input and use
+[`hast-util-santize`][github-hast-util-sanitize] to make the hast tree safe.
 
 ## Related
 
@@ -647,19 +657,19 @@ make the hast tree safe.
 
 ## Contribute
 
-See [`contributing.md`][contributing] in [`syntax-tree/.github`][health] for
-ways to get started.
-See [`support.md`][support] for ways to get help.
-Ideas for new utilities and tools can be posted in [`syntax-tree/ideas`][ideas].
+See [`contributing.md`][health-contributing] in
+[`syntax-tree/.github`][health] for ways to get started.
+See [`support.md`][health-support] for ways to get help.
 
 A curated list of awesome syntax-tree,
 unist,
 mdast,
 hast,
 xast,
-and nlcst resources can be found in [awesome syntax-tree][awesome].
+and nlcst resources can be found in
+[awesome syntax-tree][github-syntax-tree-awesome].
 
-This project has a [code of conduct][coc].
+This project has a [code of conduct][health-coc].
 By interacting with this repository,
 organization,
 or community you agree to abide by its terms.
@@ -714,7 +724,6 @@ Thanks to
 [**@Sarah-Seo**](https://github.com/Sarah-Seo),
 [**@sethvincent**](https://github.com/sethvincent),
 [**@simov**](https://github.com/simov),
-[**@s1n**](https://github.com/s1n),
 [**@StarpTech**](https://github.com/StarpTech),
 [**@stefanprobst**](https://github.com/stefanprobst),
 [**@stuff**](https://github.com/stuff),
@@ -728,108 +737,106 @@ for contributing to hast and related projects!
 
 ## License
 
-[CC-BY-4.0][license] © [Titus Wormer][author]
+[CC-BY-4.0][creativecommons-by-4] © [Titus Wormer][wooorm]
 
 <!-- Definitions -->
 
-[health]: https://github.com/syntax-tree/.github
+[concept-aria-reflection]: https://w3c.github.io/aria/#idl_attr_disambiguation
 
-[contributing]: https://github.com/syntax-tree/.github/blob/HEAD/contributing.md
+[concept-comment]: https://dom.spec.whatwg.org/#interface-comment
 
-[support]: https://github.com/syntax-tree/.github/blob/HEAD/support.md
-
-[coc]: https://github.com/syntax-tree/.github/blob/HEAD/code-of-conduct.md
-
-[awesome]: https://github.com/syntax-tree/awesome-syntax-tree
-
-[ideas]: https://github.com/syntax-tree/ideas
-
-[license]: https://creativecommons.org/licenses/by/4.0/
-
-[author]: https://wooorm.com
-
-[logo]: https://raw.githubusercontent.com/syntax-tree/hast/6a36689/logo.svg?sanitize=true
-
-[releases]: https://github.com/syntax-tree/hast/releases
-
-[latest]: https://github.com/syntax-tree/hast/releases/tag/2.4.0
-
-[dfn-unist-node]: https://github.com/syntax-tree/unist#node
-
-[dfn-unist-parent]: https://github.com/syntax-tree/unist#parent
-
-[dfn-unist-literal]: https://github.com/syntax-tree/unist#literal
-
-[list-of-utilities]: #list-of-utilities
-
-[unist]: https://github.com/syntax-tree/unist
-
-[syntax-tree]: https://github.com/syntax-tree/unist#syntax-tree
-
-[javascript]: https://www.ecma-international.org/ecma-262/9.0/index.html
-
-[dom]: https://dom.spec.whatwg.org/
-
-[html]: https://html.spec.whatwg.org/multipage/
-
-[svg]: https://svgwg.org/svg2-draft/
-
-[mathml]: https://www.w3.org/Math/draft-spec/
-
-[aria]: https://w3c.github.io/aria/
-
-[json]: https://tools.ietf.org/html/rfc7159
-
-[webidl]: https://heycam.github.io/webidl/
-
-[glossary]: https://github.com/syntax-tree/unist#glossary
-
-[utilities]: https://github.com/syntax-tree/unist#list-of-utilities
-
-[unified]: https://github.com/unifiedjs/unified
-
-[rehype]: https://github.com/rehypejs/rehype
-
-[h]: https://github.com/syntax-tree/hastscript
-
-[pi]: https://github.com/wooorm/property-information
+[concept-documenttype]: https://dom.spec.whatwg.org/#documenttype
 
 [concept-element]: https://dom.spec.whatwg.org/#interface-element
 
 [concept-local-name]: https://dom.spec.whatwg.org/#concept-element-local-name
 
-[concept-documenttype]: https://dom.spec.whatwg.org/#documenttype
-
-[concept-comment]: https://dom.spec.whatwg.org/#interface-comment
+[concept-scripting]: https://html.spec.whatwg.org/multipage/webappapis.html#enabling-and-disabling-scripting
 
 [concept-text]: https://dom.spec.whatwg.org/#interface-text
 
-[concept-scripting]: https://html.spec.whatwg.org/multipage/webappapis.html#enabling-and-disabling-scripting
+[creativecommons-by-4]: https://creativecommons.org/licenses/by/4.0/
 
-[concept-aria-reflection]: https://w3c.github.io/aria/#idl_attr_disambiguation
-
-[xss]: https://en.wikipedia.org/wiki/Cross-site_scripting
-
-[sanitize]: https://github.com/syntax-tree/hast-util-sanitize
-
-[term-tree]: https://github.com/syntax-tree/unist#tree
-
-[term-child]: https://github.com/syntax-tree/unist#child
-
-[term-root]: https://github.com/syntax-tree/unist#root
-
-[term-leaf]: https://github.com/syntax-tree/unist#leaf
-
-[dfn-parent]: #parent
+[dfn-element]: #element
 
 [dfn-literal]: #literal
 
-[dfn-root]: #root
-
-[dfn-element]: #element
+[dfn-parent]: #parent
 
 [dfn-properties]: #properties
 
 [dfn-property-name]: #propertyname
 
 [dfn-property-value]: #propertyvalue
+
+[dfn-root]: #root
+
+[dfn-unist-literal]: https://github.com/syntax-tree/unist#literal
+
+[dfn-unist-node]: https://github.com/syntax-tree/unist#node
+
+[dfn-unist-parent]: https://github.com/syntax-tree/unist#parent
+
+[ecma-javascript]: https://www.ecma-international.org/ecma-262/9.0/index.html
+
+[github-hast-logo]: https://raw.githubusercontent.com/syntax-tree/hast/6a36689/logo.svg?sanitize=true
+
+[github-hast-release]: https://github.com/syntax-tree/hast/releases/tag/2.4.0
+
+[github-hast-releases]: https://github.com/syntax-tree/hast/releases
+
+[github-hast-util-sanitize]: https://github.com/syntax-tree/hast-util-sanitize
+
+[github-hastscript]: https://github.com/syntax-tree/hastscript
+
+[github-property-information]: https://github.com/wooorm/property-information
+
+[github-rehype]: https://github.com/rehypejs/rehype
+
+[github-syntax-tree-awesome]: https://github.com/syntax-tree/awesome-syntax-tree
+
+[github-unified]: https://github.com/unifiedjs/unified
+
+[github-unist]: https://github.com/syntax-tree/unist
+
+[github-unist-glossary]: https://github.com/syntax-tree/unist#glossary
+
+[github-unist-syntax-tree]: https://github.com/syntax-tree/unist#syntax-tree
+
+[github-unist-utilities]: https://github.com/syntax-tree/unist#list-of-utilities
+
+[health]: https://github.com/syntax-tree/.github
+
+[health-coc]: https://github.com/syntax-tree/.github/blob/HEAD/code-of-conduct.md
+
+[health-contributing]: https://github.com/syntax-tree/.github/blob/HEAD/contributing.md
+
+[health-support]: https://github.com/syntax-tree/.github/blob/HEAD/support.md
+
+[ietf-json]: https://datatracker.ietf.org/doc/html/rfc7159
+
+[section-utilities]: #list-of-utilities
+
+[term-child]: https://github.com/syntax-tree/unist#child
+
+[term-leaf]: https://github.com/syntax-tree/unist#leaf
+
+[term-root]: https://github.com/syntax-tree/unist#root
+
+[term-tree]: https://github.com/syntax-tree/unist#tree
+
+[w3c-aria]: https://www.w3.org/TR/wai-aria-1.3/
+
+[w3c-mathml]: https://www.w3.org/TR/mathml4/
+
+[w3c-svg]: https://www.w3.org/TR/SVG2/
+
+[whatwg-dom]: https://dom.spec.whatwg.org/
+
+[whatwg-html]: https://html.spec.whatwg.org/multipage/
+
+[whatwg-webidl]: https://webidl.spec.whatwg.org
+
+[wikipedia-xss]: https://en.wikipedia.org/wiki/Cross-site_scripting
+
+[wooorm]: https://wooorm.com
